@@ -34,6 +34,7 @@ buildignore simple-scan
 
 buildignore ghostscript
 buildignore myspell-en_US
+buildignore orca
 
 # Pulls in color management tools
 buildignore gnome-control-center-color
@@ -43,6 +44,7 @@ buildignore libgweather-lang
 buildignore gnome-user-docs
 buildignore gnome-user-docs-lang
 buildignore evolution-lang
+buildignore evolution-data-server-lang
 buildignore zenity-lang
 
 # Pulls in clamav
