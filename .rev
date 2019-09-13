@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>bc232da43fdc821dce5ea4372924567b</srcmd5>
+    <version>2.2.0+20130925</version>
+    <time>1489178757</time>
+    <user>dimstar_suse</user>
+    <comment>minisat is needed for stp and klee.</comment>
+    <requestid>458670</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>977727ab010108a8b21a60ee3a3b63aa</srcmd5>
+    <version>2.2.0+20130925</version>
+    <time>1564576583</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719993</requestid>
+  </revision>
+</revisionlist>
