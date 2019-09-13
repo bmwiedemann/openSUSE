@@ -1,0 +1,6 @@
+<package name="hawk-apiserver" project="openSUSE:Factory">
+  <title>Hawk API Server</title>
+  <description>Web server for the cluster API and Hawk</description>
+  <devel project="network:ha-clustering:Factory" package="hawk-apiserver"/>
+  <url>https://github.com/krig/hawk-apiserver</url>
+</package>
