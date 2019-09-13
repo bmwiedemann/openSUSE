@@ -1,0 +1,110 @@
+-------------------------------------------------------------------
+Sun Aug 11 12:49:38 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.21
+  * Fix issue with resetting DHCP lease on client stop.
+  * Add support for GPIO helper functionality.
+
+-------------------------------------------------------------------
+Mon May 27 11:27:00 UTC 2019 - Xaver Hellauer <xaver@hellauer.bayern>
+
+- ver 0.20:
+  * Fix issue with DHCP client and handling renewing state.
+  * Fix issue with DHCP client and handling rebinding state.
+  * Fix issue with DHCP client and recommended retry timeouts.
+  * Fix issue with Generic Netlink and family discovery.
+
+- ver 0.19:
+  * Fix issue with termination of Generic Netlink names.
+  * Fix issue with handling ECC scalar initialization.
+
+
+-------------------------------------------------------------------
+Thu Apr  4 17:17:50 UTC 2019 - Alexei Sorokin <sor.alexei@meowr.ru>
+
+- Update to version 0.18:
+  * Fix an issue with handling revocation of keys.
+  * Add support for the TLS Signature Algorithms extension.
+  * Add support for the TLS version range configuration.
+  * Add support for time utility functions.
+- Remove unsigned-char.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Fri Mar 15 09:29:34 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.17
+  * Added support for TLS Supported Groups extension, TLS Hello
+    extension feature, and for ECC and ECDH functionality.
+
+-------------------------------------------------------------------
+Thu Jan 31 11:45:09 UTC 2019 - schwab@suse.de
+
+- unsigned-char.patch: don't depend on signedness of char
+
+-------------------------------------------------------------------
+Thu Dec 13 20:25:38 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.16
+  * Add support for watchdog notification handling from systemd.
+  * Add support for generic X.509 certificate utilities.
+  * Add support for using AEAD ciphers for TLS.
+
+-------------------------------------------------------------------
+Sun Nov 18 08:28:49 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.15
+  * Fix an issue with signals not being registered properly.
+
+-------------------------------------------------------------------
+Tue Nov 13 13:00:16 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Update to new upstream release 0.14
+  * Fix issue with TLS failure handling.
+  * Fix issue with loading empty settings file.
+  * Fix issue with generic netlink message sizes.
+  * Add support for filesystem watch functionality.
+  * Fix issue with missing filesystem watch notifications.
+  * Fix issue with buffer overrun and PBKDF2 support.
+  * Add support for string argument parsing.
+  * Fix issue with D-Bus subpath comparisons in object tree walk.
+  * Fix issue with D-Bus InterfacesAdded on new ObjectManager
+    addition.
+  * Fix issue with verifying total length of certificates.
+  * Fix issue with loading v2 and v3 formatted hwdb.bin files.
+  * Fix issue with handling EPOLLHUP and EPOLLERR in IO watch.
+  * Fix issue with closing of the fd inside IO watch handlers.
+  * Fix issue with initialization of struct keyctl_dh_params.
+  * Fix issue with unexported public API symbols.
+  * Fix issue with handling netlink error return values.
+  * Fix issue with handling hashmap removing of last entry.
+  * Fix issue with handling zero-length secret for PRF.
+  * Add support for directory watch interface.
+  * Fix issue with return value of l_getrandom_is_supported.
+  * Fix issue with supporting l_genl_family_set_unicast_handler.
+  * Fix issue with utilizing single shared signalfd file descriptor.
+
+-------------------------------------------------------------------
+Tue Jun  5 08:44:36 UTC 2018 - seife+obs@b1-systems.com
+
+- update to version 0.5 (released 2018-05-05)
+- ell >= 0.3 is required for new bluez versions
+- ver 0.5:
+  - Fix issue with missing exported debug symbols.
+  - Add support for DHCP client library.
+- ver 0.4:
+  - Fix issue with propagate AEAD cipher failures.
+  - Fix issue with AAD length and AEAD result reads.
+- ver 0.3:
+  - Fix issue with IO handling and re-entrancy.
+  - Add support for D-Bus client proxy interface.
+- ver 0.2:
+  - Add support for mainloop integration functions.
+  - Add support for PKCS#5 key derivation functions.
+  - Add support for additional checksum and cipher types.
+- ver 0.1:
+  - Initial public release.
+
+-------------------------------------------------------------------
+Fri Nov 11 19:27:38 UTC 2016 - jengelh@inai.de
+
+- Initial package (version 0~1304) for build.opensuse.org
