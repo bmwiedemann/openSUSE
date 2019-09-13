@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Mon Jul 29 11:54:44 UTC 2019 - Guillaume GARDET <guillaume.gardet@opensuse.org>
+
+- Fix URL for aarch64
+- URL is arch specific, so drop noarch
+
+-------------------------------------------------------------------
+Wed Jan 16 12:33:58 UTC 2019 - Fabian Vogt <fvogt@suse.com>
+
+- Move extend to /bin/extend (boo#1122181)
+
+-------------------------------------------------------------------
+Fri Nov 30 11:28:08 UTC 2018 - lslezak@suse.cz
+
+- Move icons to the package, do not depend on the YaST branding
+  (boo#1109310)
+
+-------------------------------------------------------------------
+Tue Jun 19 16:51:36 UTC 2018 - ancor@suse.com
+
+- Option to perform a system upgrade instead of a fresh install
+
+-------------------------------------------------------------------
+Mon May 28 09:05:34 UTC 2018 - fvogt@suse.com
+
+- Add /sbin:/usr/sbin to $PATH to workaround boo#1094842
+
+-------------------------------------------------------------------
+Thu May  3 15:20:27 UTC 2018 - fvogt@suse.com
+
+- Move start-install.sh to /usr/sbin
+- Add extend script to fake extension rpm loading (boo#1013206)
+
+-------------------------------------------------------------------
+Thu Jan 11 14:18:42 UTC 2018 - fvogt@suse.com
+
+- Support Leap 15.0 by detecting the OS and setting the RepoUrl
+  appropriately
+
+-------------------------------------------------------------------
+Thu Sep 28 07:48:34 UTC 2017 - fvogt@suse.com
+
+- Change cmdline entry generation in start-install.sh:
+  * No useless use of cat ~(=^‥^)
+  * Strip parameters that the dracut-based boot injects to prevent
+    them from getting added to the installed system (boo#1059298)
+
+-------------------------------------------------------------------
+Tue Aug  8 08:39:43 UTC 2017 - fvogt@suse.com
+
+- Initial package, separated from kiwi-config-openSUSE
