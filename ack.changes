@@ -1,0 +1,353 @@
+-------------------------------------------------------------------
+Wed Aug 21 13:12:17 UTC 2019 - Dan Čermák <dcermak@suse.com>
+
+- Rebase patches:
+  * ack-add_spec.patch
+  * ack-ignore-osc.patch
+
+-------------------------------------------------------------------
+Wed Aug 21 12:11:56 UTC 2019 - Christopher Childress <christopher.childress@dciinc.org>
+
+- ack 3.0.3:
+  * Made smartcase's check for lowercase patterns smarter.
+  * Updated many URLs, especially in the config. (GH #223)
+
+-------------------------------------------------------------------
+Sat Aug  3 15:01:41 UTC 2019 - Andreas Stieger <andreas.stieger@gmx.de>
+
+- ack 3.0.2:
+  * Improved -w option
+  * -w option will warn if your pattern does not lend itself to
+    word matching
+  * -i, -I and --smart-case
+  * --proximate=N option
+  * Add --pod and --markdown
+  * Add GNUmakefile to the list of makefile specs
+  * Add -S as a synonym for --smart-case
+  * no longer highlights capture groups
+  * --output allows fewer special variables
+
+-------------------------------------------------------------------
+Fri Mar 22 21:11:41 UTC 2019 - Matthias Eliasson <elimat@opensuse.org>
+
+- ack 2.28:
+  * The --help-rgb-colors option now displays the RGB codes organized by HSL
+    values for easier picking.
+- includes 2.26:
+  * Added --help-colors and --help-rgb-colors options to display colors
+    available for color options.
+  * Clarified the docs for --lines option.
+  * Use File::Temp for temp files during tests on Win32.
+- cleanup with spec-cleaner 
+
+-------------------------------------------------------------------
+Sat Aug 11 00:53:55 UTC 2018 - rpm@fthiessen.de
+
+- ack 2.24:
+  * Added option "--ts" for Typescript.
+  * Fixed a bug where ack would stop searching if there was a file
+    called "0" in the current directory where ack was invoked.
+  * Optimized ack's search by 0-30% in timings of common cases.
+    Done by only do a line-by-line search of a file if there's a
+    match somewhere in the file.
+
+-------------------------------------------------------------------
+Fri Dec 29 04:40:33 UTC 2017 - avindra@opensuse.org
+
+- ack 2.22:
+  * Avoid a fatal error that sometimes occured if a file was
+    unreadable.
+  * support for Kotlin
+  * Sped up file type detection for certain files.
+- includes 2.20:
+  * When using submodules, .git directory will be a file.
+    This is now ignored by default.
+  * Changed construction in the docs that Ubuntu flagged as a
+    misspelling.
+- cleanup with spec-cleaner
+
+-------------------------------------------------------------------
+Sat Mar 25 14:58:21 UTC 2017 - astieger@suse.com
+
+- ack 2.18:
+  * no longer throw an undefined variable when called from a
+    directory that doesn't exist
+  * --context=0 (-C 0) can now override arkrc settings
+  * --after-context (-A) and --before-context (-B) no longer
+    require a value to be passed, defaulting to 2
+  * Add .xhtml to the --html filetype
+  * Add .wsdl to the --xml filetype.
+
+-------------------------------------------------------------------
+Sat Mar 11 19:13:25 UTC 2017 - astieger@suse.com
+
+- ack 2.16:
+  * Include .cljs, .cljc and .edn files with the --clojure filetype
+  * Add .xsd to the --xml filetype
+  * Add support for Swift language
+  * The MSYS2 project is now seen as Windows
+  * Expand the definition of OCaml files
+  * Add support for Groovy Server Pages
+
+-------------------------------------------------------------------
+Thu Feb  4 10:52:26 UTC 2016 - idonmez@suse.com
+
+- ack 2.15_02
+- Bug fixes:
+  * Reverted an optimization to make \s work properly again
+- Enhancements:
+  * The JSP filetype (--jsp) now recognizes .jspf files.
+
+-------------------------------------------------------------------
+Wed Feb 25 18:59:58 UTC 2015 - astieger@suse.com
+
+- ack 2.15_01
+- Bug fixes:
+  * The -l and -c flags would sometimes return inaccurate results
+    due to bug introduced in 2.14.
+  * Behavior when using newlines in a search was inconsistent.
+  * Add minimal requirement of Getopt::Long 2.38, not 2.35, for
+    GetOptionsFromString.
+- Enhancements:
+  * Many optimizations and code cleanups.
+  * Added --hpp option for C++ header files.
+  * ack now supports --ignore-dir=match:....
+  * ack also supports --ignore-dir=ext:..., and --noignore-dir
+    supports match/ext as well
+
+-------------------------------------------------------------------
+Thu Sep  4 22:02:47 UTC 2014 - andreas.stieger@gmx.de
+
+- ack 2.14:
+- Enhancements:
+  * ack now ignores JavaScript and CSS source maps
+- Bug fixes:
+  * The -s flag would fail to suppress certain warnings
+  * The -w flag would fail to work properly with regex features
+    such as alternation
+  * The -g flag should now work faster on larger codebases
+- Includes enhancements from 2.13 series:
+  * Add docs for available colors in ack.
+  * --create-ackrc keeps the comments that describe each of the
+    options, and it shows the ack version number
+  * Now ignores Cabal (Haskell) sandboxes
+  * Added filetypes for Jade, Smarty and Stylus
+- updated patches for context changes:
+  * ack-add_spec.patch
+  * ack-ignore-osc.patch
+- removed patches:
+  * ack-fix_smartcase_test_for_old_perl.patch
+
+-------------------------------------------------------------------
+Fri Jan 17 22:57:14 UTC 2014 - andreas.stieger@gmx.de
+
+- update to ack 2.12:
+  fixes potential remote code execution via per-project .ackrc files
+   [bnc#855340] [CVE-2013-7069]
+  * prevents the --pager, --regex and --output options from being
+    used from project-level ackrc files, preventing possible code
+    execution when using ack through malicious files
+  * --pager, --regex and --output options may still be used from
+    the global /etc/ackrc, your own private ~/.ackrc, the ACK_OPTIONS
+    environment variable, and of course from the command line.
+  * Now ignores Eclipse .metadata directory.
+- includes changes form 2.11_02:
+  * upstream source mispackaging fix
+- includes changes from 2.11_01
+  * Fixed a race condition in t/file-permission.t that was causing
+    failures if tests were run in parallel.
+- modified patches:
+  * ack-ignore-osc.patch adjust for upstream source changes
+
+-------------------------------------------------------------------
+Tue Oct 29 20:46:34 UTC 2013 - andreas.stieger@gmx.de
+
+- fix SLE build: File::Next does not have the required version. It
+  is only used in regression tests - skip them for SLE
+
+-------------------------------------------------------------------
+Thu Oct 17 21:03:44 UTC 2013 - andreas.stieger@gmx.de
+
+- update to 2.10:
+  * Add --perltest for *.t files
+  * Added Matlab support
+  * More compatibility fixes for Perl 5.8.8.
+- includes changes from 2.08
+  * ack now ignores CMake's build/cache directories by default
+  * Add shebang matching for --lua files
+  * Add documentation for --ackrc
+  * Add Elixir filetype
+  * Add --cathy option
+  * Add some helpful debugging tips when an invalid option is found
+  * Ignore PDF files by default, because Perl will detect them as text
+  * Ignore .gif, .jpg, .jpeg and .png files.  They won't normally be
+    selected, but this is an optimization so that ack doesn't have to
+    open them to know
+  * Ack's colorizing of output would get confused with multiple sets
+    of parentheses
+  * Ack would get confused when trying to colorize the output in
+    DOS-format files
+- includes changes from 2.05_01
+  * We now ignore the node_modules directories created by npm
+  * --pager without an argument implies --pager=$PAGER
+  * --perl now recognizes Plack-style .psgi files
+  * Added filetypes for Coffescript, JSON, LESS, and Sass.
+  * Command-line options now override options set in ackrc files
+  * ACK_PAGER and ACK_PAGER_COLOR now work as advertised.
+  * Fix a bug resulting in uninitialized variable warnings when more
+    than one capture group was specified in the search pattern
+  * Make sure ack is happy to build and test under cron and other
+    console-less environments.
+- packaging changes:
+  * run more rests with IO::Pty
+  * refresh ack-ignore-osc.patch for upstream changes
+  * update project URL
+- port changes from devel:languages:perl ack by daxim@cpan.org:
+  * correct metadata: licence, CPAN download, homepage
+  * unset forced prefix - let Perl configuration and toolchain
+    determine the prefix/install_base which will DTRT
+  * bash completion is gone, remove dead code
+
+-------------------------------------------------------------------
+
+Thu Aug 15 13:07:09 UTC 2013 - idonmez@suse.com
+
+- Add perl-File-Next runtime dependency
+
+-------------------------------------------------------------------
+Mon Jul 22 21:48:33 UTC 2013 - idonmez@suse.com
+
+- Update to version 2.0.4
+  * Major update, see http://beyondgrep.com/ack-2.0/ for details
+- Refresh ack-ignore-osc.patch, ack-add_spec.patch
+
+-------------------------------------------------------------------
+Mon Feb 27 05:45:22 UTC 2012 - mrdocs@opensuse.org
+
+-run osc service localrun format_spec_file to fix for factory
+
+-------------------------------------------------------------------
+Mon Feb 13 10:43:56 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Sep 19 08:08:13 UTC 2011 - puzel@suse.com
+
+- update to 1.96: 
+ [ENHANCEMENTS]
+  * Now ignores minified Javascript files.  Anything matching
+    -min.js or .min.js is ignored.
+  * Added Groovy support (--groovy).
+  * Added .pm6 as a --perl extension.
+  * Lua can now get detected from the shebang line.  Thanks,
+    Matthew Wild.
+  * Added support for version numbers in executables in shebang
+    detection.  Now if your Perl program's shebang refers to
+    /usr/local/bin/perl-5.14.1, ack will find it.
+
+-------------------------------------------------------------------
+Sat Sep 17 10:44:39 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Sat Feb 26 14:52:08 UTC 2011 - pascal.bleser@opensuse.org
+
+- add --spec/--rpm for .spec files
+
+-------------------------------------------------------------------
+Tue Nov 16 10:38:26 UTC 2010 - puzel@novell.com
+
+- update to 1.94: 
+ [ENHANCEMENTS]
+  * Added support for Go and Delphi.
+  * Ignores Monotone's _MTN directories.
+  * Added .xsl to the list of --xml files.
+
+- changes from 1.93_02:
+  [FIXES]
+  * --man and --version now return with an exit code of 0 (they used to exit with a 1)
+
+  [ENHANCEMENTS]
+  * the --ignore-dir option now can ignore entire paths relative to your current directory
+  * added --invert-file-match switch to negate the sense of the -g/-G switches
+
+- changes from 1.93_01:
+  [FILE TYPE UPDATES]
+  * added --verilog, --vhdl and --clojure
+  * files that match *.mk and *.mak as well as GNUmakefile are now included in the ack filetype 'make' (issue 88)
+  * added RSpec's .spec type to the --ruby list
+
+  [ENHANCEMENTS]
+  * added docs for -r, -R, --recurse options
+  * added new switch --color-lineno and environment variable ACK_COLOR_LINENO, which allow setting the line number color
+  * added option --show-types to output the types that ack considers a file to have
+  * 'ack --count --no-filename regex' doesn't output a list of numbers but a sum of all occurences; this is NOT what grep does but is the more sensible behavior
+
+  [FIXES]
+  * fixed ack misbehavior when using --match or not specifying a regex
+  * fixed issue 74: analog to grep, 'ack --count regex file' now only outputs the number of found matches, if only one file is given
+  * fixed issue 76: giving both --line and a regex (with --match) now leads to an error; the same is true for -f or -g in conjunction with --match
+  * fixed issue 80: piping into ack --count now works as expected: ack always returned 0 when piped into, no matter how many matches where found
+  * fixed issue 81: .ackrc now ignores leading/trailing whitespace
+
+-------------------------------------------------------------------
+Thu Nov 11 23:00:39 UTC 2010 - pascal.bleser@opensuse.org
+
+- applied patch by Pavol Rusnak <prusnak@suse.cz> from openSUSE:Factory:Contrib/ack to ignore .osc directories (redone for release 1.92)
+
+- merged .changes entries for 1.92 by Petr Uzl <puzel@suse.cz> from openSUSE:Factory:Contrib/ack, he was a lot less lazy than me
+
+-------------------------------------------------------------------
+Sun Feb 14 22:09:12 UTC 2010 - pascal.bleser@opensuse.org
+
+- removed bash completion file, way too slow
+
+-------------------------------------------------------------------
+Sun Feb 14 21:53:01 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 1.92:
+ [ENHANCEMENTS]
+  * Added Scala support.  Thanks to Dan Sully.
+  * Added .phtml as an extension for PHP.
+  * Using -f or -g now return a proper error code.  If files are
+    found, ack returns 0.  If none are found, ack returns 1.  This
+    is a change in the specification, but the code didn't match the
+    specfication anyway.
+  * No man pages are created for any of the .pm files any more.
+ [FIXES]
+  * The --pager flag would not work.  Now it does.  Thanks Packy
+    Anderson.
+  * File matching for Emacs work files that match #*# was wrong.
+    It was checking the entire path, not just the basename.  This
+    is fixed.  (http://github.com/petdance/ack/issues/closed/#issue/101)
+  * Fixed URLs that pointed to old Google Code.
+
+- split out perl-App-Ack into its own subpackage
+
+-------------------------------------------------------------------
+Mon Jul 13 00:00:00 UTC 2009 - pascal.bleser@opensuse.org
+
+- update to 1.88:
+  * ack has a new plugin system, so you can build plugins to search
+    whatever filetype you want
+  * added support for .hrl Erlang header files
+  * added support for --rake files, which are also --ruby files
+  * fixed a bug where files ending in "Makefile" were mistakenly
+    identified as Makefiles
+  * created a new etc/ directory and its first addition, a bash
+    auto-completion file
+
+-------------------------------------------------------------------
+Wed Jul 16 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new upstream version (1.86)
+
+-------------------------------------------------------------------
+Tue Mar 25 00:00:00 UTC 2008 - guru@unixtech.be
+
+- new package (1.78)
+
+
