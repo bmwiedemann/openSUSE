@@ -1,0 +1,27 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>a1628f7c5add043ff1887351a6639fd3</srcmd5>
+    <version>0.0.20160416</version>
+    <time>1462428751</time>
+    <user>dimstar_suse</user>
+    <comment>dependency for wlc - wayland compositor library
+added forgotten files</comment>
+    <requestid>391285</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>6aeb92b1a15ae184ffa18993330afcc4</srcmd5>
+    <version>0.0.20160429</version>
+    <time>1462697142</time>
+    <user>dimstar_suse</user>
+    <comment>- get rid of hacks</comment>
+    <requestid>393940</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>85d31a1cadd57a80df0be2dbc4274a1c</srcmd5>
+    <version>0.0.20161208</version>
+    <time>1487261144</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>457053</requestid>
+  </revision>
+</revisionlist>
