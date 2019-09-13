@@ -1,0 +1,382 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>6b8fd047e83a5963fd2b0ff2447dac8b</srcmd5>
+    <version>3.0</version>
+    <time>1469530840</time>
+    <user>dimstar_suse</user>
+    <comment>Add license files (pointed out by legal review)</comment>
+    <requestid>412436</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>645ef74aae115047402569c90d50f41b</srcmd5>
+    <version>3.0</version>
+    <time>1470217453</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>415947</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>0a99ce76dce23ba4682a3ee950e8f281</srcmd5>
+    <version>3.0.1</version>
+    <time>1473679624</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>426326</requestid>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>370915f9de234249edfd6c7c2674e58a</srcmd5>
+    <version>3.0.1.1</version>
+    <time>1475359769</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 3.0.1.1</comment>
+    <requestid>432136</requestid>
+  </revision>
+  <revision rev="5" vrev="2">
+    <srcmd5>a8d8b4caca0dd48f18db138d0a9dd3b1</srcmd5>
+    <version>3.0.1.1</version>
+    <time>1478626065</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>438947</requestid>
+  </revision>
+  <revision rev="6" vrev="1">
+    <srcmd5>ac3dbe43a4cf1cf16c0ced087760302a</srcmd5>
+    <version>3.1.1</version>
+    <time>1482418654</time>
+    <user>lnussel_factory</user>
+    <comment>Update to version 3.1.1</comment>
+    <requestid>447326</requestid>
+  </revision>
+  <revision rev="7" vrev="1">
+    <srcmd5>78330d09cc29fca60c4e8e8a76966d7c</srcmd5>
+    <version>3.1.2.1</version>
+    <time>1486046616</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>453912</requestid>
+  </revision>
+  <revision rev="8" vrev="2">
+    <srcmd5>9b49f607104e2b27ebf7e59f21767064</srcmd5>
+    <version>3.1.2.1</version>
+    <time>1486465597</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>454982</requestid>
+  </revision>
+  <revision rev="9" vrev="1">
+    <srcmd5>d256d2813cedf08fde3ee73946927483</srcmd5>
+    <version>3.1.3</version>
+    <time>1493708100</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>492307</requestid>
+  </revision>
+  <revision rev="10" vrev="1">
+    <srcmd5>4103a15f015103410180b6a1f3040b17</srcmd5>
+    <version>3.1.4</version>
+    <time>1496392378</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>498698</requestid>
+  </revision>
+  <revision rev="11" vrev="2">
+    <srcmd5>e4c622e74493411e2b44b60702c6dc6b</srcmd5>
+    <version>3.1.4</version>
+    <time>1497274407</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>502515</requestid>
+  </revision>
+  <revision rev="12" vrev="3">
+    <srcmd5>d464d1547372ca5fe220e67426c050fb</srcmd5>
+    <version>3.1.4</version>
+    <time>1501067174</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>512582</requestid>
+  </revision>
+  <revision rev="13" vrev="1">
+    <srcmd5>c69d85d5dad4f32d485c5e6014e7b8ae</srcmd5>
+    <version>3.2.0</version>
+    <time>1503593739</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518353</requestid>
+  </revision>
+  <revision rev="14" vrev="1">
+    <srcmd5>0f730128a0774ac3cf1f8590889f86a3</srcmd5>
+    <version>3.2.1</version>
+    <time>1503926246</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>518865</requestid>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e613ca9606d942f3e85239b88805c7a5</srcmd5>
+    <version>3.3.0</version>
+    <time>1506956038</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>530029</requestid>
+  </revision>
+  <revision rev="16" vrev="1">
+    <srcmd5>90b446f75adc249c6edc44a40b7befa0</srcmd5>
+    <version>3.3.1</version>
+    <time>1507897188</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>533712</requestid>
+  </revision>
+  <revision rev="17" vrev="1">
+    <srcmd5>9572aa9a4870ba46818a1fb261e9f555</srcmd5>
+    <version>3.3.2.1</version>
+    <time>1510150268</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539679</requestid>
+  </revision>
+  <revision rev="18" vrev="1">
+    <srcmd5>948a714ec7e8074a00b76cbea09fe14a</srcmd5>
+    <version>3.3.3</version>
+    <time>1516092157</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>564222</requestid>
+  </revision>
+  <revision rev="19" vrev="1">
+    <srcmd5>8550a7a3da7e73a229ffa87731c56b63</srcmd5>
+    <version>4.0.0</version>
+    <time>1521904521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590298</requestid>
+  </revision>
+  <revision rev="20" vrev="2">
+    <srcmd5>3f4d028d95b18f5a3874783b37858355</srcmd5>
+    <version>4.0.0</version>
+    <time>1522062824</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>590869</requestid>
+  </revision>
+  <revision rev="21" vrev="3">
+    <srcmd5>07914dc376a105036fc99010b74f44fc</srcmd5>
+    <version>4.0.0</version>
+    <time>1523448124</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595181</requestid>
+  </revision>
+  <revision rev="22" vrev="1">
+    <srcmd5>47ae2b6cd2a92a700d1c6a40b36b68d9</srcmd5>
+    <version>4.0.1</version>
+    <time>1523616651</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>595906</requestid>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>cbe460e3296249df31d6ee637b284062</srcmd5>
+    <version>4.0.2</version>
+    <time>1526023050</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606131</requestid>
+  </revision>
+  <revision rev="24" vrev="1">
+    <srcmd5>a5db733b576c53ad1f2902eeaf7d1b3b</srcmd5>
+    <version>4.0.3</version>
+    <time>1526220385</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>606636</requestid>
+  </revision>
+  <revision rev="25" vrev="1">
+    <srcmd5>9e8faf532cbe05fe31228d7831e8ef4b</srcmd5>
+    <version>4.0.4</version>
+    <time>1530304005</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>616932</requestid>
+  </revision>
+  <revision rev="26" vrev="1">
+    <srcmd5>faac659daf6ad56c55e1529d0e5b248f</srcmd5>
+    <version>4.1.0</version>
+    <time>1530866371</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.1.0:
+  * See https://krita.org/en/item/krita-4-1-0-released/
+  * Major new features:
+    + A new reference images tool that replaces the old reference
+      images docker
+    + You can now save and load sessions: the set of images and
+      views on images you were working on
+    + You can create multi-monitor workspace layouts
+    + An improved workflow for working with animation frames
+    + An improved animation timeline display
+    + Krita can now handle larger animation by buffering rendered
+      frames to disk
+    + The color picker now has a mixing option
+    + Improved vanishing point assistant - and assistants can be
+      painted with custom colors
+    + The first part of Ivan Yossi's Google Summer of Code work on
+      improving the performance of brush masks through
+      vectorization is included as well!
+  * Also a host of bug fixes, and improvements to the rendering
+    performance and more features
+</comment>
+    <requestid>619842</requestid>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>d6e147147748d23de664d48f8e4ee9bf</srcmd5>
+    <version>4.1.1</version>
+    <time>1532033737</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>623923</requestid>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>ffb658010cc029f96f274a39f53a3878</srcmd5>
+    <version>4.1.1</version>
+    <time>1535963721</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>632506</requestid>
+  </revision>
+  <revision rev="29" vrev="1">
+    <srcmd5>1678473e51f330465ef66997b5d0c357</srcmd5>
+    <version>4.1.3</version>
+    <time>1538117635</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>638719</requestid>
+  </revision>
+  <revision rev="30" vrev="1">
+    <srcmd5>249c1242736708166d1f02c7047e7d9b</srcmd5>
+    <version>4.1.5</version>
+    <time>1539589432</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>641809</requestid>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>1a0504079d90c752a03704af40b7869d</srcmd5>
+    <version>4.1.7</version>
+    <time>1545141485</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>658672</requestid>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>1c12c6fcf04bc69084d17bb90a93a5da</srcmd5>
+    <version>4.1.7</version>
+    <time>1546695731</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>662711</requestid>
+  </revision>
+  <revision rev="33" vrev="1">
+    <srcmd5>b19c0723f9b46a41c8c87ee8a65a8408</srcmd5>
+    <version>4.1.8</version>
+    <time>1552902101</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>685570</requestid>
+  </revision>
+  <revision rev="34" vrev="1">
+    <srcmd5>32c6b54970df737da4a8fb26ee9ee811</srcmd5>
+    <version>4.2.1</version>
+    <time>1560971048</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>707814</requestid>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>ae24ba4a483c838611db44d79d3ee007</srcmd5>
+    <version>4.2.2</version>
+    <time>1563701577</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>712677</requestid>
+  </revision>
+  <revision rev="36" vrev="1">
+    <srcmd5>079b66765fc395de1d6bb3495acae3c7</srcmd5>
+    <version>4.2.3</version>
+    <time>1563914111</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 4.2.3:
+  * See https://krita.org/en/item/krita-4-2-3-released/
+  * Fix the caption of the Background Color color selection dialog
+    (kde#407658)
+  * Fix the tag selector combobox so it is possible to select
+    resources that have a tag that's longer than fits in the
+    combobox (kde#408053)
+  * Make it possible for the Krita startup window to become as
+    narrow as before adding the news widget (kde#408504)
+  * Fix copy/pasting of animation frames (kde#408421, kde#404595)
+  * Make the polygon and outline selection tool handle the control
+    modifier correctly (kde#376007)
+  * Add a reload script button to the Python scripter plugin
+  * Fix a crash in the Overview docker when there is no image open
+  * Fix drag and drop of fill layers between opened files
+    (kde#408019)
+  * Fix loading EXR files that have more than one layer with the
+    same name (kde#409552)
+  * Hide vanishing points preview lines when assistants are hidden
+    (kde#396158)
+  * Fix the Mirror All Layers Horizontally function
+  * Fix switching profile to default when changing channel depth in
+    the New Image dialog (kde#406700)
+  * Disable AVG optimizations for some 32 bit blending modes
+    (kde#404133)
+  * Fix a crash when pressing cancel when trying to create an 8
+    bit/channel linear gamma RGB image
+  * Make sure Stroke Selection paint correctly with the selection
+    border in the middle of the selection (kde#409254)
+  * Fix saving Krita when perspective assistants are present
+    (kde#409249)
+  * Fix issues with transformations being pixelated (kde#409280)
+  * Make it possible to hide all layers except the selected one
+    with shift-click (kde#376086)
+  * Fix cloning keyframe channels that are not opacity channels
+  * Fix a hang when trying to paint while playing an animation of
+    an empty image (kde#408749)
+  * Fix Isolated Mode when multiple windows are open (kde#408150)
+  * Make the gradient editor show the right editor for stop and
+    segmented gradients (but creating new gradients in Krita is
+    still broken)
+  * Fix a freeze when pressing delete when making a polygonal
+    selection (kde#408843)
+  * Fix the –export commandline option to return 0 when the export
+    is successful (kde#409133)
+  * Fix support for the KDE Plasma global menu (kde#408015)
+  * Fix a crash when using the shrink option of the deform brush
+    (kde#408887)
+</comment>
+    <requestid>717485</requestid>
+  </revision>
+  <revision rev="37" vrev="1">
+    <srcmd5>e42a24f7578cf0928b98977c85acb121</srcmd5>
+    <version>4.2.4</version>
+    <time>1564994116</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>720083</requestid>
+  </revision>
+  <revision rev="38" vrev="1">
+    <srcmd5>30aa9a8d993e095c6e2834993fcc4ad7</srcmd5>
+    <version>4.2.5</version>
+    <time>1565097087</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>721048</requestid>
+  </revision>
+  <revision rev="39" vrev="1">
+    <srcmd5>31d30512a4b1068eeaa37643d9721122</srcmd5>
+    <version>4.2.6</version>
+    <time>1568191254</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>729941</requestid>
+  </revision>
+</revisionlist>
