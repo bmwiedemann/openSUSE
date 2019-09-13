@@ -1,0 +1,71 @@
+Index: latex2html-2017.2/configure
+===================================================================
+--- latex2html-2017.2.orig/configure
++++ latex2html-2017.2/configure
+@@ -1225,7 +1225,7 @@ if test "$?" != "0"; then
+ fi
+ 
+ # this is used to get the values from the config file
+-eval `perl -w -e 'use cfgcache; foreach(keys %cfg) { print qq($_='"'"'$cfg{$_}'"'"'\n);}'`
++eval `perl -w -e 'use lib q[.]; use cfgcache; foreach(keys %cfg) { print qq($_='"'"'$cfg{$_}'"'"'\n);}'`
+ 
+ 
+ 
+Index: latex2html-2017.2/latex2html.pin
+===================================================================
+--- latex2html-2017.2.orig/latex2html.pin
++++ latex2html-2017.2/latex2html.pin
+@@ -123,7 +123,7 @@ if($ENV{'L2HCONFIG'}) {
+   require $ENV{'L2HCONFIG'} ||
+     die "Fatal (require $ENV{'L2HCONFIG'}): $!";
+ } else {
+-  eval 'use l2hconf';
++  eval 'use lib "."; use l2hconf';
+   if($@) {
+     die "Fatal (use l2hconf): $@\n";
+   }
+@@ -1922,7 +1922,7 @@ sub mark_string {
+         }
+         $_[0] = join('',$before,"\{",$after) if($change);
+         # MRO: mark one opening brace
+-	if($_[0] =~ s/^([^{]*){/push(@processedB,$1);join('',$O,++$id,$C)/eos) {
++	if($_[0] =~ s/^([^{]*)\{/push(@processedB,$1);join('',$O,++$id,$C)/eos) {
+ 	    $before=''; $after=$';
+         }
+         if ($after =~ /\}/) { 
+Index: latex2html-2017.2/config/build.pl
+===================================================================
+--- latex2html-2017.2.orig/config/build.pl
++++ latex2html-2017.2/config/build.pl
+@@ -145,6 +145,7 @@ my ($VERSION) = q$Revision: 1.6 $ =~ /:\
+ # Read in the system's configuration
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use cfgcache;
+ 
+ my $dd = $cfg{'dd'};
+Index: latex2html-2017.2/config/config.pl
+===================================================================
+--- latex2html-2017.2.orig/config/config.pl
++++ latex2html-2017.2/config/config.pl
+@@ -435,6 +435,7 @@ use IO::File;
+ 
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use L2hos;
+ 
+ #use diagnostics;
+Index: latex2html-2017.2/config/install.pl
+===================================================================
+--- latex2html-2017.2.orig/config/install.pl
++++ latex2html-2017.2/config/install.pl
+@@ -183,6 +183,7 @@ my ($VERSION) = q$Revision: 1.12 $ =~ /:
+ 
+ use FindBin;
+ use lib "$FindBin::Bin/..";
++use lib "$FindBin::Bin";
+ use cfgcache;
+ use L2hos;
+ 

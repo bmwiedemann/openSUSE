@@ -1,0 +1,6 @@
+Incompatibilities
+=================
+
+latex2html isn't fully compatible with the 'url' package.  latex2html
+will die on the string "$$" in \path; e.g., \path{foo.$$}.  For more
+info refer to Suse Linux Bugilla #26127.

@@ -1,0 +1,398 @@
+Index: IndicTeX-HTML/devnagri.perl
+===================================================================
+--- IndicTeX-HTML/devnagri.perl.orig	2002-11-29 12:48:57.000000000 +0100
++++ IndicTeX-HTML/devnagri.perl	2015-12-16 15:54:34.214410597 +0100
+@@ -331,6 +331,7 @@
+ sub do_env_pre_tr_devnagri { 
+     local($_) = @_;
+     open(DNTR,">dntr.tmp") || print "\n *** cannot open dntr.tmp ***" ;
++	binmode DNTR;
+     print DNTR "\$\$", &revert_to_raw_tex($_), "\$\$";
+     close DNTR;
+     &syswait("patc -p $PRE_FILTERS${dd}dng.pat dntr.tmp dntr.tmp1");
+Index: IndicTeX-HTML/itrans.perl
+===================================================================
+--- IndicTeX-HTML/itrans.perl.orig	2015-08-04 16:58:10.000000000 +0200
++++ IndicTeX-HTML/itrans.perl	2015-12-16 15:54:34.214410597 +0100
+@@ -336,10 +336,11 @@
+ 		, "\#${indic}ifm=".$itrans_info{$indic.'ifm'}
+ 		, "\#$indic", $itext , "\#end$indic\n" );
+     open(ITRANS, ">itrans.itx");
++    binmode ITRANS;;
+     print ITRANS "$_";
+     close(ITRANS);
+     &syswait("$ITRANS <itrans.itx >itrans.htm");
+-    open(ITRANS, "<itrans.htm"); $itext = '';
++    open(ITRANS, "<itrans.htm"); binmode ITRANS; $itext = '';
+     while (<ITRANS>) {
+ 	next if (/^(\%|$)/);
+ 	$itext .= $_ 
+Index: IndicTeX-HTML/malyalam.perl
+===================================================================
+--- IndicTeX-HTML/malyalam.perl.orig	2002-11-29 12:48:59.000000000 +0100
++++ IndicTeX-HTML/malyalam.perl	2015-12-16 15:54:34.214410597 +0100
+@@ -221,6 +221,7 @@
+ sub do_env_pre_mmtr {
+     local($_) = @_;
+     open(MMTR,">mmtr.tmp") || print "\n *** cannot open mmtr.tmp ***" ;
++	binmode MMTR;
+     print MMTR "\$\$", &revert_to_raw_tex($_), "\$\$";
+     close MMTR;
+     &syswait("$PATC -p $MMDIR${dd}mm.pat mmtr.tmp mmtr.tmp1");
+Index: cweb2html/cweb2html
+===================================================================
+--- cweb2html/cweb2html.orig	2015-12-16 15:54:34.198410597 +0100
++++ cweb2html/cweb2html	2015-12-16 15:54:34.214410597 +0100
+@@ -258,7 +258,7 @@
+ 
+     open(INPUT,"<$filename") ||
+ 	die "$PRGFILE: error: Could not open $filename\n";
+-
++    binmode INPUT;
+     while (<INPUT>) {
+ 	$string{'STRING'} .= $_;
+     }
+Index: cweb2html/htcweb.perl
+===================================================================
+--- cweb2html/htcweb.perl.orig	2002-11-29 12:49:01.000000000 +0100
++++ cweb2html/htcweb.perl	2015-12-16 15:54:34.214410597 +0100
+@@ -941,6 +941,7 @@
+ 
+     print "\nReading <$_[0]>..." if $DEBUG;
+     open(INPUT,"<$_[0]");
++    binmode INPUT;
+     while (<INPUT>) {
+ 	$string{'STRING'} .= $_;
+     }
+@@ -948,6 +949,7 @@
+ 
+     print "\nReading <$_[1]>..." if $DEBUG;
+     open(INPUT,"<$_[1]");
++	binmode INPUT;
+     while (<INPUT>) {
+ 	$string{'STRING'} .= $_;
+     }
+@@ -1028,6 +1030,7 @@
+ 	}
+     }
+     open(INPUT,"<$file") || die "Could not open $file\n";
++	binmode INPUT;
+     while (<INPUT>) {
+ 	$string{'STRING'} .= $_};
+     $_ = delete $string{'STRING'}; # Blow it away and return the result
+Index: cweb2html/makemake.pl
+===================================================================
+--- cweb2html/makemake.pl.orig	2015-12-16 15:54:34.198410597 +0100
++++ cweb2html/makemake.pl	2015-12-16 15:54:34.214410597 +0100
+@@ -27,8 +27,10 @@
+ 	die "Cannot rename to $source.bak, $!\n";
+     open(OUT,">$source") ||
+ 	die "Cannot open $source, $!\n";
++	binmode OUT;
+ 
+     open(IN,"<$source.bak");
++	binmode IN;
+     while (<IN>) {
+ 	$string{'STRING'} .= $_;
+     }
+Index: latex2html.pin
+===================================================================
+--- latex2html.pin.orig	2015-08-04 16:58:10.000000000 +0200
++++ latex2html.pin	2015-12-16 15:54:34.218410597 +0100
+@@ -1088,6 +1088,7 @@
+             unless($ignore);
+         return undef;
+     }
++    binmode CATFILE;
+     local($/) = undef; # slurp in whole file
+     my $contents = <CATFILE>;
+     close(CATFILE);
+@@ -1344,6 +1345,7 @@
+     $auto_styles =~ s/\|$//;
+ 
+     if(open(STYLES, "<$TMP_${dd}styles")) {
++        binmode STYLES;
+         while(<STYLES>) {
+             if(s/^\s*(\S+)\s*(.*)$/$style = $1; $options = $2;/eo) {
+                 &do_require_package($style);
+@@ -1759,6 +1761,7 @@
+     unless(open(SINPUT,"<$file")) {
+         die "\nError: Cannot read '$file': $!\n";
+     }
++    binmode SINPUT;
+     local(@file_string);
+     print STDOUT "$file" if ($VERBOSITY >1);
+     while (<SINPUT>) {
+@@ -1843,6 +1846,7 @@
+     &wrap_shorthand_environments;
+     print STDOUT "\n *** End-of-partition ***" if ($VERBOSITY > 1);
+     if(open(OUT, ">$TMP_$dd$PARTITION_PREFIX$count")) {
++        binmode OUT;
+         print OUT $_;
+         close(OUT);
+     } else {
+@@ -1863,6 +1867,7 @@
+     local($file) = @_;
+     local(%string);
+     if(open(INPUT,"<$file")) {
++        binmode INPUT;
+         local(@file_string);
+         while (<INPUT>) {
+ 	    push(@file_string, $_ );
+@@ -2316,6 +2321,7 @@
+ 	    
+ 	    open(OUTPUT, ">$CURRENT_FILE")
+ 		|| die "Cannot write '$CURRENT_FILE': $!\n";
++        binmode OUTPUT;
+ 	    if ($XBIT_HACK) { # use Apache's XBit hack
+ 		chmod 0744, $CURRENT_FILE;
+ 		&check_htaccess;
+@@ -3766,6 +3772,7 @@
+ 	print "\nWriting image.pre file ...\n";
+ 	open(ENV,">.$dd${PREFIX}images.pre")
+             || die "\nCannot write '${PREFIX}images.pre': $!\n";
++	binmode ENV;
+ 	print ENV &make_latex($latex_body);
+ 	print ENV "\n";
+ 	close ENV;
+@@ -3785,6 +3792,7 @@
+ 	# save pre-processor commands in a file:  preproc
+ 	open(CMDS,">.$dd${PREFIX}preproc")
+             || die "\nCannot write '${PREFIX}preproc': $!\n";
++	binmode CMDS;
+ 	print CMDS $preprocessor_cmds ;
+ 	close CMDS;
+ 
+@@ -3795,6 +3803,7 @@
+ 	print "\nWriting image file ...\n";
+ 	open(ENV,">.$dd${PREFIX}images.tex")
+             || die "\nCannot write '${PREFIX}images.tex': $!\n";
++    binmode ENV;
+ 	print ENV &make_latex($latex_body);
+ 	print ENV "\n";
+ 	close ENV;
+@@ -7155,8 +7164,10 @@
+         print "\nError: Cannot write '$FILE.css': $!\n";
+         return;
+     }
++    binmode STYLESHEET;
+     if ( -f $EXTERNAL_STYLESHEET ) {
+         if(open(EXT_STYLES, "<$EXTERNAL_STYLESHEET")) {
++            binmode EXT_STYLES;
+             while (<EXT_STYLES>) { print STYLESHEET $_; }
+             close(EXT_STYLES);
+         } else {
+@@ -7451,7 +7462,7 @@
+ 	    &slurp_input($this_file);
+ 	    open(OUTFILE, ">$this_file")
+                 || die "\nError: Cannot write file '$this_file': $!\n";
+-
++	    binmode OUTFILE;
+ 	    if (($INDEX) && ($SHORT_INDEX) && ($SEGMENT eq 1)) {
+ 		&make_index_segment($title,$file); }
+ 
+@@ -7815,6 +7826,7 @@
+ 	return();
+     }
+     if(open(INIT, "<$init_file")) {
++        binmode INIT;
+         foreach $info_line (<INIT>) {
+ 	    $info_line =~ s/[<>"&]/'&'.$html_special_entities{$&}.';'/eg;
+ 	    $init_contents .= $info_line;
+@@ -8579,6 +8591,7 @@
+ sub post_process_footnotes {
+     &slurp_input($footfile);
+     open(OUT, ">$footfile") || die "Cannot write file '$footfile': $!\n";
++    binmode OUT;
+     &replace_markers;
+     &post_post_process if (defined &post_post_process);
+     &adjust_encoding;
+@@ -8600,6 +8613,7 @@
+         print "\nError: Cannot write '$filename': $!\n";
+         return;
+     }
++    binmode FILE;
+     print FILE $_;
+     close(FILE);
+ }
+@@ -9039,6 +9053,7 @@
+     my $script = $SCRIPT || $0;
+     open(PIPE, "$perldoc -t $script |")
+         || die "Fatal: can't open pipe: $!";
++    binmode PIPE;
+     while (<PIPE>) {
+         if (/^\s*$/) {
+             next;
+@@ -10134,6 +10149,7 @@
+         print "\nError: Cannot write '$urlimg': $!\n";
+         return;
+     }
++    binmode IMAGE_MAP;
+     ### HWS  Pass server map unchanged from user
+     print IMAGE_MAP "<HTML>\n<BODY>\n<A HREF=\"$map\">\n";
+     print IMAGE_MAP "<IMG\n SRC=\"$url\" ISMAP $ausemp $altst> </A>";
+@@ -10151,6 +10167,8 @@
+     ($to_prefix, $suffix) = split(/\./, $to);
+     if ($EXTN =~ /$suffix$/) {
+ 	if (open(FROM, "<$from") && open(HTMP, ">HTML_tmp")) {
++        binmode FROM;
++        binmode HTMP;
+ 	    while (<FROM>) {
+ 		s/$from_prefix\.$IMAGE_TYPE/$to_prefix.$IMAGE_TYPE/g;
+ 		print HTMP;
+@@ -10175,6 +10193,7 @@
+ 	&replace_markers;
+ 	&add_dir_to_href if ($DESTDIR);
+ 	if(open(CAPTIONS, ">${PREFIX}$type.pl")) {
++        binmode CAPTIONS;
+ 	    print CAPTIONS $_;
+ 	    close (CAPTIONS);
+         } else {
+@@ -16379,6 +16398,7 @@
+     if (-f $access_file) {
+ 	print STDOUT " ... found";
+ 	open(HTACCESS, "<$access_file");
++    binmode HTACCESS;
+ 	while (<HTACCESS>) {
+ 	    if (/^\s*XBitHack\s*on\s*$/) {
+ 		print STDOUT " with XBitHack on";
+Index: styles/color.perl
+===================================================================
+--- styles/color.perl.orig	2015-12-16 15:54:34.218410597 +0100
++++ styles/color.perl	2015-12-16 15:55:58.302409628 +0100
+@@ -153,6 +153,7 @@
+ 	if (-f $file) {
+             if (open(COLORFILE,"<$file")) {
+ 		print STDOUT "\n(reading colors from $file" if $DEBUG;
++		binmode COLORFILE;
+ 		while (<COLORFILE>) {
+ 	s/^\s*(\d+)\s+(\d+)\s+(\d+)\s+(\w+(\s\w+)*)\s*/
+ 	    ($r,$g,$b,$name)=($1,$2,$3,$4);
+@@ -183,6 +184,7 @@
+ 	if (-f $file) {
+ 	    if (open(COLORFILE,"<$file")) {
+ 		print STDOUT "\n(reading colors from $file";
++		binmode COLORFILE;
+ 		@colors = (<COLORFILE>);
+ 		foreach (@colors) {
+ 		    next if (/^\s*$/);
+Index: styles/frames.perl
+===================================================================
+--- styles/frames.perl.orig	2002-11-29 12:49:18.000000000 +0100
++++ styles/frames.perl	2015-12-16 15:54:34.218410597 +0100
+@@ -1126,6 +1126,7 @@
+ 	);
+     &text_cleanup;
+     open(FILE,">$filename") || print "Cannot open $filename $!\n";
++	binmode FILE;
+     print FILE $_;
+     close(FILE);
+ }
+Index: styles/getimagesize.perl
+===================================================================
+--- styles/getimagesize.perl.orig	2002-11-29 12:49:18.000000000 +0100
++++ styles/getimagesize.perl	2015-12-16 15:54:34.218410597 +0100
+@@ -12,6 +12,7 @@
+     my $type = lc($1);
+     $type = $IMAGE_TYPE unless $type =~ /(gif|png|jpe?g)/;
+     if (open(IMAGE, "<$imagefile")) {
++        binmode IMAGE;
+         my ($buffer,$magic,$dummy,$width,$height) = ('','','',0,0);
+ 	binmode(IMAGE); # not harmful un UNIX
+ #       if ($IMAGE_TYPE =~ /gif/) {
+Index: styles/graphics-support.perl
+===================================================================
+--- styles/graphics-support.perl.orig	2004-10-25 07:15:01.000000000 +0200
++++ styles/graphics-support.perl	2015-12-16 15:54:34.218410597 +0100
+@@ -426,6 +426,7 @@
+   my($file)=@_;
+   my(@bb,$f);
+   if(($f=find_file($file,$GRAPHICS_PATH,['.eps','.ps','.bb'])) && open(PS,$f)){
++	binmode PS;
+     while(<PS>){
+       if(/^%%BoundingBox:\s+(\d+)\s+(\d+)\s+(\d+)\s+(\d+)\s*$/){
+ 	@bb=($1,$2,$3,$4); last; }}
+Index: styles/html.perl
+===================================================================
+--- styles/html.perl.orig	2015-08-04 16:58:10.000000000 +0200
++++ styles/html.perl	2015-12-16 15:54:34.218410597 +0100
+@@ -293,6 +293,7 @@
+ 	if ($pretag) {
+ 	# code due to Alan Williams <alanw@cs.man.ac.uk>
+ 	    open(LABELS, "<$labelfile");
++		binmode LABELS;
+     print "\nLoading external labels from $labelfile, with prefix $pretag"
+ 	if ($VERBOSITY > 1);
+ 	    local($translated_stream, $instream);
+@@ -400,6 +401,7 @@
+ 	if ($pretag) {
+ 	# code due to Alan Williams <alanw@cs.man.ac.uk>
+ 	    open(LABELS, "<$labelfile");
++		binmode LABELS;
+     print "\nLoading external labels from $labelfile, with prefix $pretag"
+ 	if ($VERBOSITY > 1);
+ 	    local($translated_stream, $instream);
+Index: styles/webtex.perl
+===================================================================
+--- styles/webtex.perl.orig	2015-08-04 16:58:10.000000000 +0200
++++ styles/webtex.perl	2015-12-16 15:54:34.218410597 +0100
+@@ -227,6 +227,7 @@
+ 	    &webeq_failed($out_tag); $out_tag = '';
+ 	} else {
+ 	    open(TAG, "<$out_tag");
++		binmode TAG;
+ 	    $app_tag = join('',<TAG>);
+ 	    close(TAG);
+ 	    # replace webeq fall-back image by LaTeX2HTML's own, or none at all
+Index: texexpand.pin
+===================================================================
+--- texexpand.pin.orig	2004-01-03 07:14:59.000000000 +0100
++++ texexpand.pin	2015-12-16 15:54:34.218410597 +0100
+@@ -552,6 +552,7 @@
+     if($opt{save_styles}) {
+ 	open(STYLES,">$opt{save_styles}")
+             || die "$prompt Error: Cannot open style file '$opt{save_styles}': $!\n";
++        binmode STYLES;
+     }
+     my $out_file = $opt{output}||$opt{out};
+     if($out_file) {
+@@ -561,6 +562,7 @@
+     else {
+ 	open(OUT,">&STDOUT");
+     }
++    binmode OUT;
+ 
+     &process_file($infile); # the workhorse...
+ 
+@@ -678,6 +680,7 @@
+     $includelevel++;
+ 
+     open(IN,"<$infile") || die "$prompt Cannot open $infile\n";
++    binmode IN;
+     print STDERR "$prompt %--- Processing $infile" if ($debug > 1);
+ 
+     # if we don't include this file marker LaTeX2HTML won't split
+Index: versions/frame.pl
+===================================================================
+--- versions/frame.pl.orig	2002-11-29 12:49:18.000000000 +0100
++++ versions/frame.pl	2015-12-16 15:54:34.222410596 +0100
+@@ -1202,6 +1202,7 @@
+ 	);
+     &text_cleanup;
+     open(FILE,">$filename") || print "Cannot open $filename $!\n";
++	binmode FILE;
+     print FILE $_;
+     close(FILE);
+ }
+Index: versions/techexpl.pl
+===================================================================
+--- versions/techexpl.pl.orig	2002-11-29 12:49:19.000000000 +0100
++++ versions/techexpl.pl	2015-12-16 15:54:34.222410596 +0100
+@@ -212,6 +212,7 @@
+ sub TE_check_file_contents {
+     local ($ifile) = @_;
+     open(TEINC, "<$ifile");
++	binmode TEINC;
+     my($macrosOK,$macrosNUM,$numlines,$invalid) = (0,0,0,0);
+     my $TE_special_macros_rx = join('|',@TE_special_macros);
+     my $TE_defined_accents_rx = join('|',@TE_defined_accents);
