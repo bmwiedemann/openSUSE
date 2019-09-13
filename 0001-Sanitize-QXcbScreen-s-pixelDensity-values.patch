@@ -1,0 +1,32 @@
+From 75bb439f45608b21781d18170a88aaa2aedefb04 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Fri, 9 Mar 2018 18:28:00 +0100
+Subject: [PATCH 1/2] Sanitize QXcbScreen's pixelDensity values
+
+When the monitor's EDID contains invalid values, we should catch that now
+and fall back to 96dpi instead of returning unexpected values.
+---
+ src/plugins/platforms/xcb/qxcbscreen.cpp | 10 ++++++++++
+ 1 file changed, 10 insertions(+)
+
+Index: qtbase-everywhere-src-5.12.0-beta3/src/plugins/platforms/xcb/qxcbscreen.cpp
+===================================================================
+--- qtbase-everywhere-src-5.12.0-beta3.orig/src/plugins/platforms/xcb/qxcbscreen.cpp
++++ qtbase-everywhere-src-5.12.0-beta3/src/plugins/platforms/xcb/qxcbscreen.cpp
+@@ -752,6 +752,16 @@ void QXcbScreen::updateGeometry(const QR
+     qreal referenceDpi = physicalSize().width() <= 320 ? 128 : 96;
+ 
+     m_pixelDensity = qMax(1, qRound(dpi/referenceDpi));
++
++    if(m_pixelDensity > 1 && qEnvironmentVariableIsEmpty("QT_XCB_FORCE_ACCEPT_DPI")) {
++        // If we have no physical size or the resolution is untypical, fall back to 1x
++        if (physicalSize().height() <= 0
++            || geometry.height() < 1440
++            || m_pixelDensity > 3) {
++            m_pixelDensity = 1;
++        }
++    }
++
+     m_geometry = geometry;
+     m_availableGeometry = geometry & m_virtualDesktop->workArea();
+     QWindowSystemInterface::handleScreenGeometryChange(QPlatformScreen::screen(), m_geometry, m_availableGeometry);

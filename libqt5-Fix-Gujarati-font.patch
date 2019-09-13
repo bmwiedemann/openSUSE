@@ -1,0 +1,16 @@
+---
+ src/gui/text/qtextengine.cpp |    1 +
+ 1 file changed, 1 insertion(+)
+
+Index: qtbase-opensource-src-5.9.1/src/gui/text/qtextengine.cpp
+===================================================================
+--- qtbase-opensource-src-5.9.1.orig/src/gui/text/qtextengine.cpp
++++ qtbase-opensource-src-5.9.1/src/gui/text/qtextengine.cpp
+@@ -1723,6 +1723,7 @@ void QTextEngine::itemize() const
+             case QChar::Script_Katakana:
+             case QChar::Script_Bopomofo:
+             case QChar::Script_Han:
++            case QChar::Script_Gujarati:
+                 analysis[i].script = QChar::Script_Common;
+                 break;
+             default:

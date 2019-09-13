@@ -1,0 +1,36 @@
+From 267ab09b87dd7e2ae7dd3e85a76398506e7f1ae9 Mon Sep 17 00:00:00 2001
+From: Fabian Vogt <fabian@ritter-vogt.de>
+Date: Wed, 25 Apr 2018 18:34:01 +0200
+Subject: [PATCH 2/2] xcb: Use the screen's physical DPI as logical DPI, unless
+ overwritten
+
+The size of the virtual screen is most of the time meaningless, as X fakes it
+to result in 96 DPI, irregardless of the actual monitor DPI.
+
+This results in wrong font rendering on non-96 DPI monitors.
+
+Task-number: QTBUG-67928
+---
+ src/plugins/platforms/xcb/qxcbscreen.cpp | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
+
+Index: qtbase-everywhere-src-5.13.1/src/plugins/platforms/xcb/qxcbscreen.cpp
+===================================================================
+--- qtbase-everywhere-src-5.13.1.orig/src/plugins/platforms/xcb/qxcbscreen.cpp
++++ qtbase-everywhere-src-5.13.1/src/plugins/platforms/xcb/qxcbscreen.cpp
+@@ -676,7 +676,14 @@ QDpi QXcbScreen::logicalDpi() const
+     if (forcedDpi > 0)
+         return QDpi(forcedDpi, forcedDpi);
+ 
+-    return m_virtualDesktop->dpi();
++    // By default, X fakes the virtual size to be 96 dpi (+-rounding),
++    // so if it's different the user overwrote it.
++    if (qRound(m_virtualDesktop->dpi().first) != 96 ||
++        qRound(m_virtualDesktop->dpi().second) != 96) {
++        return m_virtualDesktop->dpi();
++    }
++
++    return QDpi(m_pixelDensity * 96, m_pixelDensity * 96);
+ }
+ 
+ qreal QXcbScreen::pixelDensity() const
