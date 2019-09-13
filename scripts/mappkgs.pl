@@ -17,7 +17,9 @@ sub make_ipfs_link($$)
 {
   my ($in, $out) = @_;
   #print "would ipfs $in -> $out\n";
-  my $cid=`ipfs add --cid-version 1 --raw-leaves -Q $in`;
+  my $dontadd="";
+  $dontadd="-n" if (-s $in > 9000*1024);
+  my $cid=`ipfs add --cid-version 1 --raw-leaves -Q $dontadd $in`;
   chomp($cid);
   symlink("/ipfs/$cid", $out);
 }

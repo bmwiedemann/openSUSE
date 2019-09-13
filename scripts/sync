@@ -1,6 +1,6 @@
 #!/bin/sh
 rsync -a \
-  --max-size=9000k \
+  --max-size=999000k \
   --exclude=DELETED \
   --delete \
   --delete-excluded \
@@ -9,3 +9,4 @@ rm -rf packages
 scripts/mappkgs.pl in packages
 git add -f packages/*
 git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"
+git push
