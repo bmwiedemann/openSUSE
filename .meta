@@ -1,0 +1,5 @@
+<package name="perl-DateTime-Format-ISO8601" project="openSUSE:Factory">
+  <title>Parses ISO8601 formats</title>
+  <description>Parses almost all ISO8601 date and time formats. ISO8601 time-intervals will be supported in a later release.</description>
+  <devel project="devel:languages:perl" package="perl-DateTime-Format-ISO8601"/>
+</package>
