@@ -1,0 +1,67 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>ff4a1827521869204b03963936f67474</srcmd5>
+    <version>1.0</version>
+    <time>1506679026</time>
+    <user>dimstar_suse</user>
+    <comment>First submission to factory, see live-langset-data.</comment>
+    <requestid>529113</requestid>
+  </revision>
+  <revision rev="2" vrev="2">
+    <srcmd5>107886d782ff6d75ff3cb809e8e2f900</srcmd5>
+    <version>1.0</version>
+    <time>1516092199</time>
+    <user>dimstar_suse</user>
+    <comment>- Support Leap 15.0 by detecting the OS and setting the RepoUrl
+  appropriately (forwarded request 563703 from favogt)</comment>
+    <requestid>565808</requestid>
+  </revision>
+  <revision rev="3" vrev="3">
+    <srcmd5>6bd17175f3cfcaeeb32d58e18642d193</srcmd5>
+    <version>1.0</version>
+    <time>1525697643</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>605060</requestid>
+  </revision>
+  <revision rev="4" vrev="4">
+    <srcmd5>25e134f110cf8e649d8f4eabfa66581c</srcmd5>
+    <version>1.0</version>
+    <time>1527583760</time>
+    <user>dimstar_suse</user>
+    <comment>- Add /sbin:/usr/sbin to $PATH to workaround boo#1094842 (forwarded request 612633 from favogt)</comment>
+    <requestid>612638</requestid>
+  </revision>
+  <revision rev="5" vrev="5">
+    <srcmd5>41333512a031e7167f069cd68eac3f24</srcmd5>
+    <version>1.0</version>
+    <time>1529501736</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>617947</requestid>
+  </revision>
+  <revision rev="6" vrev="6">
+    <srcmd5>955aca6d5a79fb85d99b469f4bbb5b0d</srcmd5>
+    <version>1.0</version>
+    <time>1546245938</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>661767</requestid>
+  </revision>
+  <revision rev="7" vrev="7">
+    <srcmd5>949d83d2b69c2598cdabfa4706432749</srcmd5>
+    <version>1.0</version>
+    <time>1548064670</time>
+    <user>dimstar_suse</user>
+    <comment>- Move extend to /bin/extend (boo#1122181)</comment>
+    <requestid>666472</requestid>
+  </revision>
+  <revision rev="8" vrev="8">
+    <srcmd5>3bd5a78d660385fea1e4b06700b72972</srcmd5>
+    <version>1.0</version>
+    <time>1564414338</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>719593</requestid>
+  </revision>
+</revisionlist>
