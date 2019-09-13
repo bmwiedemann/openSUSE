@@ -3,12 +3,13 @@
 use strict;
 use File::Find;
 use Text::Glob;
+use DB_File;
+use Fcntl qw(:DEFAULT);
 our $indir=shift || "in";
 our $outdir=shift || "packages";
 our @list=();
 our $binaryre;
 our $maxaddsize = 1024*9000;
-our %md5cid;
 
 sub wanted
 {
@@ -35,6 +36,8 @@ sub get_cid($)
 {
   my $path = shift;
   my $md5=get_md5($path);
+  my %md5cid;
+  tie(%md5cid, 'DB_File', "$ENV{HOME}/.cache/bmwiedemann-openSUSE-ipfs-md5-cid.dbm", O_RDWR|O_CREAT, 0666) or die "error opening DB: $!";
   my $cid=$md5cid{$md5};
   if(!$cid) {
     my $dontadd="";
@@ -43,6 +46,8 @@ sub get_cid($)
     chomp($cid);
     $md5cid{$md5}=$cid;
   }
+  untie %md5cid;
+  return $cid;
 }
 
 sub make_ipfs_link($$)
