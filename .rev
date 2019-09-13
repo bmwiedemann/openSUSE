@@ -1,0 +1,18 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>d907f6f265fd18037ec1ce4a9ffcd394</srcmd5>
+    <version>0.19</version>
+    <time>1503592201</time>
+    <user>dimstar_suse</user>
+    <comment>Needed by the latest version of python-astropy (already in openSUSE:Factory).</comment>
+    <requestid>502735</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>0e3a2487015216374a15ee0da9dbe560</srcmd5>
+    <version>1.1.0</version>
+    <time>1551025056</time>
+    <user>coolo</user>
+    <comment></comment>
+    <requestid>677800</requestid>
+  </revision>
+</revisionlist>
