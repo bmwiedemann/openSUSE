@@ -1,0 +1,946 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>da800f9c70f8591b1c843865da2a63ad</srcmd5>
+    <version>1.0.13</version>
+    <time>1176949563</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="2" vrev="5">
+    <srcmd5>6031ced7196bdfc1c01b65deccc56344</srcmd5>
+    <version>1.0.13</version>
+    <time>1178231165</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="3" vrev="10">
+    <srcmd5>e26988b61b859d9b284e7607d69d2be3</srcmd5>
+    <version>1.0.13</version>
+    <time>1180046380</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="4" vrev="1">
+    <srcmd5>49f9172dbbfbda92425d41e3a414fcf1</srcmd5>
+    <version>1.0.14</version>
+    <time>1180997099</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="5" vrev="13">
+    <srcmd5>e089e25ac2707fe7ca1a8d1da4af2240</srcmd5>
+    <version>1.0.14</version>
+    <time>1186142538</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="6" vrev="17">
+    <srcmd5>16251fa9125e33f6eb5c13b3a5111fa1</srcmd5>
+    <version>1.0.14</version>
+    <time>1187175735</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="7" vrev="24">
+    <srcmd5>585bf946c0234f4d56080af933f5bc35</srcmd5>
+    <version>1.0.14</version>
+    <time>1190041636</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="8" vrev="1">
+    <srcmd5>99be7a701353bc471d37ad6d1087b45f</srcmd5>
+    <version>1.0.15</version>
+    <time>1192549613</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="9" vrev="3">
+    <srcmd5>a16dc4ac2c49038fd446fc42eccf7eaa</srcmd5>
+    <version>1.0.15</version>
+    <time>1193657163</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="10" vrev="6">
+    <srcmd5>02e1db7b20f18c0eead99e93ffe22fc2</srcmd5>
+    <version>1.0.15</version>
+    <time>1194304073</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="11" vrev="8">
+    <srcmd5>88b57bc086f159cd993375fd1f1cc24c</srcmd5>
+    <version>1.0.15</version>
+    <time>1194899986</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="12" vrev="14">
+    <srcmd5>98ffd55c1b9483fcc74de938b449afed</srcmd5>
+    <version>1.0.15</version>
+    <time>1196894066</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="13" vrev="16">
+    <srcmd5>a28536af226c7783e52a38b6f59e6589</srcmd5>
+    <version>1.0.15</version>
+    <time>1197645923</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="14" vrev="19">
+    <srcmd5>38da6ed5655c141996804b5d278701aa</srcmd5>
+    <version>1.0.15</version>
+    <time>1199911725</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="15" vrev="1">
+    <srcmd5>e23e7b2be5b845becbea220e180db440</srcmd5>
+    <version>1.0.16</version>
+    <time>1201116832</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="16" vrev="7">
+    <srcmd5>618e5e6da29b5399ac17e4b9f54e7c66</srcmd5>
+    <version>1.0.16</version>
+    <time>1202489054</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="17" vrev="10">
+    <srcmd5>37e2471ce131787c35ad4a618b65edc3</srcmd5>
+    <version>1.0.16</version>
+    <time>1203034267</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="18" vrev="17">
+    <srcmd5>9fef44ffc5a18da781d46f49b939fefc</srcmd5>
+    <version>1.0.16</version>
+    <time>1205255351</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="19" vrev="19">
+    <srcmd5>3a49d3b4636c605ad1a9871e81c8899c</srcmd5>
+    <version>1.0.16</version>
+    <time>1205511586</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="20" vrev="26">
+    <srcmd5>27c45568b5268243aa037da8230fd61b</srcmd5>
+    <version>1.0.16</version>
+    <time>1208718139</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="21" vrev="1">
+    <srcmd5>d0fb4a65230246d4d091d22a3231ae69</srcmd5>
+    <version>1.0.17</version>
+    <time>1216154981</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="22" vrev="10">
+    <srcmd5>c202d553e48fc5bee54eb22eab55916e</srcmd5>
+    <version>1.0.17</version>
+    <time>1218064176</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="23" vrev="1">
+    <srcmd5>b88784688c1dc4ce6834f870b3fb50cf</srcmd5>
+    <version>1.0.18</version>
+    <time>1221252226</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="24" vrev="4">
+    <srcmd5>eb1130d2ae2c523f42964e6c9486755a</srcmd5>
+    <version>1.0.18</version>
+    <time>1224793513</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="25" vrev="5">
+    <srcmd5>6bd2ee9f10243dbb12aa37271335f386</srcmd5>
+    <version>1.0.18</version>
+    <time>1225709671</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="26" vrev="6">
+    <srcmd5>433e37c62d1b1cdd8f0dbd7fba8f7041</srcmd5>
+    <version>1.0.18</version>
+    <time>1227879510</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="27" vrev="1">
+    <srcmd5>ece41cdf99f9f9959bfb056a57a0a838</srcmd5>
+    <version>1.0.19</version>
+    <time>1232639141</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="28" vrev="2">
+    <srcmd5>b6b15e8f23144d0d9939fbf8a8ef2564</srcmd5>
+    <version>1.0.19</version>
+    <time>1234796619</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="29" vrev="3">
+    <srcmd5>b6b1fdba3f3ea7661a3ba19684ca73cd</srcmd5>
+    <version>1.0.19</version>
+    <time>1237414629</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="30" vrev="4">
+    <srcmd5>bef6af10757ec152f63fc09642a29ac1</srcmd5>
+    <version>1.0.19</version>
+    <time>1240593843</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="31" vrev="1">
+    <srcmd5>5a8f7887b94668fbeab166530be8d437</srcmd5>
+    <version>1.0.20</version>
+    <time>1241627855</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="32" vrev="2">
+    <srcmd5>16510c76005d1fe2ec00ad019760c631</srcmd5>
+    <version>1.0.20</version>
+    <time>1243960935</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="33" vrev="3">
+    <srcmd5>0301af05330ebf810cece183b2016fa4</srcmd5>
+    <version>1.0.20</version>
+    <time>1245459526</time>
+    <user>unknown</user>
+  </revision>
+  <revision rev="34" vrev="4">
+    <srcmd5>0fbedca9222f089824efc4f604ef87f4</srcmd5>
+    <version>1.0.20</version>
+    <time>1250120084</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 17565 from user tiwai
+</comment>
+  </revision>
+  <revision rev="35" vrev="1">
+    <srcmd5>9f1cabecb89a6b88308d642da88533ac</srcmd5>
+    <version>1.0.21</version>
+    <time>1251837445</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 19355 from user tiwai
+</comment>
+  </revision>
+  <revision rev="36" vrev="2">
+    <srcmd5>7979cc81f33d40195afce4cc710800c2</srcmd5>
+    <version>1.0.21</version>
+    <time>1251993933</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 19559 from user tiwai
+</comment>
+  </revision>
+  <revision rev="37" vrev="4">
+    <srcmd5>7979cc81f33d40195afce4cc710800c2</srcmd5>
+    <version>1.0.21</version>
+    <time>1251993933</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 19559 from user tiwai
+</comment>
+  </revision>
+  <revision rev="38" vrev="5">
+    <srcmd5>a477536370184bb6b7f8c3506365a075</srcmd5>
+    <version>1.0.21</version>
+    <time>1261436609</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 27353 from user tiwai
+</comment>
+  </revision>
+  <revision rev="39" vrev="6">
+    <srcmd5>2a6063f7bae0a310efc17955933e5511</srcmd5>
+    <version>1.0.21</version>
+    <time>1268922869</time>
+    <user>autobuild</user>
+  </revision>
+  <revision rev="40" vrev="7">
+    <srcmd5>3f6e96304bad8aee483a3f7e51122f2c</srcmd5>
+    <version>1.0.21</version>
+    <time>1268985935</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 35101 from user tiwai
+</comment>
+    <requestid>35101</requestid>
+  </revision>
+  <revision rev="41" vrev="1">
+    <srcmd5>df8dd4d4135b8c932f97eb22afa55754</srcmd5>
+    <version>1.0.23</version>
+    <time>1271979054</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 38518 from user tiwai
+</comment>
+    <requestid>38518</requestid>
+  </revision>
+  <revision rev="42" vrev="2">
+    <srcmd5>df8dd4d4135b8c932f97eb22afa55754</srcmd5>
+    <version>1.0.23</version>
+    <time>1278667336</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="43" vrev="3">
+    <srcmd5>df8dd4d4135b8c932f97eb22afa55754</srcmd5>
+    <version>1.0.23</version>
+    <time>1278678562</time>
+    <user>autobuild</user>
+    <comment>release number sync</comment>
+  </revision>
+  <revision rev="44" vrev="4">
+    <srcmd5>ea1f794bd985e3b13dd7df05c65251a0</srcmd5>
+    <version>1.0.23</version>
+    <time>1283525163</time>
+    <user>autobuild</user>
+    <comment>Copy from multimedia:libs/alsa-utils based on submit request 47042 from user tiwai
+</comment>
+    <requestid>47042</requestid>
+  </revision>
+  <revision rev="45" vrev="5">
+    <srcmd5>41954738a472e78d97c1efc1104db88a</srcmd5>
+    <version>1.0.23</version>
+    <time>1291028031</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54050 from user tiwai
+</comment>
+    <requestid>54050</requestid>
+  </revision>
+  <revision rev="46" vrev="6">
+    <srcmd5>bd519aa23d8ef489cfc8b6a4a7a224ac</srcmd5>
+    <version>1.0.23</version>
+    <time>1291028039</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54050
+</comment>
+  </revision>
+  <revision rev="47" vrev="7">
+    <srcmd5>001ffda16c3ccff0c8468dbb26d2a735</srcmd5>
+    <version>1.0.23</version>
+    <time>1291111387</time>
+    <user>azouhr</user>
+    <comment>Accepted submit request 54136 from user tiwai
+</comment>
+    <requestid>54136</requestid>
+  </revision>
+  <revision rev="48" vrev="8">
+    <srcmd5>be2ebd420c53534c0803d8d64758cd94</srcmd5>
+    <version>1.0.23</version>
+    <time>1291111392</time>
+    <user>azouhr</user>
+    <comment>Autobuild autoformatter for 54136
+</comment>
+  </revision>
+  <revision rev="49" vrev="9">
+    <srcmd5>5b50fc00c188c69e6d77db417c9d69d6</srcmd5>
+    <version>1.0.23</version>
+    <time>1292009468</time>
+    <user>darix</user>
+    <comment>Accepted submit request 55588 from user tiwai
+</comment>
+    <requestid>55588</requestid>
+  </revision>
+  <revision rev="50" vrev="10">
+    <srcmd5>cf464fa930748ad0ece134853c049bb2</srcmd5>
+    <version>1.0.23</version>
+    <time>1292009477</time>
+    <user>darix</user>
+    <comment>Autobuild autoformatter for 55588
+</comment>
+  </revision>
+  <revision rev="51" vrev="1">
+    <srcmd5>314153b6511e8516b1ac7238802d82d5</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1296693463</time>
+    <user>oertel</user>
+    <comment>Accepted submit request 59789 from user tiwai
+</comment>
+    <requestid>59789</requestid>
+  </revision>
+  <revision rev="52" vrev="2">
+    <srcmd5>c11744e848b62dc4345e989dd3959f21</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1296693474</time>
+    <user>oertel</user>
+    <comment>Autobuild autoformatter for 59789
+</comment>
+  </revision>
+  <revision rev="53" vrev="5">
+    <srcmd5>c11744e848b62dc4345e989dd3959f21</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1297941524</time>
+    <user>autobuild</user>
+    <comment>11.4 source split</comment>
+  </revision>
+  <revision rev="54" vrev="6">
+    <srcmd5>fa33f31f9d7313f0c7710c15a010b6c6</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1307371585</time>
+    <user>saschpe</user>
+    <comment>- Backport alsa-utils fixes from upstream:
+  0001-alsamixer-fix-display-of-active-inactive-controls.patch
+  0002-alsaloop-libsamplerate-requires-specific-formats-for.patch
+  0003-alsaloop-another-try-to-force-correct-formats-for-li.patch
+  0004-alsamixer-fix-build-on-uClibc.patch
+  0005-alsactl-init-Mute-CD-Playback-volume-by-default.patch
+  0006-Revert-alsactl-Display-help-for-names-command.patch
+  0007-alsaucm-Add-list1-command-for-non-tuple-lists.patch
+  0008-alsaucm-Don-t-double-free-empty-lists.patch
+  0009-aplay-Add-i-option-for-interactive-mode.patch
+  0010-aplay-Avoid-recursive-signal-handling.patch
+  0012-alsaloop-Use-AM_CFLAGS-in-Makefile.am.patch
+  0013-Updated-COPYING-with-the-recent-FSF-address.patch
+  0014-alsamixer-Fix-64bit-issues.patch
+  0015-aplay-Add-include-files-for-mkdir.patch
+  0016-aplay-Use-standard-endian-convesions.patch</comment>
+    <requestid>72739</requestid>
+  </revision>
+  <revision rev="55" vrev="7">
+    <srcmd5>df397a305af6666558ee66f33e0dcdb9</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1307371593</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 72739
+</comment>
+  </revision>
+  <revision rev="56" vrev="8">
+    <srcmd5>eb97709cdf60a6ba255e15f8b599a103</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1315760634</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>81695</requestid>
+  </revision>
+  <revision rev="57" vrev="9">
+    <srcmd5>73909902336c8e77cb1f9e050dbe13ba</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1315760645</time>
+    <user>saschpe</user>
+    <comment>Autobuild autoformatter for 81695
+</comment>
+  </revision>
+  <revision rev="58" vrev="10">
+    <srcmd5>e0ca3eaa15cd94dddc327f2896a11318</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1316439346</time>
+    <user>lrupp</user>
+    <comment>- Remove redundant tags/sections from specfile as discussed on opensuse-packaging
+- Use %_smp_mflags for parallel build (forwarded request 82975 from jengelh)</comment>
+    <requestid>82998</requestid>
+  </revision>
+  <revision rev="59" vrev="11">
+    <srcmd5>f1430f411fc63abf36610494ed51588a</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1318938999</time>
+    <user>saschpe</user>
+    <comment></comment>
+    <requestid>88151</requestid>
+  </revision>
+  <revision rev="60" vrev="13">
+    <srcmd5>f1430f411fc63abf36610494ed51588a</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1319181768</time>
+    <user>adrianSuSE</user>
+  </revision>
+  <revision rev="61" vrev="14">
+    <srcmd5>f473d37d046c15f37124962b8ab7a638</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1320671192</time>
+    <user>coolo</user>
+    <comment>- Fix missing initialization of Surround, etc, as well as Front
+  Speaker, etc mixer elements in alsactl init
+
+- Backport upstream fix:
+  - fix a crash of alsamixer with pulse plugin</comment>
+    <requestid>90128</requestid>
+  </revision>
+  <revision rev="62" vrev="15">
+    <srcmd5>79406ab9c34aa34e5e7b4cc4228509a9</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1323340040</time>
+    <user>coolo</user>
+    <comment>add automake to buildrequires (forwarded request 94905 from coolo)</comment>
+    <requestid>94938</requestid>
+  </revision>
+  <revision rev="63" vrev="16">
+    <srcmd5>142aca11fe99188dda50840d3ccb3ef5</srcmd5>
+    <version>1.0.24.2</version>
+    <time>1324830774</time>
+    <user>coolo</user>
+    <comment>- alsa-utils is of no use without alsa, add requires (forwarded request 97960 from elvigia)</comment>
+    <requestid>97977</requestid>
+  </revision>
+  <revision rev="64" vrev="1">
+    <srcmd5>c7ef177fc88551dc782473deceb45b70</srcmd5>
+    <version>1.0.25</version>
+    <time>1327673796</time>
+    <user>coolo</user>
+    <comment>- updated to version 1.0.25; including all previous fixes</comment>
+    <requestid>101685</requestid>
+  </revision>
+  <revision rev="65" vrev="2">
+    <srcmd5>a5399e4c7315b18c41af95f9a06b4273</srcmd5>
+    <version>1.0.25</version>
+    <time>1338527967</time>
+    <user>coolo</user>
+    <comment>- backport fix patches from upstream:
+  * Some document fixes
+  * Improve xrun_sync in alsaloop
+  * Add option to dump HW parameters to aplay
+  * Add the support for mapped volumes to amixer
+  * Add option to tread any xrun as fatal to aplay/arecord
+  * configure.in fixes
+  * alsactl: Don't access other cards than specified
+  * aplay prints Vu-meter to stderr now
+  * fix the avail_min setup in alsaloop</comment>
+    <requestid>122933</requestid>
+  </revision>
+  <revision rev="66" vrev="4">
+    <srcmd5>a5399e4c7315b18c41af95f9a06b4273</srcmd5>
+    <version>1.0.25</version>
+    <time>1340183169</time>
+    <user>adrianSuSE</user>
+    <comment>branched from openSUSE:Factory</comment>
+  </revision>
+  <revision rev="67" vrev="5">
+    <srcmd5>62fc2a7a59637188816606ac6abaeb5b</srcmd5>
+    <version>1.0.25</version>
+    <time>1340619645</time>
+    <user>coolo</user>
+    <comment>- Fix the installation of postinit rules
+- Add (empty) preinit directory for alsactl init as a placeholder
+
+- Make beep silent as default (bnc#767270)
+- Backport fixes for alsactl init
+- Fix invalid .LO entry in man page</comment>
+    <requestid>125570</requestid>
+  </revision>
+  <revision rev="68" vrev="1">
+    <srcmd5>80a44a37c1f56b0d27aab16fd4a675d7</srcmd5>
+    <version>1.0.26</version>
+    <time>1347347033</time>
+    <user>coolo</user>
+    <comment>- Updated to version 1.0.26; including previous fixes (forwarded request 133503 from tiwai)</comment>
+    <requestid>133504</requestid>
+  </revision>
+  <revision rev="69" vrev="2">
+    <srcmd5>82f5c789abc9e16f90b9337dd9a9f838</srcmd5>
+    <version>1.0.26</version>
+    <time>1350566348</time>
+    <user>coolo</user>
+    <comment>- backport from upstream tree:
+  * add support for the new chmap API (forwarded request 138458 from tiwai)</comment>
+    <requestid>138459</requestid>
+  </revision>
+  <revision rev="70" vrev="3">
+    <srcmd5>fbf920030b68724a4a47d5fa0b0d82b3</srcmd5>
+    <version>1.0.26</version>
+    <time>1352093430</time>
+    <user>coolo</user>
+    <comment>- Fix systemd units location in factory. (forwarded request 140053 from elvigia)</comment>
+    <requestid>140056</requestid>
+  </revision>
+  <revision rev="71" vrev="4">
+    <srcmd5>7d6aa1af1b32e083d4cbb1b9eced61f7</srcmd5>
+    <version>1.0.26</version>
+    <time>1352796746</time>
+    <user>coolo</user>
+    <comment>- Fix build breakage on 11.4
+- Correct udev rules path (the recent udev places /usr/lib/udev) (forwarded request 140998 from tiwai)</comment>
+    <requestid>141036</requestid>
+  </revision>
+  <revision rev="72" vrev="5">
+    <srcmd5>42e1c66f30a656397026d22585275de3</srcmd5>
+    <version>1.0.26</version>
+    <time>1354523301</time>
+    <user>coolo</user>
+    <comment>- Add libsamplerate-devel to buildrequires for alsaloop
+  (bnc#792173) (forwarded request 143746 from tiwai)</comment>
+    <requestid>143747</requestid>
+  </revision>
+  <revision rev="73" vrev="7">
+    <srcmd5>42e1c66f30a656397026d22585275de3</srcmd5>
+    <version>1.0.26</version>
+    <time>1359108648</time>
+    <user>adrianSuSE</user>
+    <comment>Split 12.3 from Factory</comment>
+  </revision>
+  <revision rev="74" vrev="8">
+    <srcmd5>90a6d1c35bb1d08e9069d9715d1f3c19</srcmd5>
+    <version>1.0.26</version>
+    <time>1360000959</time>
+    <user>coolo</user>
+    <comment>- Backport a few fix patches from upstream git tree:
+  0012-aplay-Add-the-support-for-big-endian-WAV-format-RIFX.patch
+  0013-configure-Fix-obsolete-AM_CONFIG_HEADER-macro.patch
+  0014-speaker-test-increase-the-maximum-supported-rate-to-.patch
+  0015-amixer-Fix-dB-value-outputs-in-amixer-contents.patch (forwarded request 150682 from tiwai)</comment>
+    <requestid>150683</requestid>
+  </revision>
+  <revision rev="75" vrev="1">
+    <srcmd5>ec87082d397ec0c24014f3581415469c</srcmd5>
+    <version>1.0.27</version>
+    <time>1365927133</time>
+    <user>coolo</user>
+    <comment>- Added service_typo.patch, fixes alsa-restore service not starting (forwarded request 163891 from sumski)</comment>
+    <requestid>163907</requestid>
+  </revision>
+  <revision rev="76" vrev="2">
+    <srcmd5>6fd33665707eaaa86cd739481ce24adb</srcmd5>
+    <version>1.0.27</version>
+    <time>1366087380</time>
+    <user>coolo</user>
+    <comment>- Replace the previous fix with the upstream patch (forwarded request 164136 from tiwai)</comment>
+    <requestid>164137</requestid>
+  </revision>
+  <revision rev="77" vrev="3">
+    <srcmd5>6290a0ce1f62db9270880c2f0d1d7366</srcmd5>
+    <version>1.0.27</version>
+    <time>1366212958</time>
+    <user>coolo</user>
+    <comment>- Added patch from upstream, which fixes buffer overflow,
+  0002-alsactl-Fix-the-string-size-for-the-lock-file-contents.patch (forwarded request 171088 from sumski)</comment>
+    <requestid>171089</requestid>
+  </revision>
+  <revision rev="78" vrev="4">
+    <srcmd5>8ccb6a6b1f39176159896e835145e983</srcmd5>
+    <version>1.0.27</version>
+    <time>1366357381</time>
+    <user>coolo</user>
+    <comment>- Upstream fix: arecord: add a missing break to the capture loop
+  0003-arecord-add-a-missing-break-to-the-capture-loop.patch (forwarded request 172367 from tiwai)</comment>
+    <requestid>172368</requestid>
+  </revision>
+  <revision rev="79" vrev="1">
+    <srcmd5>a65829e2e3388df7a85a0b986b5ed954</srcmd5>
+    <version>1.0.27.1</version>
+    <time>1369718802</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes:
+  0002-alsactl-init-ca0106-file-was-omitted.patch 
+  0003-alsactl-return-back-the-udevrules_DATA-rule-for-90-a.patch 
+- Add missing ca0106 alsactl init file
+- Revert the udev file drop in the previous commit (forwarded request 176753 from tiwai)</comment>
+    <requestid>176754</requestid>
+  </revision>
+  <revision rev="80" vrev="2">
+    <srcmd5>d5934275c8e7fd4a99c71e620f97e914</srcmd5>
+    <version>1.0.27.1</version>
+    <time>1371542286</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes wrt chmap handling:
+  0006-amixer-Print-TLV-of-channel-map-controls.patch
+  0007-speaker-test-Fix-wrong-wave-file-played-back-in-chma.patch
+
+- Backport upstream fixes wrt amixer:
+  0004-amixer-Fix-the-hctl-elem-search-bug.patch
+  0005-amixer-fix-print_dB-for-0.99-.-0.01-range.patch (forwarded request 179268 from tiwai)</comment>
+    <requestid>179271</requestid>
+  </revision>
+  <revision rev="81" vrev="1">
+    <srcmd5>d46f03d2778d8aae74ef3f8d08ae4ad1</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1374303785</time>
+    <user>coolo</user>
+    <comment>- remove superfluous ca0106 file (now included in 1.0.27.2)
+
+- updated to version 1.0.27.2
+  including all previous fixes
+- fix a typo in alsa-state.service:
+  0001-alsactl-alsa-state.service-fix-typo-rkill-kill.patch</comment>
+    <requestid>183762</requestid>
+  </revision>
+  <revision rev="82" vrev="2">
+    <srcmd5>1c82aa185081434d496ee8e4849cb0f6</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1378711596</time>
+    <user>coolo</user>
+    <comment>- Upstream fix:
+  0002-alsaloop-fix-wrong-alias-for-signal.h.patch (forwarded request 197614 from tiwai)</comment>
+    <requestid>197837</requestid>
+  </revision>
+  <revision rev="83" vrev="3">
+    <srcmd5>914f7cf59d13d43947089a2fd508ba43</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1378890045</time>
+    <user>coolo</user>
+    <comment>- Upstream fix:
+  0003-aplay-fix-two-off-by-one-errors.patch (forwarded request 198043 from tiwai)</comment>
+    <requestid>198047</requestid>
+  </revision>
+  <revision rev="84" vrev="5">
+    <srcmd5>914f7cf59d13d43947089a2fd508ba43</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1379661960</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.1 from Factory</comment>
+  </revision>
+  <revision rev="85" vrev="6">
+    <srcmd5>fc8c5cbb3e12c931354d4b497f66754f</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1380807703</time>
+    <user>scarabeus_factory</user>
+    <comment>- Upstream fixes: addition of -z option to alsaloop, and a fix for
+  amixer TLV parser
+  0004-alsaloop-add-z-syslog-option-to-use-syslog-for-error.patch
+  0005-amixer-actually-print-all-TLVs-in-a-container-TLV.patch (forwarded request 201581 from tiwai)</comment>
+    <requestid>201968</requestid>
+  </revision>
+  <revision rev="86" vrev="7">
+    <srcmd5>93f079da1d4464381419e0de4e6a5add</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1385619244</time>
+    <user>coolo</user>
+    <comment>- Backport upstream fixes: a few fixes for chmap support, alsaconf
+  updates, a new monitor command for alsactl, etc:
+  0006-amixer-fix-indentation-when-printing-container-TLV-c.patch
+  0007-alsaloop-pcmjob.c-use-portable-way-to-initialize-rec.patch
+  0008-speaker-test-Fix-chmapped-channel-selection-without-.patch
+  0009-speaker-test-Always-show-chmap-channel-names-if-avai.patch
+  0010-speaker-test-Show-out-of-chmap-channels-as-Unknown.patch
+  0011-alsaconf-support-newer-m-i-t-and-kmod.patch
+  0012-alsaconf-update-gentoo-to-use-modprobe.d-method-as-e.patch
+  0013-configure-detect-udevdir-via-pkg-config-fallback-to-.patch
+  0014-alsactl-Add-monitor-command.patch
+  0015-alsactl-Fix-REMOVE-event-handling-in-monitor-command.patch
+  0016-alsactl-monitor-all-cards-as-default.patch (forwarded request 208681 from tiwai)</comment>
+    <requestid>208682</requestid>
+  </revision>
+  <revision rev="87" vrev="8">
+    <srcmd5>9ebee9244c898508c85c5b2ce3c7e792</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1391243971</time>
+    <user>coolo</user>
+    <comment>- Backport minor fix patches for alsactl and aplay from upstream:
+  0017-alsactl-Fix-the-va_list-initialization-in-cerror_-an.patch
+  0018-aplay-fix-pcm_read-return-value.patch
+  0019-alsa-restore.rules-refer-to-correct-attr.patch
+  0020-aplay-fix-timespec-to-msec-conversion.patch (forwarded request 220463 from tiwai)</comment>
+    <requestid>220464</requestid>
+  </revision>
+  <revision rev="88" vrev="9">
+    <srcmd5>43e0e9277ad3135baa5c8471e5424186</srcmd5>
+    <version>1.0.27.2</version>
+    <time>1394953498</time>
+    <user>coolo</user>
+    <comment>- Upstream backports: Add --force-frequency option to speaker-test
+  0021-speaker-test-add-force-frequency-option-to-allow-hz-.patch
+  0022-speaker-test-update-man-page-for-new-X-arg-also-cons.patch
+- Temporarily add the raw *.po files for properly patching
+- Run spec-cleaner (forwarded request 225573 from tiwai)</comment>
+    <requestid>225577</requestid>
+  </revision>
+  <revision rev="89" vrev="1">
+    <srcmd5>44b3f3f67f766869493b38f57ee0e2d8</srcmd5>
+    <version>1.0.28</version>
+    <time>1403672250</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>237965</requestid>
+  </revision>
+  <revision rev="90" vrev="2">
+    <srcmd5>731ea07bfd1f00297f3b998e699ff46e</srcmd5>
+    <version>1.0.28</version>
+    <time>1404831528</time>
+    <user>coolo</user>
+    <comment>- Remove obsoleted *.po files
+- Backport upstream fixes:
+  0001-alsactl-save-state-do-not-call-rename-for-stdio.patch
+  0002-alsamixer-include-missing-mixer_controls.h.patch (forwarded request 239189 from tiwai)</comment>
+    <requestid>239190</requestid>
+  </revision>
+  <revision rev="91" vrev="3">
+    <srcmd5>582406b499dfa7f3f4f8c30a957121cd</srcmd5>
+    <version>1.0.28</version>
+    <time>1408021065</time>
+    <user>lnussel</user>
+    <comment>1</comment>
+    <requestid>244352</requestid>
+  </revision>
+  <revision rev="92" vrev="4">
+    <srcmd5>0719044bb69349e05c3b568463aa16c9</srcmd5>
+    <version>1.0.28</version>
+    <time>1409252707</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>246485</requestid>
+  </revision>
+  <revision rev="93" vrev="6">
+    <srcmd5>0719044bb69349e05c3b568463aa16c9</srcmd5>
+    <version>1.0.28</version>
+    <time>1409300482</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="94" vrev="7">
+    <srcmd5>626d0fa3d7d119385598cd3d044d056b</srcmd5>
+    <version>1.0.28</version>
+    <time>1414218770</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>257839</requestid>
+  </revision>
+  <revision rev="95" vrev="8">
+    <srcmd5>b9303eaf13696859b5a664ed5a613c56</srcmd5>
+    <version>1.0.28</version>
+    <time>1418113029</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>264362</requestid>
+  </revision>
+  <revision rev="96" vrev="9">
+    <srcmd5>b4b1ef2d007acd759c3b2638787a5fdc</srcmd5>
+    <version>1.0.28</version>
+    <time>1423215694</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>283740</requestid>
+  </revision>
+  <revision rev="97" vrev="1">
+    <srcmd5>eb17d223745b3c6dec6589efffe82d58</srcmd5>
+    <version>1.0.29</version>
+    <time>1425566187</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>288093</requestid>
+  </revision>
+  <revision rev="98" vrev="2">
+    <srcmd5>6cc4f7f781c9e221ed746507e124e630</srcmd5>
+    <version>1.0.29</version>
+    <time>1430387379</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>304262</requestid>
+  </revision>
+  <revision rev="99" vrev="3">
+    <srcmd5>0bdd5489452187dcca9c91cdbef57329</srcmd5>
+    <version>1.0.29</version>
+    <time>1437059812</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>316474</requestid>
+  </revision>
+  <revision rev="100" vrev="4">
+    <srcmd5>75e73e2153d17c6aea8fe7c2b2b6da4d</srcmd5>
+    <version>1.0.29</version>
+    <time>1440135483</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>321618</requestid>
+  </revision>
+  <revision rev="101" vrev="5">
+    <srcmd5>3ecf189edad778115c19f2a244cdb966</srcmd5>
+    <version>1.0.29</version>
+    <time>1443896917</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>335881</requestid>
+  </revision>
+  <revision rev="102" vrev="1">
+    <srcmd5>e0a3c01557effba4972b995407ee24a6</srcmd5>
+    <version>1.1.0</version>
+    <time>1447353478</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>343195</requestid>
+  </revision>
+  <revision rev="103" vrev="2">
+    <srcmd5>8c110ca0ddc770f5cde62b4f4f5625cc</srcmd5>
+    <version>1.1.0</version>
+    <time>1457116185</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>365162</requestid>
+  </revision>
+  <revision rev="104" vrev="1">
+    <srcmd5>5784a351788c65ef3df31598b94d66a0</srcmd5>
+    <version>1.1.1</version>
+    <time>1459845711</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>382611</requestid>
+  </revision>
+  <revision rev="105" vrev="1">
+    <srcmd5>75e5439787f4f4b0641ca12a87abae73</srcmd5>
+    <version>1.1.2</version>
+    <time>1470508514</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>416718</requestid>
+  </revision>
+  <revision rev="106" vrev="1">
+    <srcmd5>d45c1b8cbc9a799db5c9174cdf47579e</srcmd5>
+    <version>1.1.3</version>
+    <time>1483554516</time>
+    <user>lnussel_factory</user>
+    <comment>1</comment>
+    <requestid>448018</requestid>
+  </revision>
+  <revision rev="107" vrev="1">
+    <srcmd5>e3b5baac03bbe9f7bb10e3c175870912</srcmd5>
+    <version>1.1.4</version>
+    <time>1495283501</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>495557</requestid>
+  </revision>
+  <revision rev="108" vrev="2">
+    <srcmd5>9f60893ec89b0c956609d050404befc1</srcmd5>
+    <version>1.1.4</version>
+    <time>1510406181</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>539450</requestid>
+  </revision>
+  <revision rev="109" vrev="1">
+    <srcmd5>c586df4ff52bd0ad92633aa981144a9a</srcmd5>
+    <version>1.1.5</version>
+    <time>1510837144</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>541845</requestid>
+  </revision>
+  <revision rev="110" vrev="2">
+    <srcmd5>14c22ef75e82260abfc3af33511f28c1</srcmd5>
+    <version>1.1.5</version>
+    <time>1514027919</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>558245</requestid>
+  </revision>
+  <revision rev="111" vrev="1">
+    <srcmd5>0f5de3bca58e9719a9396f3fefb126e6</srcmd5>
+    <version>1.1.6</version>
+    <time>1523346678</time>
+    <user>maxlin_factory</user>
+    <comment></comment>
+    <requestid>594639</requestid>
+  </revision>
+  <revision rev="112" vrev="1">
+    <srcmd5>5157ff9bb3c090595b545f8a6114b26f</srcmd5>
+    <version>1.1.7</version>
+    <time>1540319775</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>643694</requestid>
+  </revision>
+  <revision rev="113" vrev="1">
+    <srcmd5>8738084b39959085f0dfc4596809656e</srcmd5>
+    <version>1.1.8</version>
+    <time>1547554564</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>663801</requestid>
+  </revision>
+  <revision rev="114" vrev="2">
+    <srcmd5>0635236533010b33585e61daa0e48de5</srcmd5>
+    <version>1.1.8</version>
+    <time>1548537521</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>667885</requestid>
+  </revision>
+  <revision rev="115" vrev="1">
+    <srcmd5>5af0b49ddd6d545bd973fd65102bb25e</srcmd5>
+    <version>1.1.9</version>
+    <time>1557832347</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>701978</requestid>
+  </revision>
+  <revision rev="116" vrev="2">
+    <srcmd5>72c2f7fc53a607b64dc996bfa1073232</srcmd5>
+    <version>1.1.9</version>
+    <time>1560337561</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>709162</requestid>
+  </revision>
+</revisionlist>
