@@ -1,0 +1,11 @@
+<package name="perl-Furl" project="openSUSE:Factory">
+  <title>Lightning-fast URL fetcher</title>
+  <description>Furl is yet another HTTP client library. LWP is the de facto standard HTTP
+client for Perl5, but it is too slow for some critical jobs, and too
+complex for weekend hacking. Furl resolves these issues. Enjoy it!
+This library is an alpha software. Any API may change without notice.
+
+</description>
+  <devel project="devel:languages:perl" package="perl-Furl"/>
+  <url>http://search.cpan.org/dist/Furl</url>
+</package>
