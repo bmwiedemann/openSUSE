@@ -5,6 +5,7 @@ rsync -a \
   --delete \
   --delete-excluded \
   /mounts/work/SRC/openSUSE\:Factory/ in/
+mkdir -p ~/.cache
 rm -rf packages
 scripts/mappkgs.pl in packages
 git add -f packages/*
