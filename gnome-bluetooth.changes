@@ -1,0 +1,1465 @@
+-------------------------------------------------------------------
+Tue Mar 26 17:41:38 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.1:
+  + Fix setup of devices that don't need pairing.
+  + Always try to pair pointer devices.
+  + Delegate audio devices quirks to bluez, which means that more
+    PIN codes can be tried without user intervention.
+  + Disable discovery when switching settings.
+  + Fix possible warnings when switching settings.
+
+-------------------------------------------------------------------
+Mon Mar 11 15:07:39 UTC 2019 - Bjørn Lie <bjorn.lie@gmail.com>
+
+- Update to version 3.32.0:
+  + Add quirk for Evoluent VerticalMouse 4.
+
+-------------------------------------------------------------------
+Sat Feb 16 20:06:45 UTC 2019 - bjorn.lie@gmail.com
+
+- Update to version 3.31.1:
+  + Accessibility fixes and support for narrow displays in the
+    Settings panel widget.
+  + Add support for another "Microsoft Sculpt Comfort Mouse".
+  + Build improvements.
+- Drop gnome-bluetooth-Add-Sculpt-Comfort-Mouse.patch: Fixed
+  upstream. 
+
+-------------------------------------------------------------------
+Sun Dec 30 00:40:17 UTC 2018 - bjorn.lie@gmail.com
+
+- Add gnome-bluetooth-Add-Sculpt-Comfort-Mouse.patch: lib: Add
+  another oui for "Microsoft Sculpt Comfort Mouse".
+
+-------------------------------------------------------------------
+Wed Aug  1 18:41:08 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.2:
+  + Use feature of BlueZ 5.51 to avoid Bluetooth adapters being
+    left discoverable if the Settings panel exits suddenly.
+  + Build warning fixes.
+- Add pkgconfig(gio-unix-2.0), pkgconfig(gmodule-2.0) and
+  pkgconfig(libnotify) BuildRequires and drop pkgconfig(udev)
+  BuildRequires, align with what meson checks for.
+
+-------------------------------------------------------------------
+Mon Jul 23 15:12:02 UTC 2018 - dimstar@opensuse.org
+
+- Help translation-update-upstream finding the right gettext domain
+  name: pass "po gnome-bluetooth2" to the call.
+
+-------------------------------------------------------------------
+Thu Jul 19 15:37:12 UTC 2018 - bjorn.lie@gmail.com
+
+- Update to version 3.28.1:
+  + Work-around a race in bluetoothd which would leave Bluetooth
+    adapters discoverable even after the Settings panel closed
+    cleanly.
+  + Fix icons in Persian and Punjabi translations.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 17:30:22 UTC 2018 - dimstar@opensuse.org
+
+- Unconditionally enable translation-update-upstream: on
+  Tumbleweed, this results in a NOP and for Leap in SLE paid
+  translations being used (boo#1086036).
+
+-------------------------------------------------------------------
+Tue Mar 13 09:18:19 UTC 2018 - jengelh@inai.de
+
+- Update summaries.
+
+-------------------------------------------------------------------
+Mon Mar 12 16:07:37 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.28.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Mar  5 19:25:53 UTC 2018 - dimstar@opensuse.org
+
+- Update to version 3.27.92:
+  + Avoid crash when Bluetooth panel is switched away from quickly.
+  + Fix connection button state becoming out of sync after
+    disconnect.
+  + Make sure to remove all the devices when bluetoothd crashes.
+  + Stop spinner when it becomes invisible.
+  + Fix compile-time warning.
+
+-------------------------------------------------------------------
+Wed Feb 28 16:27:14 UTC 2018 - dimstar@opensuse.org
+
+- Modernize spec-file by calling spec-cleaner
+
+-------------------------------------------------------------------
+Thu Feb 15 22:18:00 UTC 2018 - luc14n0@linuxmail.org
+
+- Update to version 3.27.90:
+  + Simplify and make BluetoothClient more efficient.
+  + Fix problems when Bluetooth adapters come and go.
+  + Remove quirks already handled by autopair plugin.
+- Update Url tag to https://wiki.gnome.org/Projects/GnomeBluetooth,
+  current GNOME Bluetooth's web page.
+- Rename enable-gtk-doc meson option to gtk_doc following upstream
+  change.
+- Add LGPL-2.1+ to the License tag for compliance with the
+  libraries' copyrights.
+- Update summaries and descriptions to express more accurately each
+  subpackage's content.
+- Drop update-desktop-files BuildRequires and its macro: it is no
+  longer needed.
+
+-------------------------------------------------------------------
+Fri Sep 15 22:31:03 UTC 2017 - luc14n0@linuxmail.org
+
+- Update to version 3.26.1:
+  + Fix installation of Bluetooth icons.
+  + Fix Bluetooth icon names for bluetooth-sendto in various
+    translations.
+
+-------------------------------------------------------------------
+Mon Sep 11 14:45:59 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.26.0:
+  + Fix "file received" notifications not being translated.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Sep  8 22:57:59 UTC 2017 - jengelh@inai.de
+
+- Update package summaries. Avoid running fdupes across hardlink
+  boundaries.
+
+-------------------------------------------------------------------
+Tue Aug 29 11:07:32 UTC 2017 - dimstar@opensuse.org
+
+- Update to version 3.25.91:
+  + Port to meson build system, and remove autotools build system.
+  + Use Unicode in translatable strings.
+  + Update Settings UI for updated gnome-control-center UI.
+  + Align the explanatory text with the listbox.
+  + Fix crash when exiting panel during pairing.
+- Add meson BuildRequires and switch autotools macros configure,
+  make and makeinstall to meson, meson_build and meson_install
+  following upstream switch to Meson build system.
+- Drop %glib2_gsettings_schema_*, desktop_database_* and
+  %icon_theme_cache_* post/postun macros: the functionality is now
+  covered by file triggers.
+- Add gtk-doc BuildRequires: new dependency, as we no longer
+  receive the docs pre-built in the tarball.
+- Drop intltool BuildRequires: no longer needed.
+
+-------------------------------------------------------------------
+Mon Feb 13 20:32:26 UTC 2017 - zaitor@opensuse.org
+
+- Update to version 3.20.1:
+  + Unknown device types now show as "Unknown" rather than "All
+    types".
+  + Fix an invisible spinner when pairing.
+  + Fix PIN font size.
+- Drop gnome-bluetooth-plugins-geoclue Obsoletes: Not been around
+  since version 3.11.3, no current openSUSE release carry this.
+- Drop libgnomebt-devel Obsoletes/Provides and libgnomebt1
+  Provides: Not been around since 2009.
+
+-------------------------------------------------------------------
+Sat Oct  1 18:50:28 UTC 2016 - zaitor@opensuse.org
+
+- Drop obexd-client Requires: obex was merged into bluez a long
+  time ago, and we already pull it.
+- Drop no longer needed Provides/Obsoletes: bluez-gnome and
+  nautilus-sendto-plugin-bluetooth.
+- Conditionally apply translations-update-upstream BuildRequires
+  and macro for non-openSUSE only.
+- Stop passing V=1 to make, we do debugging locally.
+
+-------------------------------------------------------------------
+Mon Jun 27 08:36:49 UTC 2016 - zaitor@opensuse.org
+
+- Update to version 3.20.0:
+  + Add support for joysticks.
+  + Fix small memory leaks.
+  + Fix a runtime warning when the vendor is unknown.
+  + Fix PIN label size.
+
+-------------------------------------------------------------------
+Fri Apr 15 16:02:27 CEST 2016 - hpj@suse.com
+
+- Update to GNOME 3.20 -- Fate#318572.
+- Remove 61-gnome-bluetooth-rfkill.rules (no longer needed).
+
+-------------------------------------------------------------------
+Mon Mar 21 15:06:30 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.18.3:
+  + Trust devices paired from the remote device.
+
+-------------------------------------------------------------------
+Tue Jan 19 08:41:06 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 3.18.2:
+  + Added API to export adapter status.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Nov 10 15:54:36 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.18.1:
+  + Fix a number of style regressions in PIN dialogues.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Oct  5 14:45:54 UTC 2015 - sor.alexei@meowr.ru
+
+- Nothing in gnome-bluetooth now needs gnome-control-center so
+  remove the recommendation as non-GNOME solutions based on
+  gnome-bluetooth exist.
+
+-------------------------------------------------------------------
+Mon Sep 21 15:31:57 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.18.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 16 08:40:52 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.17.92:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 17 18:09:21 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.17.90:
+  + This version of the library adds Obex support to the settings
+    widget. When the settings panel will be opened, other devices
+    will be able to send files to the computer.
+  + Remove outdated end-user documentation.
+  + Settings:
+    - Better empty and disabled state views.
+    - Handle service authorisation requests for HID devices (mice,
+      joypads).
+    - Fix phone icon if extra icons aren't installed.
+    - Add default PIN for Logitech Ultrathin Touch mouse and
+      Microsoft Sculpt Comfort mice.
+  + Send-to:
+    - Show better error message when sending a file fails.
+    - Disallow sending files to iDevices, they don't support Obex.
+- Add pkgconfig(libcanberra-gtk3) and pkgconfig(libnotify)
+  BuildRequires: New dependencies.
+
+-------------------------------------------------------------------
+Sat Apr 18 15:37:50 UTC 2015 - zaitor@opensuse.org
+
+- Update to version 3.16.1:
+  + Fix Bluetooth 2.1 keyboards not being pairable.
+
+-------------------------------------------------------------------
+Tue Mar 24 12:18:30 UTC 2015 - dimstar@opensuse.org
+
+- Update to version 3.16.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 20 07:46:47 UTC 2015 - badshah400@gmail.com
+
+- Update to version 3.15.4:
+  + Fix some memory leaks in BluetoothAgent.
+  + Deprecation warning fixes.
+  + Use widget templates to create the UI.
+
+-------------------------------------------------------------------
+Mon Sep 22 16:56:42 UTC 2014 - zaitor@opensuse.org
+
+- Update to version 3.14.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Aug 18 16:36:28 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.13.90:
+  + Fix properties dialog bugs.
+  + Fix incorrect use of "Setup" as an adjective.
+  + Use header bar buttons in bluetooth-sendto.
+
+-------------------------------------------------------------------
+Thu May 22 11:34:38 UTC 2014 - werner@suse.de
+
+- Require the udev library for build to allow the move
+  of udev.pc back to udev
+
+-------------------------------------------------------------------
+Mon Mar 24 14:06:10 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.12.0:
+  + Fix crasher with GTK+ dialogue changes.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Mar 19 11:08:26 UTC 2014 - dimstar@opensuse.org
+
+- Update to version 3.11.91:
+  + Add missing libudev private requires.
+  + Require GTK+ 3.11.2.
+  + Fix crasher with latest GTK+.
+  + Remove GtkStock usage.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Dec 17 18:49:41 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.11.3:
+  + Obsolete the separate wizard, instead a widget to create a
+    Bluetooth Settings panel is provided and will be used by
+    gnome-control-center.
+  + Removed APIs:
+    - settings/wizard plugins API.
+    - killswitch (now handled by gnome-settings-daemon's Rfkill
+      plugin).
+    - applet gir library.
+  + Better icons for headphones, headsets, Apple, Google and
+    Samsung phones.
+- No longer package 61-gnome-bluetooth-rfkill.rules: it lives now
+  officially andf formally in gnome-settings-daemon.
+- Drop gnome-bluetooth-plugins-geoclue subpackage and obsolete it
+  from the main package: gnome-bluetooth no longer suppoers
+  plugins.
+- No longer pass --disable-scrollkeeper and
+  --enable-nautilus-sendto to configure: those parameters haven't
+  been valid for a few releases.
+- Rename libgnome-bluetooth12 subpackage to libgnome-bluetooth13,
+  following upstreams soname change.
+
+-------------------------------------------------------------------
+Mon Sep 23 07:56:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.10.0:
+  + Fix the Bluetooth status icon not appearing in gnome-shell.
+  + Fix crashes when the "Connect" switch is used.
+  + Add pairing support for the Microsoft Wedge Touch Mouse.
+
+-------------------------------------------------------------------
+Wed Sep  4 18:59:46 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.91:
+  + Wizard:
+    - Remove extraneous tabs.
+  + Fix some issues freeing memory.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Fri Jun 21 15:50:50 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.9.3:
+  + Fix possible assertion with newer kernels on some hardware.
+  + Port to BlueZ 5.
+  + API documentation fixes.
+  + Send-To:
+    - Fix "Retry" button.
+    - Set the From label as soon as we create the window.
+    - Clear the progress bar text when there's an error.
+    - Remove duplicate header label.
+    - Show when all the transfers have completed.
+  + Wizard:
+    - Fix buttons when "retry" is clicked.
+    - Only enable "PIN options" button if device is selected.
+    - Hide PIN options dialogue if the selected device changes.
+- Rename libgnome-bluetooth11 subpackage to libgnome-bluetooth12,
+  following upstreams soname change.
+
+-------------------------------------------------------------------
+Tue Mar 26 10:30:23 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.8.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 19 19:55:13 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.92:
+  + Fix introspection generation for Vala.
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Jan 15 18:06:44 UTC 2013 - dimstar@opensuse.org
+
+- Update to version 3.7.4:
+  + Remove fallback applet as GNOME fallback is obsolete.
+  + Remove ObexFTP browsing support.
+  + Fix help links in GNOME 3.6+.
+  + Sendto: Remove nautilus-sendto plugin.
+- Drop and obsolete nautilus-sendto-plugin-bluetooth.
+- Drop pkgconfig(libnotify) BuildRequires: no longer needed.
+- Remove traces of BUILD_FROM_VCS.
+
+-------------------------------------------------------------------
+Tue Nov 27 18:56:28 UTC 2012 - dimstar@opensuse.org
+
+- Move udev rules.d files to the right location:
+  + Add pkgconfig(udev) BuildRequires.
+  + Define _udevdir based on udevdir variable in udev.pc
+  + Fix install section to make use of _udevdir.
+
+-------------------------------------------------------------------
+Thu Nov 15 19:44:59 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.1:
+  + Library:
+    - Fix crasher using BlueZ's development version.
+    - Fix Connect/Disconnect functions not working.
+    - Add internal helper to talk to /dev/rfkill.
+  + Wizard:
+    - Add another OUI for Apple trackpad.
+    - Fix crasher doing substring matching.
+    - Add a white button press (meaning Return) for iCades.
+
+-------------------------------------------------------------------
+Wed Oct 10 14:48:53 UTC 2012 - coolo@suse.com
+
+- own udev directories to avoid udev buildrequire
+
+-------------------------------------------------------------------
+Tue Sep 25 11:39:53 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.6.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Sep 18 11:30:06 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.92:
+  + Fix warning in BluetoothAgent
+  + Add pairing support for iCade variants (mobile, core and jr.)
+  + Use yelp-tools instead of gnome-doc-utils
+  + Support LXDE with the fallback applet too
+  + Updated translations.
+- Replace gnome-doc-utils-devel BuildRequires with yelp-tools,
+  following upstream.
+- Drop lxde-support.patch: fixed upstream.
+
+-------------------------------------------------------------------
+Wed Aug  8 17:56:41 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.5:
+  + Allow building with nautilus-sendto 3.6
+  + Namespace killswitch API properly
+  + Loads of API documentation fixes
+
+-------------------------------------------------------------------
+Wed Jul 18 11:05:55 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.5.4:
+  + Library: Fix stuck "Finishing" page for some devices.
+  + Applet: Fix warning and empty device name in some cases.
+  + Wizard: Use shorter label for the finishing pages.
+- Rename libgnome-bluetooth10 subpackage to libgnome-bluetooth11,
+  following upstreams soname bump.
+
+-------------------------------------------------------------------
+Wed Jul  4 21:25:17 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.2:
+  + Library:
+    - Support for BlueZ 5.0 API
+    - Fix memory leak when registering the pairing agent
+  + Applet:
+    - Fix assertion in gnome-shell when a device requires
+      authorisation
+  + Wizard:
+    - Fix Simple Pairing never succeeding
+    - Fix stuck "Finishing page" for some devices
+- Drop gnome-bluetooth-fix-pairing.patch and
+  gnome-bluetooth-fix-stuck-finish-page.patch: fixed upstream.
+- Drop xz BuildRequires as it now comes for free in the build
+  system.
+
+-------------------------------------------------------------------
+Sat Jun 30 06:33:37 UTC 2012 - badshah400@gmail.com
+
+- Added gnome-bluetooth-fix-pairing.patch and
+  gnome-bluetooth-fix-stuck-finish-page.patch to enable pairing of
+  devices again (bnc#769536, bgo#679190, rh#819203).
+
+-------------------------------------------------------------------
+Mon Jun 18 13:07:52 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.4.1:
+  + Library:
+    - Fix potential crashes when registering pairing agents with no
+      adapter present
+    - Fix warning when bluetooth-sendto exits
+    - Better API documentation
+    - Fix warnings related to BluetoothStatusClass
+  + Send-To:
+    - Document the --name option
+    - Make the "Retry" button always visible
+    - Fix warnings when saving the last used address
+  + Wizard:
+    - Fix setup of devices that don't require pairing
+  + Updated translations.
+
+-------------------------------------------------------------------
+Thu May 31 09:04:03 UTC 2012 - glin@suse.com
+
+- Update 61-gnome-bluetooth-rfkill.rules due to the removal of
+  udev-acl in udev >= 182.
+
+-------------------------------------------------------------------
+Tue Mar 27 06:18:39 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.4.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 20 21:48:20 UTC 2012 - dimstar@opensuse.org
+
+- Update to version 3.3.92:
+  + Applet:
+    - String fixes
+  + Library:
+    - Remove generated file from version control
+  + Wizard:
+    - Add support for pairing the iCade
+    - Improve support for keyboard PINs
+    - Add OUI for Apple Magic Trackpad
+    - Add OUI for Sony BD Remote Control
+
+-------------------------------------------------------------------
+Wed Jan 18 17:46:50 UTC 2012 - vuntz@opensuse.org
+
+- Update to version 3.3.4:
+  + Applet:
+    - Fix newly paired devices not appearing in menus
+    - Update fallback menu to match GNOME Shell's
+  + Library:
+    - Make the Connect/Disconnect helper function work
+    - Do not use dbus-glib-1 when building introspection data
+    - Remove header from chooser widget, breaks API
+  + Wizard:
+    - Fix assertion when exiting
+    - Remove "Device Setup Failed" label from the sidebar
+    - A number of UI tweaks
+  + Plus build fixes, and the removal of the unmaintained Moblin UI
+- Drop gnome-bluetooth-no-dbus-glib.patch: fixed upstream.
+- Rename libgnome-bluetooth9 subpackage to libgnome-bluetooth10,
+  following upstream soversion change.
+
+-------------------------------------------------------------------
+Wed Jan 11 08:59:36 UTC 2012 - vuntz@opensuse.org
+
+- Change gnome-control-center Requires to Recommends, to avoid a
+  build loop.
+
+-------------------------------------------------------------------
+Sat Dec 24 13:43:44 UTC 2011 - gankov@opensuse.org
+
+- Add gnome-control-center Requires for bluetooth setup to work
+  (bnc#732689)
+
+-------------------------------------------------------------------
+Fri Dec 23 11:08:36 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.3.3:
+  + Library:
+    - GVariant fixes
+    - Build improvements
+  + Applet:
+    - Fix a packing issue
+  + Wizard:
+    - Improvements in the handling of PIN codes
+    - Fix a segfault
+    - Fix an UI issue with the "Close" button
+- Add xz BuildRequires because we can't build a package for a
+  xz-compressed tarball without explicitly specifying that... See
+  bnc#697467 for more details.
+
+-------------------------------------------------------------------
+Wed Dec 21 01:17:36 UTC 2011 - vuntz@opensuse.org
+
+- Remove gtk2-devel Requires from devel subpackage: it will
+  automatically be added the pkgconfig() way.
+- Rewrite summary and description of devel subpackage.
+- Change group of libgnome-bluetooth9 and
+  typelib-1_0-GnomeBluetooth-1_0 from System/GUI/GNOME to
+  System/Libraries.
+- Add gnome-bluetooth-no-dbus-glib.patch: finish removing dbus-glib
+  usage in the build system.
+- Remove pkgconfig(dbus-glib-1) BuildRequires: it is gone since
+  version 3.3.2.
+
+-------------------------------------------------------------------
+Thu Dec  8 20:03:29 UTC 2011 - dimstar@opensuse.org
+
+- Split typelib file into typelib-1_0-GnomeBluetooth-1_0
+  subpackage.
+- Add typelib-1_0-GnomeBluetooth-1_0 Requires to devel subpackage.
+
+-------------------------------------------------------------------
+Sat Nov 26 15:16:06 UTC 2011 - dimstar@opensuse.org
+
+- Remove all .la files: gnome-bluetooth-applet.la on its own has
+  reference to the other la files, so keeping some of them breaks
+  more than it serves.
+
+-------------------------------------------------------------------
+Mon Nov 21 17:03:09 UTC 2011 - dimstar@opensuse.org
+
+- Update to version 3.3.2:
+  + Library:
+    - Clean up public API
+    - Port to GDBus
+    - Small UI fixes to the chooser
+  + Properties:
+    - Move to gnome-control-center
+  + Wizard:
+    - Remove special-case Wiimote handling (now in Bluez)
+    - Remove multi-adapter support
+  + Updated translations.
+- Drop gnome-bluetooth-fix-crash.patch: fixed upstream another way.
+- Rename libgnome-bluetooth8 to libgnome-bluetooth9, following
+  soversion bump.
+
+-------------------------------------------------------------------
+Mon Oct 17 17:49:47 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.2.1:
+  + Fix warnings about BluetoothStatusClass
+  + Fix small memory leaks
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Oct 11 08:06:14 UTC 2011 - vuntz@opensuse.org
+
+- Add gnome-bluetooth-fix-crash.patch: fix various crashes in
+  libgnome-bluetooth, that help a bit getting bluetooth working in
+  GNOME. Part of bnc#722722.
+
+-------------------------------------------------------------------
+Mon Sep 26 10:35:12 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.2.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Wed Sep 21 11:32:42 UTC 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.92:
+  + Properties:
+    - Use links to link to other panels
+    - Fix rounded toolbar buttons
+  + Applet:
+    - Fix "browse" menu item
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Aug 16 20:56:57 CEST 2011 - dimstar@opensuse.org
+
+- Update to version 3.1.4:
+  + Properties: Fix crash when device has no UUIDs
+  + Applet: Change preferences menu items to match the gnome-shell
+    UI
+  + Updated translations.
+- Drop gnome-bluetooth-libgnome-control-center.patch: fixed
+  upstream.
+- Remove now unneeded gnome-common BuildRequires and call to
+  gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Wed Aug  3 07:50:11 CEST 2011 - vuntz@opensuse.org
+
+- Add gnome-bluetooth-libgnome-control-center.patch: the new
+  gnome-control-center doesn't install libgnome-control-center
+  development files, so work around this.
+- Add gnome-common BuildRequires and call to gnome-autogen.sh,
+  needed for the patch.
+- Remove now unneeded pkgconfig(libgnome-control-center)
+  BuildRequires.
+
+-------------------------------------------------------------------
+Mon Jul  4 14:16:45 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.1.3:
+  + Properties:
+    - Show extra configuration widgets in the properties
+    - Add Send/Browse buttons
+    - Small UI changes
+  + Applet:
+    - Fix crasher when "Browsing device" using the menu item
+    - Fix "Send To..." overquoting the Bluetooth address
+  + Wizard:
+    - Handle Wiimote pairing through newer bluez
+    - Fix a lot of keys not working in the custom PIN entry
+    - Fix display of Secure Simple Pairing passkeys
+    - Add old Apple wireless mouse to the PIN database
+
+-------------------------------------------------------------------
+Fri May 27 19:23:27 CEST 2011 - vuntz@opensuse.org
+
+- Update to version 3.0.1:
+  + Applet:
+    - Fix crasher when using "browse"
+    - Fix startup not working in fallback mode
+  + Wizard:
+    - Add support for more Wiimotes
+    - Fix custom PIN entry not working as expected
+    - Fix display of SSP passkeys
+  + Library:
+    - Fix possible warnings in debug mode
+
+-------------------------------------------------------------------
+Mon Apr  4 15:28:32 UTC 2011 - fcrozat@novell.com
+
+- Update to version 3.0.0:
+  + Properties:
+    - Show link to touchpad settings for touchpads
+    - Hide labels when no devices are selected
+  + Updated translations.
+
+-------------------------------------------------------------------
+Tue Mar 29 13:58:08 UTC 2011 - fcrozat@novell.com
+
+- Update to version 2.91.92:
+  + Properties:
+    - Use dim labels
+    - Fix translation problems
+    - Use the inline-toolbar style
+  + Geoclue plugin:
+    - Use GSettings instead of GConf
+  + Wizard:
+    - Add Magic Trackpad quirk
+- Update to version 2.91.91:
+  + Properties:
+    - Put in the control-center's Hardware category
+    - Redesign for GNOME 3
+  + Applet:
+    - Only start the applet in the fallback session
+  + Library:
+    - Fix a possible warning in the button chooser
+  + Sendto:
+    - Re-enable sento plugin for GNOME 3.0
+    - Make double-click select a device
+    - Add desktop file for nice name in the shell
+    - Fix packing in dialogue
+  + Wizard:
+    - Add desktop file for nice name in the shell
+- Changes fromv version 2.91.5:
+  + Properties:
+    - Make dialogue parenting work for errors
+  + Library:
+    - Use BluetoothClient to track default adapter
+    - Don't free request_key and passkey in agent reply functions.
+    - Set log domain to differentiate library messages from the
+      lib's ones
+  + Applet:
+    - Fix crash in bluetooth_applet_create_device_from_iter()
+    - Fix crash when creating an agent
+    - Fix crash when unref'ing a DBusGMethodInvocation
+    - Fix crash when there's no default adapter
+  + Moblin:
+    - Fix compilation of the Moblin front-end
+- Changes from version 2.91.2:
+  + Update command to launch Bluetooth panel
+  + Fix i18n in the panel
+  + Make test-plugins test command more useful
+  + Fix adapter not going powered when coming back from hard-block
+  + Allow setup of devices that don't support pairing
+  + Make sure the icon is shown/hidden when killswitch state
+    changes.
+  + Make sure all the unblocked adapters get powered on startup
+  + Fix visible menu item disappearing after suspend
+  + Make --dump-devices work again in the applet, and
+    fix its output for some services
+  + Refactor applet as a library, for use in gnome-shell
+  + Build fixes
+- Changes from version 2.90.0:
+  + Port to GSettings, GTK+ 3.x and GtkApplication
+  + Use GBinding instead of copy/paste Seahorse code
+  + Plenty of killswitch bug fixes
+  + Applet:
+    - Fix browsing a device when already mounted
+    - Use symbolic icons
+  + Properties:
+    - Port to gnome-control-center 3.x API
+    - Add a specific page when Bluetooth is hard-blocked
+  + Moblin/MeeGo:
+    - Use bluetoothd backed power switch
+    - Some re-designs for meego
+- Change obexed Requires to obexd-client.
+- Drop gnome-bluetooth-fix-introspection-build.patch: fixed
+  upstream.
+- Remove no longer needed libunique-devel BuildRequires.
+- Add pkgconfig() BuildRequires now needed: dbus-glib-1, gtk+-3.0,
+  libgnome-control-center.
+- Move to pkgconfig()-style BuildRequires:
+  + Old ones: nautilus-sendto-devel
+  + New ones: nautilus-sendto.
+- Add support for source service checkout, with %BUILD_FROM_VCS:
+  + Add gnome-common and gtk-doc BuildRequires.
+  + Add call to ./autogen.sh.
+  + Enforce gtk-doc html generation by passing --enable-gtk-doc to
+    configure.
+
+-------------------------------------------------------------------
+Fri Feb 18 14:23:34 UTC 2011 - fcrozat@novell.com
+
+- Add 61-gnome-bluetooth-rfkill.rules: add ACL to rfkill device.
+  This will be replaced by urfkill in the future, but in the
+  meantime, people need to be able to switch off devices. Fix
+  bnc#632256.
+
+-------------------------------------------------------------------
+Sun Feb 13 14:19:21 CET 2011 - vuntz@opensuse.org
+
+- Call relevant macros in %post/%postun:
+  + %desktop_database_post/postun because the package ships at
+    least one desktop file.
+  + %icon_theme_cache_post/postun because the package ships themed
+    icons.
+- Pass %{?no_lang_C} to %find_lang so that english documentation
+  can be packaged with the program, and not in the lang subpackage.
+- Change Requires of lang subpackage to Recommends, since the
+  english documentation is not there anymore.
+
+-------------------------------------------------------------------
+Fri Oct  1 18:08:32 CEST 2010 - vuntz@opensuse.org
+
+- Add gnome-bluetooth-fix-introspection-build.patch, which
+  obsoletes gnome-bluetooth-fix-parallel-build.patch: this updated
+  patch will really fix the build with recent
+  gobject-introspection.
+
+-------------------------------------------------------------------
+Tue Sep 28 18:51:54 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.32.0:
+  + Updated translations.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:50:00 CEST 2010 - vuntz@opensuse.org
+
+- Move gir files to devel subpackage.
+
+-------------------------------------------------------------------
+Sun Sep 19 00:16:15 CEST 2010 - vuntz@opensuse.org
+
+- Remove gir-repository BuildRequires: this was only needed for the
+  DBusGLib gir, which is now part of gobject-introspection.
+- Add gnome-bluetooth-fix-parallel-build.patch: this updates the
+  build system for introspection, to work correctly. This requires
+  the gnome-common BuildRequires and the call to gnome-autogen.sh.
+
+-------------------------------------------------------------------
+Mon Sep 13 18:00:37 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.90:
+  + More killswitch fixes
+  + Fix crasher when Bluetooth nautilus-sendto plugin is loaded
+
+-------------------------------------------------------------------
+Mon Sep  6 14:09:30 CEST 2010 - vuntz@opensuse.org
+
+- Do not add a GenericName to bluetooth-applet.desktop: it's an
+  autostart file, so it's not needed.
+- Do not add/change GenericName and Name for
+  bluetooth-properties.desktop: it only appears in the control
+  center now, and we don't need to change those keys in this case
+  (the changes made sense for the applications menu).
+
+-------------------------------------------------------------------
+Fri Aug 27 23:34:58 CEST 2010 - vuntz@opensuse.org
+
+- Add Supplements to automatically install plugins-geoclue if
+  gnome-bluetooth and geoclue are installed.
+
+-------------------------------------------------------------------
+Fri Aug  6 11:18:41 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.31.6:
+  + Allow setting up devices that do not use pairing
+  + Port to GSettings instead of GConf
+  + Properties:
+    - Add specific page when the only adapter is hard blocked
+      through a physical killswitch
+- Remove --disable-schemas-install from configure call
+  (gconf-specific) and update packaging to handle GSettings schemas
+  instead of gconf schemas.
+- Rename libgnome-bluetooth7 to libgnome-bluetooth8 after bump in
+  library soname.
+
+-------------------------------------------------------------------
+Tue Aug  3 19:43:52 UTC 2010 - dimstar@opensuse.org
+
+- Require bluez and obexd, fixes bnc#622946.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:10:58 CEST 2010 - vuntz@opensuse.org
+
+- Revert previous change about adding HardwareSettings category to
+  bluetooth-properties.desktop, post-11.3.
+
+-------------------------------------------------------------------
+Mon Jun 21 12:09:37 CEST 2010 - vuntz@opensuse.org
+
+- Add HardwareSettings category to bluetooth-properties.desktop to
+  make it appear at the right place. This is needed because
+  update-desktop-files won't keep the X-GNOME-* categories in 11.3.
+
+-------------------------------------------------------------------
+Fri Jun  4 17:47:03 CEST 2010 - vuntz@opensuse.org
+
+- Fix calls to suse_update_desktop_file: the arguments were not in
+  the right order.
+
+-------------------------------------------------------------------
+Mon Mar 29 22:08:35 CEST 2010 - vuntz@opensuse.org
+
+- Update to version 2.30.0:
+  + Add PIN code for Navman GPS
+  + Updated translations.
+
+-------------------------------------------------------------------
+Mon Feb 15 17:27:34 CET 2010 - dimstar@opensuse.org
+
+- Update to version 2.29.91:
+  + Mention gnome-user-share in the documentation
+  + Applet:
+    - Link to the sound preferences for audio devices
+    - Remove hard-coded use of nautilus
+  + Library:
+    - Use spinner from GTK+
+    - Install introspection data properly
+    - API documentation fixes
+    - Fix some parts of the UI not being translated at run-time
+  + Wizard:
+    - Fix run-time warning when pairing a new device
+  + Moblin applet;
+    - Add summary page support
+    - Fix a number of memory leaks and possible crashers
+  + Sendto:
+    - Fix crash when obex-client isn't already running
+    - Make Cancel button actually work
+    - Implement "retry" when sending fails
+    - Fix progress bar when sending multiple files
+- Drop upstream merged gnome-bluetooth-introspection-install.patch.
+
+-------------------------------------------------------------------
+Thu Dec 10 20:35:21 UTC 2009 - aj@suse.de
+
+- Remove unused BuildRequires hal-devel
+
+-------------------------------------------------------------------
+Thu Dec  3 11:07:48 CET 2009 - vuntz@opensuse.org
+
+- Update to version 2.29.3:
+  + Build and install nautilus-sendto plugin by default
+  + Preferences:
+    - Add a button to access "Personal File Sharing" preferences
+  + Library:
+    - Clean up combo box selection widget
+    - Make it possible to set the selected device in the chooser
+    - Make the button chooser select the device when popping up a
+      dialogue
+  + Sendto:
+    - Wrap errors instead of clipping them
+  + Wizard:
+    - Make it possible to re-pair devices
+- Changes from version 2.29.2:
+  + Add Moblin front-end for gnome-bluetooth
+  + Add experimental nautilus-sendto plugin
+  + Applet:
+    - Fix applet showing the wrong connection information
+    - Use separate icon for the status icon, for monochromatic
+      themes
+    - Add discoverable menu item
+    - Fix a number of rfkill related bugs
+  + Library:
+    - Make it possible use another widget for device filtering
+    - Don't overwrite UUIDs when discovering known devices
+    - Add BluetoothChooserCombo widget
+    - Fix usage under non-UTF-8 locales
+- Add nautilus-sendto-devel BuildRequires and create
+  nautilus-sendto-plugin-bluetooth subpackage.
+- Enable introspection: add gir-repository and
+  gobject-introspection-devel BuildRequires, pass
+  --enable-introspection to configure.
+- Add gnome-bluetooth-introspection-install.patch to fix
+  installation of introspection data.
+
+-------------------------------------------------------------------
+Sat Oct 24 18:18:53 UTC 2009 - andrea@opensuse.org
+
+- added LXDE support to /etc/xdg/autostart/bluetooth-applet.desktop
+
+-------------------------------------------------------------------
+Tue Sep 29 10:01:20 CEST 2009 - vuntz@opensuse.org
+
+- Update to version 2.28.1:
+  + Applet:
+    - Fix most devices showing up as connected when they aren't
+    - Make sure the pairing agent is only bound to the default
+      adapter
+  + All:
+    - String fixes
+    - API documentation updates
+    - Filtering fixes in the BluetoothChooser
+
+-------------------------------------------------------------------
+Tue Sep 22 18:18:21 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.28.0:
+  + Applet:
+    - Applet fails to connect to disconnected audio devices
+    - Fix crash when getting a pairing request from a known rfcomm
+      device
+  + Wizard:
+    - Fix pairing of devices that require a PIN entry
+
+-------------------------------------------------------------------
+Thu Sep  3 09:29:41 CEST 2009 - dimstar@opensuse.org
+
+- Update to version 2.27.90:
+  + Fix crasher when exiting and the NetworkManager plugin was
+    installed.
+  + Fix wizard not loading because of a bug in the UI definition.
+  + Fix keyboard not working.
+
+-------------------------------------------------------------------
+Wed Aug  5 11:31:07 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.9:
+  + All:
+    - Port to using new rfkill API in Linux kernel 2.6.31
+  + Applet:
+    - Hide unwanted menu items when Bluetooth isn't available
+    - Fix connecting to Sony Ericsson phones
+    - Fix a crash when disconnecting an audio device
+    - Fix devices showing up as connected when they were not
+  + Properties:
+    - Close the preferences dialogue when pressing 'Esc'
+  + Wizard:
+    - Mention "enter" when pairing a keyboard
+    - String fixes
+  + Library:
+    - Track whether devices are connecting, as opposed to already
+      connected
+
+-------------------------------------------------------------------
+Fri Jul 31 21:22:44 CEST 2009 - vuntz@novell.com
+
+- Remove Obsoletes for libgnome-bluetooth2 and libgnome-bluetooth6.
+
+-------------------------------------------------------------------
+Wed Jul 29 17:19:44 CEST 2009 - dominique-obs@leuenberger.net
+
+- Update to version 2.27.8:
+  + All:
+    - A number of UI strings changes
+  + Applet:
+    - Make "Connect" in the menu for devices appear correctly after
+      pairing
+    - Filter for paired ObexFTP devices in the browse menu item
+  + Preferences:
+    - Add link to help
+  + Wizard:
+    - Fix crash when selecting a device where the name hasn't been
+      resolved yet
+  + Library:
+    - Add introspection support
+    - Export device and adapter models for easy enumeration
+    - Fix broken filtering for device category
+    - Fix possible crasher in spinner widget
+    - Ellipsise names in the chooser widget
+    - A number of API documentation fixes
+- Rename libgnome-bluetooth6 to libgnome-bluetooth7 because of
+  soname change.
+- Have libgnome-bluetooth7 Obsoletes libgnome-bluetooth6.
+
+-------------------------------------------------------------------
+Sun Jun 28 01:33:35 CEST 2009 - captain.magnus@opensuse.org
+
+- Update to version 2.27.7.1:
+  + When deleting a device, pass it through the plugins
+    to delete any other associations
+  + Add a test program
+  + Add Geoclue GPS setup plugin
+  + Fix pairing some fixed PIN devices, and misc fixes
+- Create subpackage plugins-geoclue
+
+-------------------------------------------------------------------
+Wed Jun 17 15:29:05 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.6:
+  + Applet:
+    - Use a better tooltip for the applet
+    - Add "Send File" and "Browse files" menu item for devices that
+      support it
+    - Add menu items to call the preferences for mice and keyboards
+    - Fix assertions when removing a device, and pairing it again
+      without the applet being restarted
+    - Don't show "Connect" for devices without input or audio
+      capabilities
+    - Support notification-daemon without any support for actions,
+      as used in Ubuntu
+    - Pass the device name to bluetooth-sendto
+    - Rework UI of all the pairing helper dialogues
+  + Preferences:
+    - Fix the adapter page not showing up when restarting
+      bluetoothd
+    - Add --dump debug option, to dump a list of all known devices
+      and their properties
+  + Send-to:
+    - Fix warning when sending an empty file
+    - Remove use of red labels on errors
+    - Remove obex-data-server support, and require obexd
+    - Try harder to get a device name
+  + Wizard:
+    - Fix handling for devices that use random passkeys, but can't
+      handle 6 digits (such as Sony CMT-DH5BT)
+    - Add Simple Pairing support
+    - Try harder to connect to devices after pairing them, fixes
+      the Microsoft Wireless Notebook Presenter Mouse 8000 not
+      working straight after pairing
+    - Allow skipping name resolution when we would be using a fixed
+      passkey
+    - Don't allow stepping back in the middle of pairing
+    - Add more instructions on the front page
+    - Many many UI changes
+  + Library:
+    - Allow getting arbitrary data from the backend for
+      BluetoothChooser users
+    - Only export the supported symbols in the library
+    - Add plugin support, so third-party applications can be setup,
+      for a particular device, from the preferences or the wizard
+    - Replace the search button with a "Searching" label and spinner
+- Rename libgnome-bluetooth2 to libgnome-bluetooth6, and have it
+  Obsoletes libgnome-bluetooth2 <= 2.27.5.
+
+-------------------------------------------------------------------
+Thu May  7 05:02:18 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.5:
+  + Fix some killswitch related bugs
+  + Work with older versions of Pango
+  + Fix pairing with Blackberry and Samsung phones
+  + Use the services status to check the connection status, makes
+    connecting/disconnecting devices much faster
+  + Add a quit menu to the applet, when in debug mode
+  + Fix passkey special-casing when a OUI is used
+
+-------------------------------------------------------------------
+Sun May  3 10:12:19 CEST 2009 - mboman@suse.de
+
+- Change BuildRequires from unique-devel to libunique-devel
+
+-------------------------------------------------------------------
+Tue Apr 14 18:46:42 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.4:
+  + Fix display of labels on the passkey page, and of the passkey
+    on the passkey options dialogue
+  + More use of GtkBuilder in the wizard
+  + First pass at user-targetted documentation
+  + Fix a few memory leaks
+  + Fix crash when running properties installed
+- Changes from version 2.27.3:
+  + Fix schema installation
+  + Make sure the applet works even without the schema being
+    installed properly
+  + Fix display of devices with underscores in their name in the
+    applet
+  + Fix some devices with no real audio support (AVCRP phones for
+    example) showing up in the applet
+- Add gnome-doc-utils-devel BuildRequires.
+- Pass --disable-scrollkeeper to configure.
+- Package documentation too.
+- Use fdupes.
+
+-------------------------------------------------------------------
+Thu Apr  9 01:09:33 CEST 2009 - vuntz@novell.com
+
+- Update to version 2.27.2:
+  + General:
+    - Use our own "paired" icon, to avoid confusion in some themes
+    - Remove "Trust" from the UI, it's an implementation detail
+    - Group input and audio device-types under the same heading in
+      the chooser
+  + Applet:
+    - Use new "disabled" icons
+    - Add a status label for the killswitch menu item
+    - Add the ability to connect/disconnect from devices directly
+      from the applet's menu
+  + Properties:
+    - Only show the default adapter, and simplify the UI
+    - Show a way to turn off the killswitch when there's no
+      Bluetooth adapters in the machine
+  + Wizard:
+    - Don't show "Enter passkey" when we know the passkey of the
+      device already
+    - Remove special-casing of mice, and PS3 BD remote from the
+      code and into the database
+    - Move passkey options button back into the content area, from
+      the action area
+    - Simplify passkey options dialogue
+    - Connect to input and audio devices when setup finishes
+    - Mark all the newly paired devices as trusted
+    - Fix the wizard not allowing to get past the search page when
+      the device selected didn't have a name at first
+    - Port quirks database to XML
+    - Add quirk for the Bluemax Bluetooth GPS Receiver GPS-009
+    - Add quirk for the Nintendo Wiimote
+    - Add quirk for iBT-GPS, and another GPS
+  + Sendto:
+    - Fix obex-data-server support
+
+-------------------------------------------------------------------
+Mon Mar 16 14:46:16 CET 2009 - sbrabec@suse.cz
+
+- Added support for translation-update-upstream (FATE#301344).
+
+-------------------------------------------------------------------
+Sun Mar 15 20:05:09 CET 2009 - vuntz@novell.com
+
+- Add Obsoletes/Provides for libgnomebt-devel.
+- Make gnome-bluetooth Obsoletes/Provides bluez-gnome since it's a
+  drop-in replacement for bluez-gnome.
+- Don't set the name in bluetooth-applet.desktop to the preexisting
+  value.
+
+-------------------------------------------------------------------
+Sat Mar  7 00:28:11 CET 2009 - mboman@suse.de
+
+- Update to version 2.27.1:
+  + This is basically a new package, forked from bluez-gnome
+
+-------------------------------------------------------------------
+Sun Feb 22 17:49:49 CET 2009 - vuntz@novell.com
+
+- Update to version 0.12.0:
+  + Remove gnome-obex-server, as it's replaced by gnome-user-share
+- Drop BuildRequires: perl-XML-Parser, update-desktop-files
+- Drop Requires: gnome-vfs2
+- soname changed, so rename libgnometbt0 to libgnomebt1. No
+  Provides/Obsoletes since it's not the case.
+- Remove gnome-bluetooth package since it only contains data that
+  should be in libgnomebt1 now. Have libgnomebt1 Obsolete/Provide
+  it.
+
+-------------------------------------------------------------------
+Fri Mar 21 19:35:21 CET 2008 - jpr@suse.de
+
+- Remove incorrect libgnomebt-devel requires
+- Remove .la files
+
+-------------------------------------------------------------------
+Fri Feb  1 15:04:39 CET 2008 - rodrigo@suse.de
+
+- Update to version 0.11.0:
+  * Remove gnome-obex-send as it's replaced by bluez-gnome's
+    bluetooth-sendto 
+
+-------------------------------------------------------------------
+Tue Oct 30 10:22:16 CET 2007 - coolo@suse.de
+
+- also obsolete 0.8.0
+
+-------------------------------------------------------------------
+Thu Oct 25 16:25:05 CEST 2007 - jpr@suse.de
+
+- Update to 0.9.1
+ * Fix a typo that meant the obex server was crashing when receiving
+   a file
+ * Send a disconnect when we finish sending a file, fixes reception
+   of files on some devices
+ * Use new GTK+ features for the tray icon
+ * Build fixes
+- Remove gnome-bluetooth-desktop.diff and use 
+  %suse_update_desktop_file instead
+- Remove gnome-bluetooth-pixmapsdir.patch, the icon hierarchy is used
+  now
+- Remove gnome-bluetooth-transparent-trayicon.patch and 
+  dont-disable-deprecated, libegg is no  longer used
+- Remove gnome-bluetooth-fail-cleanly.patch, the UI it changed is 
+- Split off libgnomebt0, python-gnome-bluetooth and 
+  gnome-bluetooth-lang
+- Rename gnome-bluetooth-devel to libgnomebt-devel
+  
+-------------------------------------------------------------------
+Wed Aug  8 18:53:55 CEST 2007 - maw@suse.de
+
+- Use %fdupes
+- Split off a -lang subpackage
+- s#%run_ldconfig#/sbin/ldconfig/ in %post and %postun.
+
+-------------------------------------------------------------------
+Fri Jul 27 20:53:00 CEST 2007 - maw@suse.de
+
+- Add dont-disable-deprecated.patch.
+
+-------------------------------------------------------------------
+Wed May 23 14:23:03 CEST 2007 - prusnak@suse.cz
+
+- added libusb-devel to BuildRequires
+- added libopenssl-devel to Requires of devel subpackage
+
+-------------------------------------------------------------------
+Fri May 18 13:04:50 CEST 2007 - prusnak@suse.cz
+
+- removed X-SuSE-translate from desktop file
+
+-------------------------------------------------------------------
+Thu May  3 17:41:34 CEST 2007 - prusnak@suse.cz
+
+- changed expat to libexpat-devel in Requires of devel subpackage
+
+-------------------------------------------------------------------
+Sun Feb 18 17:55:03 CET 2007 - aj@suse.de
+
+- Cleanup BuildRequires.
+
+-------------------------------------------------------------------
+Fri Jan 19 00:22:57 CET 2007 - jhargadon@suse.de
+
+- removed useless .la files (#223699) 
+
+-------------------------------------------------------------------
+Tue Dec 19 12:08:07 CET 2006 - sbrabec@suse.cz
+
+- Spec file cleanup.
+
+-------------------------------------------------------------------
+Mon Dec 18 11:51:05 CST 2006 - maw@suse.de
+
+- Move to /usr.
+
+-------------------------------------------------------------------
+Thu Nov 30 15:41:23 CET 2006 - sbrabec@suse.cz
+
+- Fixed devel dependencies.
+
+-------------------------------------------------------------------
+Tue Sep 19 22:22:21 CEST 2006 - jhargadon@suse.de
+
+- update to version 0.8.0
+- Fix icons not showing up properly
+- Allow passing URIs as well as local filenames to gnome-obex-send
+- Save to ~/Desktop/Downloads by default, then fallback to ~/Desktop and ~/,
+   as Epiphany does, or to the user specified directory
+- Remove direct openobex and bluez-devel dependencies, as well as gnome-vfs
+- Remove the useless gnome-bluetooth-manager
+- translation updates
+
+-------------------------------------------------------------------
+Wed Aug 16 12:13:13 CEST 2006 - cthiel@suse.de
+
+- buildrequire python-gtk-devel instead of python-gtk
+
+-------------------------------------------------------------------
+Wed Aug 16 02:09:26 CEST 2006 - ro@suse.de
+
+- added python-gobject2-devel to BuildRequires 
+
+-------------------------------------------------------------------
+Mon Mar 20 22:51:31 CET 2006 - danw@suse.de
+
+- Fail cleanly (with a dialog rather than a message to stderr) if
+  bluetooth is not configured on the machine. #140780
+
+-------------------------------------------------------------------
+Fri Mar 10 16:35:50 CET 2006 - danw@suse.de
+
+- Make the gnome-obex-server trayicon transparent. #155345
+
+-------------------------------------------------------------------
+Sat Feb 18 10:26:56 CET 2006 - stbinner@suse.de
+
+- move GenericName entries in .desktop files to Comment
+
+-------------------------------------------------------------------
+Mon Feb  6 09:26:34 CET 2006 - hpj@suse.de
+
+- Added Rodney's pixmap path patch.
+
+-------------------------------------------------------------------
+Wed Jan 25 21:31:41 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Tue Nov 29 17:19:44 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.7.0.
+
+-------------------------------------------------------------------
+Wed Nov  9 19:25:10 CET 2005 - sbrabec@suse.cz
+
+- Fixed more random return values.
+- Removed .mo install hack, locales now install properly.
+
+-------------------------------------------------------------------
+Thu Nov  3 13:20:22 CET 2005 - sbrabec@suse.cz
+
+- Updated to version 0.6.0.
+
+-------------------------------------------------------------------
+Wed Nov  2 22:06:41 CET 2005 - dmueller@suse.de
+
+- don't build as root 
+
+-------------------------------------------------------------------
+Wed Jun  1 18:12:37 CEST 2005 - sbrabec@suse.cz
+
+- Fixed devel requirements.
+
+-------------------------------------------------------------------
+Wed May  4 16:10:59 CEST 2005 - sbrabec@suse.cz
+
+- Fixed some GCC 4 warnings.
+
+-------------------------------------------------------------------
+Wed Apr 27 13:39:05 CEST 2005 - sbrabec@suse.cz
+
+- Added gnome hbox patch from Harald Hoyer <harald@redhat.com>
+  (#72172).
+- Added patch for crash on file send.
+  http://bugzilla.gnome.org/show_bug.cgi?id=150388
+
+-------------------------------------------------------------------
+Thu Nov 25 00:02:19 CET 2004 - ro@suse.de
+
+- fix build with new python2.4 
+
+-------------------------------------------------------------------
+Tue Nov 23 17:30:05 CET 2004 - hvogel@suse.de
+
+- correct desktop files
+- include icon
+- fix ac-quotation
+
+-------------------------------------------------------------------
+Wed Sep  8 02:01:20 CEST 2004 - ro@suse.de
+
+- require python-gnome instead of gnome-python
+
+-------------------------------------------------------------------
+Fri Sep  3 11:48:24 CEST 2004 - hhetter@suse.de
+
+- use lib64 on 64bit systems in PYTHONPATH 
+
+-------------------------------------------------------------------
+Thu Sep  2 16:23:32 CEST 2004 - hhetter@suse.de
+
+- part of Bug #44638, require gnome-python, fix PYTHONPATH
+  in gnome-bluetooth-manager
+
+-------------------------------------------------------------------
+Mon Aug  2 16:16:03 CEST 2004 - ro@suse.de
+
+- update to 0.5.1 to make it build again with current environment
+
+-------------------------------------------------------------------
+Thu Jan 29 10:25:10 CET 2004 - hhetter@suse.de
+
+- initial SUSE package 
+
