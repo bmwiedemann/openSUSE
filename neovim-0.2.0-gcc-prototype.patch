@@ -1,0 +1,36 @@
+--- a/src/nvim/ex_cmds.c
++++ b/src/nvim/ex_cmds.c
+@@ -67,6 +67,8 @@
+ #include "nvim/os/input.h"
+ #include "nvim/os/time.h"
+ 
++bool do_sub_msg(bool count_only);
++
+ /*
+  * Struct to hold the sign properties.
+  */
+--- a/src/nvim/normal.c
++++ b/src/nvim/normal.c
+@@ -62,6 +62,22 @@
+ #include "nvim/os/time.h"
+ #include "nvim/os/input.h"
+ 
++bool
++find_decl (
++    char_u *ptr,
++    size_t len,
++    bool locally,
++    bool thisblock,
++    int flags_arg
++);
++
++bool
++get_visual_text (
++    cmdarg_T *cap,
++    char_u **pp,
++    size_t *lenp
++);
++
+ typedef struct normal_state {
+   VimState state;
+   linenr_T conceal_old_cursor_line;
