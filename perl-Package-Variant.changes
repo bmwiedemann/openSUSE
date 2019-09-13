@@ -1,0 +1,37 @@
+-------------------------------------------------------------------
+Tue Aug  4 09:01:27 UTC 2015 - coolo@suse.com
+
+- updated to 1.003002
+   see /usr/share/doc/packages/perl-Package-Variant/Changes
+
+  1.003002 - 2015-07-25
+    - also switch the tests to strictures 2 (aaaaaaaaaaaaaaaaaaaaaaaaaa)
+  
+  1.003001 - 2015-07-25
+    - also switch the documentation to strictures 2 (slow clap for mst there)
+  
+  1.003000 - 2015-07-25
+    - switch to strictures 2
+    - add make_variant_package_name optional method
+
+-------------------------------------------------------------------
+Tue Apr 14 19:25:39 UTC 2015 - coolo@suse.com
+
+- updated to 1.002002
+   see /usr/share/doc/packages/perl-Package-Variant/Changes
+
+-------------------------------------------------------------------
+Mon Mar 17 13:12:22 UTC 2014 - coolo@suse.com
+
+- updated to 1.002000
+  - add build_variant method on variable packages, to allow avoiding
+    importing a generator sub
+  - fix pragmas applied by modules listed in "importing" from leaking out
+    into unexpected scopes
+
+-------------------------------------------------------------------
+Thu Aug  1 13:48:30 UTC 2013 - coolo@suse.com
+
+- initial package 1.001004
+    * created by cpanspec 1.78.07
+
