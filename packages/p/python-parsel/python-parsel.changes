@@ -1,0 +1,62 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:27:22 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 1.5.2:
+  * ``Selector.remove_namespaces`` received a significant performance improvement
+  * The value of ``data`` within the printable representation of a selector
+    (``repr(selector)``) now ends in ``...`` when truncated, to make the
+    truncation obvious.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:51:11 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Fri Nov 16 18:55:28 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Update to version 1.5.1 (2018-10-25)
+  * ``has-class`` XPath function handles newlines and other separators
+    in class names properly;
+  * fixed parsing of HTML documents with null bytes;
+  * documentation improvements;
+  * Python 3.7 tests are run on CI; other test improvements.
+- Update to version 1.5.0 (2018-07-04)
+  * New ``Selector.attrib`` and ``SelectorList.attrib`` properties which make
+    it easier to get attributes of HTML elements.
+  * CSS selectors became faster: compilation results are cached
+    (LRU cache is used for ``css2xpath``), so there is
+    less overhead when the same CSS expression is used several times.
+  * ``.get()`` and ``.getall()`` selector methods are documented and recommended
+    over ``.extract_first()`` and ``.extract()``.
+  * Various documentation tweaks and improvements.
+
+-------------------------------------------------------------------
+Fri Apr  6 08:38:41 UTC 2018 - mpluskal@suse.com
+
+- Update to version 1.4.0:
+  * has-class XPath extension function;
+  * parsel.xpathfuncs.set_xpathfunc is a simplified way to register
+    XPath extensions;
+  * Selector.remove_namespaces now removes namespace declarations;
+  * Python 3.3 support is dropped;
+  * make htmlview command for easier Parsel docs development.
+
+-------------------------------------------------------------------
+Thu Dec 21 22:54:25 UTC 2017 - mpluskal@suse.com
+
+- Update to version 1.2.0:
+  * Add get() and getall() methods as aliases for extract_first and
+    extract respectively
+  * Add default value parameter to SelectorList.re_first method
+  * Add Selector.re_first method
+  * Bug fix: detect None result from lxml parsing and fallback with
+    an empty document
+  * Rearrange XML/HTML examples in the selectors usage docs
+- Convert to singlespec
+
+-------------------------------------------------------------------
+Thu Jun  2 17:42:59 UTC 2016 - jacobwinski@gmail.com
+
+- Initial package build. 
+

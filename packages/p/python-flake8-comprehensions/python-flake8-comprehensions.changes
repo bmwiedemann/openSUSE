@@ -1,0 +1,18 @@
+-------------------------------------------------------------------
+Fri Sep 13 07:29:08 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.2.0:
+  * Update Python support to 3.5-3.7, as 3.4 has reached its end of life.
+  * C412 rule that complains about using list comprehension with in.
+
+-------------------------------------------------------------------
+Sat Aug  3 06:40:13 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Format with spec-cleaner
+- Switch to github tarball
+- Run tests
+
+-------------------------------------------------------------------
+Mon Jul 15 21:57:07 UTC 2019 - Andreas Färber <afaerber@suse.de>
+
+- Initial (v2.1.0)

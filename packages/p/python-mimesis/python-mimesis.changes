@@ -1,0 +1,32 @@
+-------------------------------------------------------------------
+Wed Sep 11 11:36:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.3.0:
+  * country() from the Address() provider now by default returns the country name of the current locale.
+  * Separated Europe and Asia continents in Italian locale.
+  * Removed duplicated names in the countries of et locale.
+
+-------------------------------------------------------------------
+Tue Jun 18 11:44:53 UTC 2019 - pgajdos@suse.com
+
+- version update to 3.2.0
+  **Added**:
+  - Added built-in provider DenmarkSpecProvider
+  - Added meta classes for providers for internal usage 
+    (see `#621 <https://github.com/lk-geimfari/mimesis/issues/621>`_.)
+  - Added support for custom templates in ``Person().username()``
+  - Added ``ItalianSpecProvider()``
+  **Fixed**:
+  - Support of seed for custom providers
+  - ``currency_iso_code`` from the ``Business()`` provider now by
+    default returns the currency code of the current locale.
+  **Removed**:
+  - Removed ``multiple_choice()`` in the ``random`` module because it
+    was unusued and it could be replaced with ``random.choices``.
+  - Removed legacy method ``child_count()`` from provider ``Person()``
+- run the testsuite
+
+-------------------------------------------------------------------
+Thu May  2 19:01:49 UTC 2019 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

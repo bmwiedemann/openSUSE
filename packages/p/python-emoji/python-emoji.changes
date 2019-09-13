@@ -1,0 +1,52 @@
+-------------------------------------------------------------------
+Fri Sep 13 07:59:56 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.3:
+  * no upstream changelog
+
+-------------------------------------------------------------------
+Wed Apr 24 08:52:16 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.5.2
+  * no upstream changelog, see git log
+- run the test suite
+
+-------------------------------------------------------------------
+Fri Mar  1 10:57:54 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.5.1:
+  * Various small fixes
+
+-------------------------------------------------------------------
+Tue Dec  4 12:47:38 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sun Apr 15 13:58:05 UTC 2018 - tchvatal@suse.com
+
+- Fix source URL to use pythonhosted without hashes
+
+-------------------------------------------------------------------
+Sun Apr 15 09:14:15 UTC 2018 - marix@marix.org
+
+- Updated to upstream version 0.5.0.
+  + Updated emoji set.
+  + New function to count emojis in a string.
+- Fixed example in package description.
+
+-------------------------------------------------------------------
+Sun Apr 15 09:05:06 UTC 2018 - marix@marix.org
+
+- Fix source URL.
+
+-------------------------------------------------------------------
+Wed Mar 14 19:24:33 UTC 2018 - marix@marix.org
+
+- Adjust test execution to single-spec format.
+- Properly declare the license file in the files section.
+
+-------------------------------------------------------------------
+Tue Mar 13 20:17:05 UTC 2018 - marix@marix.org
+
+- Initial package release.

@@ -1,0 +1,28 @@
+-------------------------------------------------------------------
+Wed Sep 11 08:15:02 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 19.2.0:
+  * Added support for pem.ECPrivateKey (EC PRIVATE KEY).
+
+-------------------------------------------------------------------
+Fri May 17 09:25:10 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- update to version 19.1.0
+  * You can now load encrypted PKCS#8 PEM key as ``pem.Key``.
+  * Added support for ``pem.PublicKey`` (``PUBLIC KEY``).
+  * Added support for ``pem.RSAPublicKey`` (``RSA PUBLIC KEY``).
+
+-------------------------------------------------------------------
+Tue Feb 12 10:07:08 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Trim replicated metadata from description.
+
+-------------------------------------------------------------------
+Tue Feb 12 09:05:10 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Mark as noarch since the package does not compile anything
+
+-------------------------------------------------------------------
+Thu Feb  7 11:47:31 UTC 2019 - ecsos@opensuse.org
+
+- initial version 18.2.0

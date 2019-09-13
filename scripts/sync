@@ -1,9 +1,11 @@
 #!/bin/sh
 rsync -a \
-  --max-size=2000k \
+  --max-size=9000k \
   --exclude=DELETED \
   --delete \
   --delete-excluded \
   /mounts/work/SRC/openSUSE\:Factory/ in/
 rm -rf packages
 scripts/mappkgs.pl in packages
+git add packages/*
+git commit -a -m "update $(date -u +"%Y-%m-%d %H:%M")"

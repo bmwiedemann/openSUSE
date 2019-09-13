@@ -1,0 +1,25 @@
+From 2a81fb782353666f60151d52a79fc5a034dd2ebe Mon Sep 17 00:00:00 2001
+From: Glyph <glyph@twistedmatrix.com>
+Date: Tue, 11 Jun 2019 12:14:53 -0700
+Subject: [PATCH] Fix to accommodate Twisted's new URL validity checking
+
+---
+ src/treq/test/test_testing.py | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/src/treq/test/test_testing.py b/src/treq/test/test_testing.py
+index 6a13881..20797bd 100644
+--- a/src/treq/test/test_testing.py
++++ b/src/treq/test/test_testing.py
+@@ -138,9 +138,9 @@ def test_handles_invalid_schemes(self):
+         so even after a successful request.
+         """
+         stub = StubTreq(_StaticTestResource())
+-        self.failureResultOf(stub.get(""), SchemeNotSupported)
++        self.failureResultOf(stub.get("x-unknown-1:"), SchemeNotSupported)
+         self.successResultOf(stub.get("http://url.com"))
+-        self.failureResultOf(stub.get(""), SchemeNotSupported)
++        self.failureResultOf(stub.get("x-unknown-2:"), SchemeNotSupported)
+ 
+     def test_files_are_rejected(self):
+         """

@@ -1,0 +1,123 @@
+-------------------------------------------------------------------
+Wed Sep 11 12:45:35 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 3.0.3:
+  * Handle when data_key is an empty string
+  * Includes bug fix from 2.20.3
+  * Fix incorrect super() call in SchemaMeta.__init__
+
+-------------------------------------------------------------------
+Mon Aug 26 14:10:28 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to 3.0.1
+  * Many changes, some of them breaking. For example:
+  * Remove support for Python 2 (#1120). Only Python>=3.5 is supported.
+  * Allow input value to be included in error messages for a number of fields.
+  * Change ordering of keys and values arguments to fields.Dict.
+  * Please read upstream changelog.
+- Drop upstreamed patches reproducible.patch and pytest5.patch
+
+-------------------------------------------------------------------
+Wed Jul 31 09:13:51 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add patch to fix building with pytest5 from upstream git:
+  * pytest5.patch
+
+-------------------------------------------------------------------
+Wed Jul 24 07:53:46 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 2.19.5:
+  * Fix deserializing ISO8601-formatted datetimes with less than 6-digit miroseconds (:issue:`1251`). Thanks :user:`diego-plan9` for reporting.
+  * Microseconds no longer gets lost when deserializing datetimes without dateutil installed (:issue:`1147`).
+  * Fix bug where nested fields in Meta.exclude would not work on multiple instantiations (:issue:`1212`). Thanks :user:`MHannila` for reporting.
+
+-------------------------------------------------------------------
+Tue May 28 09:46:25 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- Add reproducible.patch to make build reproducible (boo#1047218)
+
+-------------------------------------------------------------------
+Fri May 17 14:38:06 UTC 2019 - Marketa Calabkova <mcalabkova@suse.com>
+
+- Update to version 2.19.2
+  * Handle OverflowError when (de)serializing large integers with 
+    fields.Float
+
+-------------------------------------------------------------------
+Fri Apr  5 09:07:04 UTC 2019 - Petr Gajdos <pgajdos@suse.com>
+
+- version update to 2.19.1
+  - Fix bug where ``Nested(many=True)`` would skip first element when
+    serializing a generator (:issue:`1163`). Thanks :user:`khvn26` for the
+    catch and patch.
+  - A `RemovedInMarshmallow3` warning is raised when using
+    `fields.FormattedString`. Use `fields.Method` or `fields.Function`
+    instead (:issue:`1141`).
+  - A ``ChangedInMarshmallow3Warning`` is no longer raised when
+    ``strict=False`` (:issue:`1108`). Thanks :user:`Aegdesil` for
+    reporting.
+  - Add warnings for functions in ``marshmallow.utils`` that are removed in
+    marshmallow 3.
+  - Copying ``missing`` with ``copy.copy`` or ``copy.deepcopy`` will not
+    duplicate it (:pr:`1099`).
+  - Add ``marshmallow.__version_info__`` (:pr:`1074`).
+  - Add warnings for API that is deprecated or changed to help users
+    prepare for marshmallow 3 (:pr:`1075`).
+  - Prevent memory leak when dynamically creating classes with ``type()``
+    (:issue:`732`). Thanks :user:`asmodehn` for writing the tests to
+    reproduce this issue.
+  - Prevent warning about importing from ``collections`` on Python 3.7
+    (:issue:`1027`). Thanks :user:`nkonin` for reporting and
+    :user:`jmargeta` for the PR.
+  - Remove spurious warning about implicit collection handling
+    (:issue:`998`). Thanks :user:`lalvarezguillen` for reporting.
+  - Allow username without password in basic auth part of the url in
+    ``fields.Url`` (:pr:`982`). Thanks user:`alefnula` for the PR.
+  - Prevent ``TypeError`` when a non-collection is passed to a ``Schema`` with ``many=True``.
+    Instead, raise ``ValidationError`` with ``{'_schema': ['Invalid input type.']}`` (:issue:`906`).
+  - Fix ``root`` attribute for nested container fields on list
+    on inheriting schemas (:issue:`956`). Thanks :user:`bmcbu`
+    for reporting.
+  - Handle empty SQLAlchemy lazy lists gracefully when dumping (:issue:`948`).
+    Thanks :user:`vke-code` for the catch and :user:`YuriHeupa` for the patch.
+  - Respect ``load_from`` when reporting errors for ``@validates('field_name')``
+    (:issue:`748`). Thanks :user:`m-novikov` for the catch and patch.
+  - Fix passing ``only`` as a string to ``nested`` when the passed field
+    defines ``dump_to`` (:issue:`800`, :issue:`822`). Thanks
+    :user:`deckar01` for the catch and patch.
+  - Fix a race condition in validation when concurrent threads use the
+    same ``Schema`` instance (:issue:`783`). Thanks :user:`yupeng0921` and
+    :user:`lafrech` for the fix.
+  - Fix serialization behavior of
+    ``fields.List(fields.Integer(as_string=True))`` (:issue:`788`). Thanks
+    :user:`cactus` for reporting and :user:`lafrech` for the fix.
+  - Fix behavior of ``exclude`` parameter when passed from parent to
+    nested schemas (:issue:`728`). Thanks :user:`timc13` for reporting and
+    :user:`deckar01` for the fix.
+  - :cve:`CVE-2018-17175`: Fix behavior when an empty list is passed as the ``only`` argument
+    (:issue:`772`). Thanks :user:`deckar01` for reporting and thanks
+    :user:`lafrech` for the fix.
+  - Handle ``UnicodeDecodeError`` when deserializing ``bytes`` with a
+    ``String`` field (:issue:`650`). Thanks :user:`dan-blanchard` for the
+    suggestion and thanks :user:`4lissonsilveira` for the PR.
+  - Add ``require_tld`` parameter to ``validate.URL`` (:issue:`664`).
+    Thanks :user:`sduthil` for the suggestion and the PR.
+- added patches
+  + python-marshmallow-no-version-warning.patch
+- deleted patches
+  + patch-remove-unsupported-theme-option.patch (upstreamed)
+
+-------------------------------------------------------------------
+Wed Dec 19 00:15:31 UTC 2018 - Jan Engelhardt <jengelh@inai.de>
+
+- Use noun phrase in summary.
+
+-------------------------------------------------------------------
+Tue Dec  4 12:50:18 UTC 2018 - Matej Cepl <mcepl@suse.com>
+
+- Remove superfluous devel dependency for noarch package
+
+-------------------------------------------------------------------
+Sat Aug 19 09:23:52 UTC 2017 - sebix+novell.com@sebix.at
+
+- initial package

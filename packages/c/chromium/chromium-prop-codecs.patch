@@ -1,0 +1,16 @@
+diff -urN chromium-62.0.3192.0.orig/media/BUILD.gn chromium-62.0.3192.0/media/BUILD.gn
+--- chromium-62.0.3192.0.orig/media/BUILD.gn	2017-08-25 11:22:39.294487172 +0200
++++ chromium-62.0.3192.0/media/BUILD.gn	2017-08-25 11:25:41.674488175 +0200
+@@ -42,12 +42,6 @@
+   ]
+ }
+ 
+-if (proprietary_codecs && media_use_ffmpeg) {
+-  assert(
+-      ffmpeg_branding != "Chromium",
+-      "proprietary codecs and ffmpeg_branding set to Chromium are incompatible")
+-}
+-
+ # Common configuration for targets in the media directory; these must not be
+ # exported since things like USE_NEON and USE_CRAS have different meanings
+ # elsewhere in the code base.

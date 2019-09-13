@@ -1,0 +1,51 @@
+-------------------------------------------------------------------
+Fri Sep 13 07:44:29 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Update to 0.2.1:
+  * Improves robustness of docstring parser in the face of unexpected format docstrings. #183
+
+-------------------------------------------------------------------
+Tue Jul 30 07:07:56 UTC 2019 - pgajdos@suse.com
+
+- version update to 0.2.0
+  * Help and usage screens
+  * Help screens now have a man-page appearance and are shown with less-style pagination. Usage screens are shown when a user-error is encountered. The help and usage screens are considerably cleaner than the default output in previous versions of Fire.
+  * Custom serialization
+  * If you define a custom __str__ method on an object, that will be used to serialize the object when it is the final result of a Fire command. This means better support for numpy arrays, and better support for custom types.
+  * Docstring parsing
+  * Notably, docstrings are parsed in order to determine the descriptions to use for arguments in the help screens. We largely support (but not fully) Google, numpy, and RST style docstrings. These are the three most common styles of docstring used in Python code.
+  * Access --help naturally
+  * You no longer need to separate --help from your command with an extra --. Simply running command -h or command --help will give help, provided there isn't an argument named help in your component.
+  * NamedTuples can be indexed both by their field names and by their indexes.
+  * Callable objects can both be called, and their members can be accessed.
+  * You must use flag syntax to call a callable object; you cannot pass their arguments positionally.
+  * Single-hyphen flags are supported
+  * You can now specify -flag instead of --flag if preferred. Both work.
+  * Short-flags are permitted when their use is unambiguous
+  * E.g. if your function has argument alpha, then you can specify its value with -a.
+  * Fish completion support
+- deleted patches
+  - fix-issue-164.patch (upstreamed)
+
+-------------------------------------------------------------------
+Sat Mar  9 00:26:12 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Add fix-issue-164.patch patch to fix gh#google/python-fire#164
+  and we can run whole test suite.
+
+-------------------------------------------------------------------
+Thu Feb  7 21:02:37 CET 2019 - Matej Cepl <mcepl@suse.com>
+
+- Switch of tests testFireKeywordArgs, testFireObjectWithDict,
+  testHelpStringBuiltin, and testGetFullArgSpecFromBuiltin
+  gh#google/python-fire#164
+
+-------------------------------------------------------------------
+Wed Jan  2 12:50:28 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Simplify the tests call
+
+-------------------------------------------------------------------
+Thu Nov 15 16:48:24 UTC 2018 - Todd R <toddrme2178@gmail.com>
+
+- Initial version

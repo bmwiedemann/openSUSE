@@ -1,0 +1,18 @@
+<services>
+  <service name="obs_scm" mode="disabled">
+    <param name="url">https://github.com/hashicorp/terraform.git</param>
+    <param name="scm">git</param>
+    <param name="filename">terraform</param>
+    <param name="versionformat">0.12.8</param>
+    <param name="revision">v0.12.8</param>
+    <param name="exclude">.git</param>
+  </service>
+  <service name="tar" mode="disabled"/>
+  <service name="recompress" mode="disabled">
+    <param name="file">*.tar</param>
+    <param name="compression">xz</param>
+  </service>
+  <service name="set_version" mode="disabled">
+    <param name="basename">terraform</param>
+  </service>
+</services>

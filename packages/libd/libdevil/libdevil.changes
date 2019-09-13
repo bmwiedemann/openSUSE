@@ -1,0 +1,126 @@
+-------------------------------------------------------------------
+Wed Aug 21 08:05:03 UTC 2019 - Jan Engelhardt <jengelh@inai.de>
+
+- Remove bias and marketing wording from descriptions.
+
+-------------------------------------------------------------------
+Wed Aug 21 07:39:35 UTC 2019 - mvetter@suse.com
+
+- bsc#1144245: Remove JPEG2000 support due to dropping dependency
+  on libjasper
+- Run spec-cleaner
+
+-------------------------------------------------------------------
+Sat May 12 10:57:22 UTC 2018 - antoine.belvire@opensuse.org
+
+- Fix %install_info_delete usage:
+  * It has to be performed in %preun, not %postun.
+  * See https://en.opensuse.org/openSUSE:Packaging_Conventions_RPM_Macros#.25install_info_delete.
+
+-------------------------------------------------------------------
+Sat Apr  7 18:39:11 UTC 2018 - wbauer@tmo.at
+
+- Add jp2-remove-use-of-uchar-define.patch to fix build with newer
+  jasPer
+
+-------------------------------------------------------------------
+Mon May 29 13:01:06 UTC 2017 - dimstar@opensuse.org
+
+- Drop lcms-devel BuildRequires and pass --disable-lcms to
+  configure: lcms upstream explicitly recommends no longer to use
+  this outdated version of the library (DevIL 1.8.0 seems to gain
+  lcms2 support).
+
+-------------------------------------------------------------------
+Fri Jun 26 15:44:59 UTC 2015 - antoine.belvire@laposte.net
+
+- Fix compilation with GCC 5: add DevIL-1.7.8-gcc5.patch. 
+
+-------------------------------------------------------------------
+Wed Oct  2 11:00:14 UTC 2013 - lnussel@suse.de
+
+- make sure to not use il_wdp.c
+
+-------------------------------------------------------------------
+Sat Sep  7 13:48:01 UTC 2013 - tchvatal@suse.com
+
+- Kill the mandriva code as they are not using it anyway.
+- Add missing deps to build all features possible
+- Move the ilur binary to separate tools package as it is GPL-3.0+
+  licensed.
+
+-------------------------------------------------------------------
+Mon Aug 26 08:47:05 UTC 2013 - tchvatal@suse.com
+
+- Fix wrong require on -devel package.
+
+-------------------------------------------------------------------
+Fri Aug 23 14:13:23 CEST 2013 - mhrusecky@suse.cz
+
+- Renamed spec and main package to be consistent
+
+-------------------------------------------------------------------
+Sun Feb 19 10:04:45 UTC 2012 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+
+-------------------------------------------------------------------
+Tue Aug 30 18:02:19 UTC 2011 - reddwarf@opensuse.org
+
+- Remove false Requires from the devel package
+- Add the full URL to the Source tag
+- Use the original tarball without recompression
+
+-------------------------------------------------------------------
+Thu Jul 22 09:49:23 UTC 2010 - bitshuffler@opensuse.org
+
+- Use %_smp_mflags
+- Clean up .spec
+- Make .spec compatible with Mandriva
+
+-------------------------------------------------------------------
+Tue Jun 29 17:35:55 UTC 2010 - cmorve69@yahoo.es
+
+- Remove static libs
+- Fix compilation with libpng 1.4
+- Fix CVE-2009-3994
+
+-------------------------------------------------------------------
+Wed Apr  8 00:00:00 CEST 2009 - dominique-obs@leuenberger.net
+
+- Actually do not mistype --enable-ILUT and also add --enable-ILU (which is
+  not, as mentioned in the help, implied with --enable-ILUT).
+- Added patch DevIL-%{version}-return-random-data.patch
+-------------------------------------------------------------------
+Tue Apr  7 00:00:00 CEST 2009 - dominique-obs@leuenberger.net
+
+- --enable-iLUT (bnc#492294#c3)
+- Exclude the *.la files.
+-------------------------------------------------------------------
+Mon Apr  6 00:00:00 CEST 2009 - dominique-obs@leuenberger.net
+
+- Upgrade to version 1.7.8 (bnc#492294)
+  For the entire NEWS, see (to long to be copied here, 5 versions)
+  http://openil.svn.sourceforge.net/viewvc/openil/trunk/DevIL/NEWS?revision=1564
+- Package renames: libdevil1 => libIL1 (SHLib policy)
+- Package renames: libdevil-devel => DevIL-devel
+-------------------------------------------------------------------
+Mon Dec  1 00:00:00 CET 2008 - dominique-obs@leuenberger.net
+
+- inlcude the entire %{includeir}/IL directory, not only it's content to claim
+  directory ownership.
+-------------------------------------------------------------------
+Fri Nov 28 00:00:00 CET 2008 - dominique-obs@leuenberger.net
+
+- Drop the self-generated libtool and link the one from /usr/bin
+  (this fixes builds on openSUSE Factory)
+-------------------------------------------------------------------
+Tue Sep 30 00:00:00 CEST 2008 - dominique-obs@leuenberger.net
+
+- Upgraded to version 1.7.2
+
+-------------------------------------------------------------------
+Tue Jul 15 00:00:00 CEST 2008 - dominique-obs@leuenberger.net
+
+- Added post and postun sections and other rpmlint fixes (bnc#408847)
+
