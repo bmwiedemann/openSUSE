@@ -1,0 +1,239 @@
+-------------------------------------------------------------------
+Mon Apr  8 09:07:57 UTC 2019 - mvetter@suse.com
+
+- Update to 0.8.5:
+  Features:
+  * Added a visual filter editor to make it easier to update existing
+    filters. The editor can be opened by pressing TAB. Once the editor
+    is opened, you can create/delete, enable/disable, and edit the patterns
+    with hotkeys.
+  * Added an 'lnav_view_filters' SQL table that can be used to
+    programmatically manipulate filters.
+  * Added an 'lnav_view_filter_stats' SQL table that contains the number of
+    times a given filter matched a line in the view.
+  * Added a 'log_filters' column to log tables that can be used to see what
+    filters matched the log message.
+  * A history of locations in a view is now kept so that you can jump back
+    to where you were previously using the '{' and '}' keys. The location
+    history can also be accessed through the ":prev-location" and
+    ":next-location" commands.
+  * The ":write-*" commands will now accept "/dev/clipboard" as a file name
+    that writes to the system clipboard.
+  * The ":write-to" and ":write-raw-to" commands will now print out comments
+    and tags attached to the lines.
+  * Added a ":redirect-to " command to redirect command output to the
+    given file. This command is mostly useful in scripts where one might
+    want to redirect all output from commands like ":echo" and ":write-to -"
+    to a single file.
+  * If a log file format has multiple patterns for matching log messages,
+    each pattern is now tried to match a message in a file. Previously,
+    only one pattern was ever used for an entire file.
+  * Added haproxy log format from Peter Hoffmann.
+  * Added 'spooky_hash()' and 'group_spooky_hash()' SQL functions to
+    generate a hash of their parameters.
+  * Added 'time_offset' to the 'lnav_file' table so that the timestamps in
+    a file can be adjusted programmatically.
+  Interface Changes:
+  * The auto-complete behavior in the prompt has been modified to fall back
+    to a fuzzy search if the prefix search finds no matches. For example,
+    typing in ":fin" and pressing TAB would previously not do anything.
+    Now, the ":fin" will be completed to ":filter-in " since that is a
+    strong fuzzy match. If there are multiple matches, as would happen
+    with ":dfil", readline's menu-complete behavior will be engaged and
+    you can press TAB cycle through the options.
+  * Added CTRL+F to toggle the enabled/disabled state of all filters for the
+    current view.
+  * The '-r' flag is now for recursively loading files. The functionality
+    for loading rotated files is now under the '-R' flag.
+  * The current search term is now shown in the bottom status bar.
+  * Some initial help text is now shown for the search and SQL prompts to
+    refresh the memory.
+  * When entering the ":comment" command for a line with a comment, the
+    command prompt will be filled in with the existing comment to make
+    editing easier.
+  * Hidden fields now show up as a unicode vertical ellipsis (⋮) instead of
+    three-dot ellipsis to save space.
+  * Pressing 7/8 will now move to the previous/next minute.
+  * The ":write-raw-to" command has been changed to write the entire
+    contents of the current view and a ":write-screen-to" command has been
+    added to write only the current screen contents.
+  * Disabled filters are now saved in sessions.
+  * The ":adjust-log-time" command now accepts relative times as input.
+  Fixes:
+  * The ":write-json-to" command will now pass through JSON cells as their
+    JSON values instead of a JSON-encoded string.
+
+-------------------------------------------------------------------
+Tue Aug 28 06:53:18 UTC 2018 - mvetter@suse.com
+
+- Update to 0.8.4:
+  Features:
+  * Added the ':comment' command that can be used to attach a comment to a
+    log line. The comment will be displayed below the line, like so:
+    2017-01-01T15:30:00 error: computer is on fire
+    + This is where it all went wrong
+    The ':clear-comment' command will remove the attached comment. Comments
+    are searchable with the standard search mechanism and they are available
+    in SQL through the "log_comment" column.
+  * Added the ':tag', ':untag', and ':delete-tags' commands that can be used
+    to attach/detach tags on the top log line and delete all instances of
+    a tag. Tags are also searchable and are available in SQL as a JSON
+    array in the "log_tags" column.
+  * Pressing left-arrow while viewing log messages will reveal the source
+    file name for each line and the unique parts of the source path.
+    Pressing again will reveal the full path.
+  * The file name section of the top status line will show only the unique
+    parts of the log file path if there is not enough room to show the full
+    path.
+  * Added the ":hide-unmarked-lines" and ":show-unmarked-lines" commands
+    that hide/show lines based on whether they are bookmarked.
+  * Added the "json_contains()" SQL function to check if a JSON value
+    contains a number of a string.
+  * The relative time parser recognizes "next" at the beginning of the
+    input, for example, "next hour" or "next day". Handy for use in the
+    ":goto" command.
+  * Added a "text-transform" option for formatting JSON log messages. The
+    supported options are: none, uppercase, lowercase, and capitalize.
+  * Added a special "level" field name for formatting JSON messages so
+    that the lnav level name can be used instead of the internal value in
+    the JSON object.
+  * Added a log format for journald JSON logs
+  Interface Changes:
+  * When typing in a search, instead of moving the view to the first match
+    that was found, the first ten matches will be displayed in the preview
+    window.
+  * The pretty-print view maintains highlighting from the log view.
+  * The pretty-print view no longer tries to reverse lookup IP addresses.
+  * The online help for commands and SQL functions now includes a 'See Also'
+    section that lists related commands/functions.
+  Fixes:
+  * The HOME key should now work in the command-prompt and move the cursor
+    to the beginning of the line.
+  * The :delete-filter command should now tab-complete existing filters.
+  * Milliseconds can now be used in relative times (e.g. 10:00:00.123)
+  * The J/K hotkeys were not marking lines correctly when the bottom of
+    the view was reached.
+  * The level field in JSON logs should now be recognized by the level
+    patterns in the format.
+
+-------------------------------------------------------------------
+Thu Jun  7 17:49:12 UTC 2018 - mardnh@gmx.de
+
+- Update to version 0.8.3b
+  - minor fixes
+- Fix URL
+
+-------------------------------------------------------------------
+Wed Jun  6 11:04:40 UTC 2018 - mardnh@gmx.de
+
+- Fix build for Leap 15.0
+
+-------------------------------------------------------------------
+Mon Feb 12 10:26:39 UTC 2018 - mvetter@suse.com
+
+- Update to 0.8.3:
+  * Support for the Bro Network Security Monitor log file format.
+  * Added an fstat() table-valued function for querying the local filesystem.
+  * Added readlink() and realpath() SQL functions.
+  * Highlights specified in log formats can now specify the colors to use for the highlighted parts of the log message.
+  * Added a ":quit" command.
+  * Added a "/ui/default-colors" configuration option to specify that the terminal's default background and foreground colors should be used instead of black and white.
+  * The help view now includes all the command-help that would pop up as you entered commands and SQL queries.
+  * Hidden fields and lines hidden before/after times are now saved in the current session and restored.
+  * Unicode characters should now be displayed correctly (make sure you have LANG set to a UTF-8 locale).
+
+-------------------------------------------------------------------
+Thu Dec 28 12:08:27 UTC 2017 - adam.majer@suse.de
+
+- Specify C++ compiler explicitly when using non-default GCC
+- Add specific version build requires for SQLite
+
+-------------------------------------------------------------------
+Thu Dec 21 11:36:46 UTC 2017 - mvetter@suse.com
+
+- Update to 0.8.2:
+  * The captured timestamp text in log files must fully match a
+    known format or an error will be reported.
+    The previous behavior was to ignore any text at the end of
+	the line
+  * Log format definitions can now specify the expected log level
+    for a sample line
+  * Log formats can now define a default set of highlights with the
+    "highlights" property
+  * Added a ':mark' command to bookmark the top line in the current view
+  * For a full list please see the NEWS file
+- Remove lnav-fix_32bit_use_size_t.patch: upstreamed
+
+-------------------------------------------------------------------
+Wed Aug 17 13:01:39 UTC 2016 - adam@mizerski.pl
+
+- update to 0.8.1
+  * see NEWS file for changelog
+- specfile cleanup
+
+-------------------------------------------------------------------
+Fri Jan 03 14:14:52 UTC 2014 - pascal.bleser@opensuse.org
+
+- update to 0.6.2:
+  * adds word-wrap support
+
+- changes from 0.6.1:
+  * adds support for JSON-encoded log files
+  * some minor fixes and performance improvements
+
+-------------------------------------------------------------------
+Mon Sep 02 05:55:26 UTC 2013 - pascal.bleser@opensuse.org
+
+- update to 0.6.0:
+  * Custom log formats and more builtin formats
+  * Automatic extraction of data from logs
+  * UI improvements, support for 256 color terminals
+  * package: update header and license
+
+- changes from 0.5.1:
+  * Added the '-t' and '-w' options which can be used to prepend a
+    timestamp to any data piped in on stdin and to specify a file to
+    write the contents of stdin to.
+
+- changes from 0.5.0:
+  * Files can be specified on the command-line using wildcards so that
+    new files are automatically loaded.  Directories can also be passed
+    as command-line arguments to read all of the files in the directory.
+  * Added the 'C' hotkey to clear any existing user bookmarks.
+  * Added experimental support for accepting input from mice.
+
+-------------------------------------------------------------------
+Sun Jul 31 22:42:09 UTC 2011 - pascal.bleser@opensuse.org
+
+- fix 32bit builds
+
+-------------------------------------------------------------------
+Thu Jul 21 23:02:26 UTC 2011 - pascal.bleser@opensuse.org
+
+- update to 0.4.0:
+  * files that are not recognized as containing log messages have been broken
+    out to a separate text files view; you can flip between the log view and
+    the text file view with the 't' hotkey; when viewing text files, the 'f'
+    hotkey will switch between files
+  * files compressed with bzip2 are recognized and decompressed on the fly
+  * added a "session" file and command for storing commands that should be
+    executed on startup; for example, if you always want some highlighting to
+    be done, you can add that command to the session file
+  * add some more log file formats for generic log files
+  * performance improvements for compressed files
+
+-------------------------------------------------------------------
+Mon Apr 26 09:40:35 UTC 2010 - pascal.bleser@opensuse.org
+
+- update to 0.3.0:
+  * switch between the SQL result view and the log view while keeping the top
+    of the views in sync with the "line_number" column
+  * the "line_number" column is no longer included in the SQL result view's
+    stacked bar graph
+  * a "warnings" count was added to the histogram view
+
+-------------------------------------------------------------------
+Thu Feb 25 23:04:18 UTC 2010 - pascal.bleser@opensuse.org
+
+- initial package (0.2.0)
+
