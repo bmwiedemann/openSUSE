@@ -1,0 +1,181 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-rhbz795424-bitpos-21of25.patch
+
+;; Fix `GDB cannot access struct member whose offset is larger than 256MB'
+;; (RH BZ 795424).
+;;=push
+
+http://sourceware.org/ml/gdb-patches/2012-09/msg00632.html
+
+--MP_/PnL6l3LUsXWpZ/olqawWlzb
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Content-Disposition: inline
+
+Hi,
+
+This is part two of the bitpos expansion patch.  This implements checks
+in some places in the code to ensure that a type size in ULONGEST is
+small enough to fit into host memory.  Tested for regressions on x86_64
+Fedora 16.
+
+Regards,
+Siddhesh
+
+--MP_/PnL6l3LUsXWpZ/olqawWlzb
+Content-Type: text/plain
+Content-Transfer-Encoding: quoted-printable
+Content-Disposition: attachment; filename=ChangeLog-ensure_sizet
+
+gdb/ChangeLog
+
+	* alpha-tdep.c (alpha_push_dummy_call) Check for underflow in
+	SP.
+	* cp-valprint (cp_print_value): Ensure BASECLASS fits into
+	size_t.
+	* dwarf2loc.c (read_pieced_value): Ensure that THIS_SIZE fits
+	into size_t.
+	(write_pieced_value): Likewise.
+	* findcmd.c (parse_find_args): Ensure PATTERN_BUF_SIZE fits into
+	size_t.
+	* p-valprint (pascal_object_print_value): Ensure BASECLASS fits
+	into size_t.
+	* utils.c (ulongest_fits_host_or_error): New function to find if
+	a ULONGEST number fits into size_t.
+	* utils.h: Declare ulongest_fits_host_or_error.
+	* valops.c (search_struct_method): Ensure BASECLASS fits into
+	size_t.
+	* value.c (allocate_value_lazy): Ensure TYPE fits into size_t.
+	(allocate_value_contents): Likewise.
+	(set_value_enclosing_type): Ensure NEW_ENCL_TYPE fits into
+	size_t.
+	* vax-tdep.c (vax_return_value): Ensure that TYPE fits into
+	size_t.
+
+--MP_/PnL6l3LUsXWpZ/olqawWlzb
+Content-Type: text/x-patch
+Content-Transfer-Encoding: 7bit
+Content-Disposition: attachment; filename=bitpos-ensure-size_t.patch
+
+diff --git a/gdb/alpha-tdep.c b/gdb/alpha-tdep.c
+--- a/gdb/alpha-tdep.c
++++ b/gdb/alpha-tdep.c
+@@ -414,6 +414,13 @@ alpha_push_dummy_call (struct gdbarch *gdbarch, struct value *function,
+     accumulate_size = 0;
+   else
+     accumulate_size -= sizeof(arg_reg_buffer);
++
++  /* Check for underflow.  */
++  if (sp - accumulate_size > sp)
++    error (_("Insufficient memory in GDB host for arguments, "
++	     "need %s bytes, but less than %s bytes available."),
++	   plongest (accumulate_size), plongest (CORE_ADDR_MAX - sp));
++
+   sp -= accumulate_size;
+ 
+   /* Keep sp aligned to a multiple of 16 as the ABI requires.  */
+diff --git a/gdb/cp-valprint.c b/gdb/cp-valprint.c
+--- a/gdb/cp-valprint.c
++++ b/gdb/cp-valprint.c
+@@ -529,6 +529,7 @@ cp_print_value (struct type *type, struct type *real_type,
+ 	      if ((boffset + offset) < 0
+ 		  || (boffset + offset) >= TYPE_LENGTH (real_type))
+ 		{
++		  ulongest_fits_host_or_error (TYPE_LENGTH (baseclass));
+ 		  gdb::byte_vector buf (TYPE_LENGTH (baseclass));
+ 
+ 		  if (target_read_memory (address + boffset, buf.data (),
+diff --git a/gdb/defs.h b/gdb/defs.h
+--- a/gdb/defs.h
++++ b/gdb/defs.h
+@@ -669,4 +669,6 @@ DEF_ENUM_FLAGS_TYPE (enum user_selected_what_flag, user_selected_what);
+ 
+ #include "utils.h"
+ 
++extern void ulongest_fits_host_or_error (ULONGEST num);
++
+ #endif /* #ifndef DEFS_H */
+diff --git a/gdb/p-valprint.c b/gdb/p-valprint.c
+--- a/gdb/p-valprint.c
++++ b/gdb/p-valprint.c
+@@ -775,6 +775,7 @@ pascal_object_print_value (struct type *type, const gdb_byte *valaddr,
+ 
+ 	  if (boffset < 0 || boffset >= TYPE_LENGTH (type))
+ 	    {
++	      ulongest_fits_host_or_error (TYPE_LENGTH (baseclass));
+ 	      buf.resize (TYPE_LENGTH (baseclass));
+ 
+ 	      base_valaddr = buf.data ();
+diff --git a/gdb/utils.c b/gdb/utils.c
+--- a/gdb/utils.c
++++ b/gdb/utils.c
+@@ -2957,6 +2957,17 @@ string_to_core_addr (const char *my_string)
+   return addr;
+ }
+ 
++/* Ensure that the input NUM is not larger than the maximum capacity of the
++   host system.  We choose SIZE_MAX / 8 as a conservative estimate of the size
++   of a resource that a system may allocate.  */
++void
++ulongest_fits_host_or_error (ULONGEST num)
++{
++  if (num > SIZE_MAX / 8)
++    error (_("Insufficient memory in host GDB for object of size %s bytes, "
++	     "maximum allowed %s bytes."), pulongest (num),
++	   pulongest (SIZE_MAX / 8));
++}
+ #if GDB_SELF_TEST
+ 
+ static void
+diff --git a/gdb/valops.c b/gdb/valops.c
+--- a/gdb/valops.c
++++ b/gdb/valops.c
+@@ -2064,6 +2064,7 @@ search_struct_method (const char *name, struct value **arg1p,
+ 	    {
+ 	      CORE_ADDR address;
+ 
++	      ulongest_fits_host_or_error (TYPE_LENGTH (baseclass));
+ 	      gdb::byte_vector tmp (TYPE_LENGTH (baseclass));
+ 	      address = value_address (*arg1p);
+ 
+diff --git a/gdb/value.c b/gdb/value.c
+--- a/gdb/value.c
++++ b/gdb/value.c
+@@ -933,6 +933,7 @@ allocate_value_lazy (struct type *type)
+      description correctly.  */
+   check_typedef (type);
+ 
++  ulongest_fits_host_or_error (TYPE_LENGTH (type));
+   val = new struct value (type);
+ 
+   /* Values start out on the all_values chain.  */
+@@ -1015,6 +1016,8 @@ check_type_length_before_alloc (const struct type *type)
+ static void
+ allocate_value_contents (struct value *val)
+ {
++  ulongest_fits_host_or_error (TYPE_LENGTH (val->enclosing_type));
++
+   if (!val->contents)
+     {
+       check_type_length_before_alloc (val->enclosing_type);
+@@ -2874,6 +2877,7 @@ set_value_enclosing_type (struct value *val, struct type *new_encl_type)
+   if (TYPE_LENGTH (new_encl_type) > TYPE_LENGTH (value_enclosing_type (val)))
+     {
+       check_type_length_before_alloc (new_encl_type);
++      ulongest_fits_host_or_error (TYPE_LENGTH (new_encl_type));
+       val->contents
+ 	.reset ((gdb_byte *) xrealloc (val->contents.release (),
+ 				       TYPE_LENGTH (new_encl_type)));
+diff --git a/gdb/vax-tdep.c b/gdb/vax-tdep.c
+--- a/gdb/vax-tdep.c
++++ b/gdb/vax-tdep.c
+@@ -219,6 +219,7 @@ vax_return_value (struct gdbarch *gdbarch, struct value *function,
+ 	  ULONGEST addr;
+ 
+ 	  regcache_raw_read_unsigned (regcache, VAX_R0_REGNUM, &addr);
++	  ulongest_fits_host_or_error (TYPE_LENGTH (type));
+ 	  read_memory (addr, readbuf, len);
+ 	}
+ 

@@ -1,0 +1,23 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-libexec-add-index.patch
+
+;; Fix gdb-headless /usr/bin/ executables (BZ 1390251).
+;;=fedora
+
+diff --git a/gdb/contrib/gdb-add-index.sh b/gdb/contrib/gdb-add-index.sh
+--- a/gdb/contrib/gdb-add-index.sh
++++ b/gdb/contrib/gdb-add-index.sh
+@@ -21,6 +21,11 @@
+ GDB=${GDB:=gdb}
+ OBJCOPY=${OBJCOPY:=objcopy}
+ 
++GDB2=/usr/libexec/gdb
++if test -x $GDB2 && ! which $GDB &>/dev/null; then
++    GDB=$GDB2
++fi
++
+ myname="${0##*/}"
+ 
+ dwarf5=""

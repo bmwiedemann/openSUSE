@@ -1,0 +1,154 @@
+Fix breakpoints on file reloads for PIE binaries
+
+When a binary is built using PIE, reloading the file will cause GDB to error
+on restart.  For example:
+gdb ./a.out
+(gdb) break main
+(gdb) run
+(gdb) file ./a.out
+(gdb) continue
+
+Will cause GDB to error with:
+Continuing.
+Warning:
+Cannot insert breakpoint 1.
+Cannot access memory at address 0x9e0
+Command aborted.
+
+This is due to the symbol offsets not being relocated after reloading the file.
+
+Fix is to ensure solib_create_inferior_hook is called, in the same manner as
+infrun.c:follow_exec().
+
+Expand the idempotent test to cover PIE scenarios.
+
+gdb/ChangeLog:
+
+	* symfile.c (symbol_file_command): Call solib_create_inferior_hook.
+
+gdb/testsuite/ChangeLog:
+
+	* gdb.base/break-idempotent.exp: Test both PIE and non PIE.
+
+---
+ gdb/ChangeLog                               |  4 ++
+ gdb/symfile.c                               | 12 ++++++
+ gdb/testsuite/ChangeLog                     |  4 ++
+ gdb/testsuite/gdb.base/break-idempotent.exp | 66 ++++++++++++++++-------------
+ 4 files changed, 56 insertions(+), 30 deletions(-)
+
+diff --git a/gdb/symfile.c b/gdb/symfile.c
+index bd79315687..a03ac29541 100644
+--- a/gdb/symfile.c
++++ b/gdb/symfile.c
+@@ -1672,7 +1672,19 @@ symbol_file_command (const char *args, int from_tty)
+ 
+       validate_readnow_readnever (flags);
+ 
++      /* Set SYMFILE_DEFER_BP_RESET because the proper displacement for a PIE
++	 (Position Independent Executable) main symbol file will only be
++	 computed by the solib_create_inferior_hook below.  Without it,
++	 breakpoint_re_set would fail to insert the breakpoints with the zero
++	 displacement.  */
++      add_flags |= SYMFILE_DEFER_BP_RESET;
++
+       symbol_file_add_main_1 (name, add_flags, flags, offset);
++
++      solib_create_inferior_hook (from_tty);
++
++      /* Now it's safe to re-add the breakpoints.  */
++      breakpoint_re_set ();
+     }
+ }
+ 
+diff --git a/gdb/testsuite/gdb.base/break-idempotent.exp b/gdb/testsuite/gdb.base/break-idempotent.exp
+index 902a5f818b..96f91c50f9 100644
+--- a/gdb/testsuite/gdb.base/break-idempotent.exp
++++ b/gdb/testsuite/gdb.base/break-idempotent.exp
+@@ -36,23 +36,6 @@
+ 
+ standard_testfile
+ 
+-if {[prepare_for_testing "failed to prepare" $testfile $srcfile debug]} {
+-    return -1
+-}
+-
+-if ![runto_main] then {
+-    fail "can't run to main"
+-    return 0
+-}
+-
+-if [is_remote host] {
+-    set arg [remote_download host $binfile]
+-    if { $arg == "" } {
+-	perror "download failed"
+-	return -1
+-    }
+-}
+-
+ # Force a breakpoint re-set in GDB.  Currently this is done by
+ # reloading symbols with the "file" command.
+ 
+@@ -123,7 +106,7 @@ proc set_breakpoint { break_command } {
+ proc test_break { always_inserted break_command } {
+     set cmd [lindex [split "$break_command"] 0]
+ 
+-    with_test_prefix "always-inserted $always_inserted: $cmd" {
++    with_test_prefix "$cmd" {
+ 	delete_breakpoints
+ 
+ 	if ![runto_main] then {
+@@ -163,20 +146,43 @@ proc test_break { always_inserted break_command } {
+     }
+ }
+ 
+-foreach always_inserted { "off" "on" } {
+-    test_break $always_inserted "break"
++# The testcase uses the "file" command to force breakpoint re-set in
++# GDB.  Test both with and without PIE, as GDB used to mishandle
++# breakpoint re-set when reloading PIEs.
++foreach_with_prefix pie { "nopie" "pie" } {
++
++    set opts {debug}
++    lappend opts $pie
+ 
+-    if {![skip_hw_breakpoint_tests]} {
+-	test_break $always_inserted "hbreak"
++    set binfile [standard_output_file $testfile-$pie]
++
++    if {[prepare_for_testing "failed to prepare" $binfile $srcfile $opts]} {
++	continue
+     }
+ 
+-    if {![skip_hw_watchpoint_tests]} {
+-	test_break $always_inserted "watch"
++    if [is_remote host] {
++	set arg [remote_download host $binfile]
++	if { $arg == "" } {
++	    untested "download failed"
++	    continue
++	}
+     }
+ 
+-    if {![skip_hw_watchpoint_access_tests]
+-	&& ![skip_hw_watchpoint_multi_tests]} {
+-	test_break $always_inserted "rwatch"
+-	test_break $always_inserted "awatch"
++    foreach_with_prefix always_inserted { "off" "on" } {
++	test_break $always_inserted "break"
++
++	if {![skip_hw_breakpoint_tests]} {
++	    test_break $always_inserted "hbreak"
++	}
++
++	if {![skip_hw_watchpoint_tests]} {
++	    test_break $always_inserted "watch"
++	}
++
++	if {![skip_hw_watchpoint_access_tests]
++	    && ![skip_hw_watchpoint_multi_tests]} {
++	    test_break $always_inserted "rwatch"
++	    test_break $always_inserted "awatch"
++	}
+     }
+ }

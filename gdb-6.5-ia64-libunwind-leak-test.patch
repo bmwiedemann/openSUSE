@@ -1,0 +1,130 @@
+From FEDORA_PATCHES Mon Sep 17 00:00:00 2001
+From: Fedora GDB patches <invalid@email.com>
+Date: Fri, 27 Oct 2017 21:07:50 +0200
+Subject: gdb-6.5-ia64-libunwind-leak-test.patch
+
+;; Test ia64 memory leaks of the code using libunwind.
+;;=fedoratest
+
+diff --git a/gdb/testsuite/gdb.base/unwind-leak.c b/gdb/testsuite/gdb.base/unwind-leak.c
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/unwind-leak.c
+@@ -0,0 +1,29 @@
++/* This testcase is part of GDB, the GNU debugger.
++
++   Copyright 2007 Free Software Foundation, Inc.
++
++   This program is free software; you can redistribute it and/or modify
++   it under the terms of the GNU General Public License as published by
++   the Free Software Foundation; either version 2 of the License, or
++   (at your option) any later version.
++
++   This program is distributed in the hope that it will be useful,
++   but WITHOUT ANY WARRANTY; without even the implied warranty of
++   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++   GNU General Public License for more details.
++ 
++   You should have received a copy of the GNU General Public License
++   along with this program; if not, write to the Free Software
++   Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
++
++   Please email any bugs, comments, and/or additions to this file to:
++   bug-gdb@prep.ai.mit.edu  */
++
++#include <unistd.h>
++
++int main()
++{
++  for (;;)
++    alarm (0);
++  return 0;
++}
+diff --git a/gdb/testsuite/gdb.base/unwind-leak.exp b/gdb/testsuite/gdb.base/unwind-leak.exp
+new file mode 100644
+--- /dev/null
++++ b/gdb/testsuite/gdb.base/unwind-leak.exp
+@@ -0,0 +1,83 @@
++# Copyright 2007 Free Software Foundation, Inc.
++
++# This program is free software; you can redistribute it and/or modify
++# it under the terms of the GNU General Public License as published by
++# the Free Software Foundation; either version 2 of the License, or
++# (at your option) any later version.
++# 
++# This program is distributed in the hope that it will be useful,
++# but WITHOUT ANY WARRANTY; without even the implied warranty of
++# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
++# GNU General Public License for more details.
++# 
++# You should have received a copy of the GNU General Public License
++# along with this program; if not, write to the Free Software
++# Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.  
++
++set testfile unwind-leak
++set srcfile ${testfile}.c
++set shfile [standard_output_file ${testfile}-gdb.sh]
++set binfile [standard_output_file ${testfile}]
++if  { [gdb_compile "${srcdir}/${subdir}/${srcfile}" "${binfile}" executable {debug}] != "" } {
++    untested "Couldn't compile test program"
++    return -1
++}
++
++# Get things started.
++
++gdb_exit
++gdb_start
++gdb_reinitialize_dir $srcdir/$subdir
++gdb_load ${binfile}
++
++set pid [exp_pid -i [board_info host fileid]]
++
++# For C programs, "start" should stop in main().
++
++gdb_test "start" \
++         "main \\(\\) at .*$srcfile.*" \
++         "start"
++
++set loc [gdb_get_line_number "alarm"]
++gdb_breakpoint $loc
++
++proc memory_get {} {
++    global pid
++    set fd [open "/proc/$pid/statm"]
++    gets $fd line
++    close $fd
++    # number of pages of data/stack
++    scan $line "%*d%*d%*d%*d%*d%d" drs
++    return $drs
++}
++
++set cycles 100
++# For 100 cycles it was 1308: from = 363 KB, to = 1671 KB
++set permit_kb 100
++verbose -log "cycles = $cycles, permit_kb = $permit_kb"
++
++set fail 0
++set test "breakpoint stop/continue cycles" 
++for {set i $cycles} {$i > 0} {set i [expr {$i - 1}]} {
++    gdb_test_multiple "continue" $test {
++	-re "Breakpoint 2, main .*alarm .*.*${gdb_prompt} $" {
++	}
++	-re "Segmentation fault" {
++	    fail $test
++	    set i 0
++	    set fail 1
++	}
++    }
++    if ![info exists from] {
++	set from [memory_get]
++    }
++}
++set to [memory_get]
++if {!$fail} {
++    verbose -log "from = $from KB, to = $to KB"
++    if {$from > 0 && $to > 10 && $to < $from + $permit_kb} {
++	pass $test
++    } else {
++	fail $test
++    }
++}

@@ -1,0 +1,30 @@
+In gdb-rhbz795424-bitpos-20of25.patch, the TYPE_LENGTH is changed from
+unsigned to ULONGEST.
+
+This breaks the build on RISC-V:
+...
+gdb/riscv-tdep.c: In function 'int riscv_type_alignment(type*)':
+gdb/riscv-tdep.c:1648:64: error: no matching function for call to \
+  'min(ULONGEST&, unsigned int)'
+   return std::min (TYPE_LENGTH (t), (unsigned) BIGGEST_ALIGNMENT);
+...
+
+Fix this by backporting a fragment of an unrelated commit on master that
+also changes TYPE_LENGTH from unsigned to ULONGEST.
+...
+$ git show --pretty=%p cc1defb1dc gdb/riscv-tdep.c
+...
+
+diff --git a/gdb/riscv-tdep.c b/gdb/riscv-tdep.c
+index 8a996f32d3..ff5f36e762 100644
+--- a/gdb/riscv-tdep.c
++++ b/gdb/riscv-tdep.c
+@@ -1645,7 +1645,7 @@ riscv_type_alignment (struct type *t)
+ 
+     case TYPE_CODE_ARRAY:
+       if (TYPE_VECTOR (t))
+-	return std::min (TYPE_LENGTH (t), (unsigned) BIGGEST_ALIGNMENT);
++	return std::min (TYPE_LENGTH (t), (ULONGEST) BIGGEST_ALIGNMENT);
+       /* FALLTHROUGH */
+ 
+     case TYPE_CODE_COMPLEX:
