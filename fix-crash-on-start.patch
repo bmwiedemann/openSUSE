@@ -1,0 +1,24 @@
+diff --git a/cura/CuraApplication.py b/cura/CuraApplication.py
+index 2f845c710..8cf10ae3d 100755
+--- a/cura/CuraApplication.py
++++ b/cura/CuraApplication.py
+@@ -855,6 +855,9 @@ class CuraApplication(QtApplication):
+         # Initialize QML engine
+         self.setMainQml(Resources.getPath(self.ResourceTypes.QmlFiles, "Cura.qml"))
+         self._qml_import_paths.append(Resources.getPath(self.ResourceTypes.QmlFiles))
++        from cura.API import CuraAPI
++        qmlRegisterSingletonType(CuraAPI, "Cura", 1, 1, "API", self.getCuraAPI)
++
+         self.initializeEngine()
+ 
+         # Initialize UI state
+@@ -1070,9 +1073,6 @@ class CuraApplication(QtApplication):
+ 
+         qmlRegisterType(PrinterOutputDevice, "Cura", 1, 0, "PrinterOutputDevice")
+ 
+-        from cura.API import CuraAPI
+-        qmlRegisterSingletonType(CuraAPI, "Cura", 1, 1, "API", self.getCuraAPI)
+-
+         # As of Qt5.7, it is necessary to get rid of any ".." in the path for the singleton to work.
+         actions_url = QUrl.fromLocalFile(os.path.abspath(Resources.getPath(CuraApplication.ResourceTypes.QmlFiles, "Actions.qml")))
+         qmlRegisterSingletonType(actions_url, "Cura", 1, 0, "Actions")
