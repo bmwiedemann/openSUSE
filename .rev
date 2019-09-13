@@ -1,0 +1,71 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>df95611d67daaf78fbe666a026871e84</srcmd5>
+    <version>0.14.2</version>
+    <time>1562843300</time>
+    <user>dimstar_suse</user>
+    <comment>kitty, OpenGL powered terminal</comment>
+    <requestid>712236</requestid>
+  </revision>
+  <revision rev="2" vrev="1">
+    <srcmd5>03ab5225ab809e6a43a602dc40d74db2</srcmd5>
+    <version>0.14.3</version>
+    <time>1564414280</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.3:
+  * Remote control: Add a command kitty @ scroll-window to scroll windows
+  * Allow passing a !neighbor argument to the new_window mapping to open
+    a new window next to the active window (#1746)
+  * Document the kitty remote control protocol (#1646)
+  * Add a new option pointer_shape_when_grabbed that allows you to control
+    the mouse pointer shape when the terminal programs grabs the pointer (#1808)
+  * Add an option terminal_select_modifiers to control which modifiers are
+    used to override mouse selection even when a terminal application has
+    grabbed the mouse (#1774)
+  * When piping data to a child in the pipe command do it in a thread so as
+    not to block the UI (#1708)
+  * unicode_input kitten: Fix a regression that broke using indices to select
+    recently used symbols.
+  * Fix a regression that caused closing an overlay window to focus the previously
+    focused window rather than the underlying window (#1720)
+  * Linux: Fix incorrect scaling for fallback fonts when the font has an underscore
+    that renders out of bounds (#1713)
+  * Fix an out of bounds read causing a crash when selecting text with the mouse
+    in the alternate screen mode (#1578)
+  * Linux: Use the system &quot;bell&quot; sound for the terminal bell. Adds libcanberra as a
+    new dependency to play the system sound.
+  * Linux: Fix a regression in 0.14.0 that caused the event loop to tick continuously,
+    wasting CPU even when idle (#1782)
+  * ssh kitten: Make argument parsing more like ssh (#1787)
+  * When using strip_trailing_spaces do not remove empty lines (#1802)
+  * Fix a crash when displaying very large number of images (#1825)</comment>
+    <requestid>719494</requestid>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>9751c3f444a15dbec16a13fab64af744</srcmd5>
+    <version>0.14.4</version>
+    <time>1567581096</time>
+    <user>dimstar_suse</user>
+    <comment>- Update to 0.14.4:
+  * hints kitten: Add a kitty +kitten hints --alphabet option to
+    control what alphabets are used for hints (#1879)
+  * hints kitten: Allow specifying kitty +kitten hints --program
+    multiple times to run multiple programs (#1879)
+  * Add a kitten_alias option that can be used to alias kitten
+    invocation for brevity and to change kitten option defaults globally (#1879)
+  * When running kittens, use the colorscheme of the current window
+    rather than the configured colorscheme (#1906)
+  * Don't fail to start if running the shell to read the EDITOR
+    env var fails (#1869)
+  * Disable the liga and dlig OpenType features for broken
+    fonts such as Nimbus Mono.
+  * Fix a regression that broke setting background_opacity
+    via remote control (#1895)
+  * Fix piping PNG images into the icat kitten not working (#1920)
+  * When the OS returns a fallback font that does not actually
+    contain glyphs for the text, do not exhaust the list of fallback fonts (#1918)
+  * Fix formatting attributes not reset across line boundaries
+    when passing buffer as ANSI (#1924)</comment>
+    <requestid>727720</requestid>
+  </revision>
+</revisionlist>
