@@ -1,0 +1,600 @@
+-------------------------------------------------------------------
+Fri Apr  5 10:13:20 UTC 2019 - Tomáš Chvátal <tchvatal@suse.com>
+
+- Add keyring to the spec file
+- Use python macros
+- Run fdupes
+- Execute tests, but always make them pass 7 currently fail
+
+-------------------------------------------------------------------
+Fri Apr  5 08:46:25 UTC 2019 - Bernhard Wiedemann <bwiedemann@suse.com>
+
+- update to version 113
+  * better handle missing helpers at runtime
+  * improved handling of zip, elf, pdf, wasm(WebAssembly) formats
+  * improved output readability
+
+-------------------------------------------------------------------
+Tue Nov 13 21:26:18 UTC 2018 - Sebastian Wagner <sebix+novell.com@sebix.at>
+
+* update to new version 105:
+  * tests:
+    + Prevent test failures when running under stretch-backports by checking
+      the ocaml version number.  Closes: #911846
+  * debian: Reinstate apktool Build-Depends and Test-Depends.
+  * Fix some flake8 and deprecation warnings.
+  * comparators/pcap:
+    + Fix recognition with the upcoming file(1) 5.35.  Closes: #912756
+      Thanks to Christoph Biedl for the heads-up in advance.
+  * Add a new command line flag --list-missing-tools.  MR: !14
+* update to new version 104:
+  * comparators:
+    + macho: Prevent a traceback if the filename cannot be found on the line.
+      Closes: #910540
+    + ocaml New comparator OCaml files using ocamlobjinfo.  Closes: #910542
+    + pdf: Add support for comparing metadata using PyPDF2.  Closes: #911446
+  * debian/tests/control.in: Add note on how to regenerate this file.
+  * d/control:
+    + Build-Depend on linux-image-amd64 [amd64] to allow squashfs tests to run.
+    + Add a Build-Conflicts against graphicsmagick-imagemagick-compat.
+      See: #910652
+  * Move the list of optional python packages from d/rules into setup.py, and
+    have dh_python3 check the generated requires.txt.
+  * Also add the optional python modules to the autopkgtest dependencies.
+  * Temporarily drop Build-Depends and Test-Depends on apktool and
+    oggvideotools, as they are not available in buster at the moment.
+  * comparators:
+    + java:
+      - Rename the tool procyon-decompiler to procyon.
+      - Properly fall back from procyon to javap also when procyon exists
+        but doesn't return any output.
+  * Declare in setup.py that diffoscope is good to go with Python 3.7.
+  * comparators:
+    + fsimage: Handle FAT filesystems.  MR: !13
+* update to new version 103:
+  * In Debian, list liblz4-tool as an alternative to the lz4 package.
+    stretch only has the former.
+  * Strip trailing whitespace from ssconvert(1) output to support
+    gnumeric 1.12.43.
+* update to new version 102:
+  * Fix tests under colord >= 1.4.3.  Closes: #908900
+  * Add an "Add a comparator" section in CONTRIBUTING.  MR: !9
+  * debian: Use the new debhelper-compat(=11) build dep and drop d/compat.
+  * comparators/json: Try fuzzy matching for non-text files too.
+    This avoids loading very large file just to discover they aren't JSON.
+    Closes: #909122
+* update to new version 101:
+  * Fix testsuite under LLVM >= 7.0. (Closes: #908074)
+  * Substvar generation:
+    - Ensure Debian substvar generation is deterministic regardless of
+      installed packages. (Closes: #908072)
+    - Clarify distinction between tools (eg. gpg) and packages (eg. gnupg) when
+      generating Debian substvars.
+    - Revert updating generated debian/tests/control made in diffoscope 100.
+  * Disable binwalk's own user configuration for predictable results and to
+    ensure it does not create unnecessary directories. (Closes: #903444)
+  * Ensure we return "bytes" objects from Command.filter to avoid a
+    "TypeError: Unicode-objects must be encoded before hashing" traceback.
+  * Don't print GPG output in diffoscope.changes.
+* update to new version 100:
+  * Correct matching of .deb archive members. (Closes: #903565)
+  * Support .deb archives that contain an uncompressed control.tar and data.tar
+    Thanks to Roderich Schupp <roderich.schupp@gmail.com>.
+    (Closes: #903391, #903401)
+  * Wrap jsondiff calls with try-except to prevent fatal errors.
+    (Closes: #903447, #903449)
+  * Don't include the filename in llvm-bcanalyzer results. (Closes: #905598)
+  * Update generated debian/tests/control.
+  * Bump Standards-Version to 4.2.1.
+  * Avoid line eraser error on dumb terminals. (Closes: #906967)
+  * Correct spelling of ereser to eraser.
+  * On Debian, do not require apktool on ppc64el and s390x, ogvideotools on
+    s390x and fp-utils on ppc64el and s390x as they are not installable there.
+  * Explicitly add `file` to the dependencies of autopkgtest to have the tests
+    triggered whenever `file` changes
+  * Handle errors with encrypted archive files. (Closes: #904685)
+* update to new version 99:
+  * Add lz4 comparator.  Closes: #901548; !4
+  * Clear the progress bar after completion.  Closes: #901758
+    Handle terminals that do not support erasing the line by filling the
+    terminal with spaces.  Ignore output devices that are not terminals.
+  * Do not delete the current terminal line for every progress bar update.
+    The erasure was also causing the progress bar to flicker.
+  * Add a gitlab CI script.  !8
+  * tempfiles:
+    + Set the base directory only if the caller didn't specify one already.
+    + Do not append '_diffoscope' to the temporary file names, as they are now
+      all in their namespaced directory already.
+    + Empty the list of known tempfiles after removing them.  Closes: #902709
+  * external_tools:
+    + Fix package name, s/xmlutils/xmlbeans/.
+  * tests/test_tools: fix test if /sbin contains a directory.  MR: !2
+    Thanks to Chris Lamb <lamby@debian.org> for the patch.
+  * logging:
+    + Move the computation of the terminal line eraser into logging.py
+    + Always clean the line before printing a log message
+  * main:
+    + Clean the terminal line before printing a traceback.
+    + Be sure to print 'Keyboard Interrupt' if that happens.
+  * comparators:
+    + Do not shadow the original import errors.  MR: !7
+  * d/control:
+    + Bump Standards-Version to 4.1.5, no changes needed.
+    + Add Build-Dependency on procyon-decompiler, to run the tests.
+  * d/tests:
+    + Autogenerate d/tests/control with all the recommends listed as
+      dependencies, so autopkgtest is appropriately triggered whenever one of
+      those packages changes.  Closes: #902920
+  * comparators.utils:libarchive:
+    + Add compatibility code for python-libarchive >= 2.8.  MR: !6
+* update to new version 98:
+  * Fix compatibility with Python 3.7. (Closes: #902650)
+* update to new version 97:
+  * Create all temporary directories within a top-level dir. (Closes: #902627)
+  * tests/conftest.py: Fix compatibility with pytest 3.6.2-1, currently in
+    Debian experimental.
+* update to new version 96:
+  * Drop dependency on pdftk as it relies on GCJ, relying on the pdftotext
+    fallback. (Closes: #893702)
+  * Change the "No file format specific differences found inside, yet data
+    differs" message to be clearer that diffoscope "knows" about this file
+    format yet could not be helpful in this case.
+  * Don't append a rather useless "(data)" suffix from file(1).
+  * Comply with a number of PEP8 recommendations:
+    - E226 - Add missing whitespaces around operators.
+    - E241 - Fix extraneous whitespaces around keywords.
+    - E251 - Remove whitespace around parameter '=' signs.
+    - E302 - Add missing 2 blank lines.
+    - E501 - Try to make lines fit to length.
+    - E502 - Remove extraneous escape of newline.
+    - E731 - Don't assign lambda expressions.
+    - E121, E122, E126, E128 - Fix badly indented lines.
+  * Add merge request details to contributing documentation.
+* update to new version 95:
+  * tests:
+    + test_binary: Don't capture unused output from subprocess.
+    + test_git: Fix test failure on FreeBSD.  Closes: #872826
+      Thanks to Ximin Luo <infinity0@debian.org> for the initial patch
+  * Fix handling of filesnames with non-unicode chars.  Closes: #898022
+  * diff: Use bytes as much as possible, to prevent possible encoding issues.
+  * d/control: Make the dependency on python3-distutils an alternative on the
+    previous versions of libpython3.*-stdlib that used to ship it.
+    Closes: #898683
+  * d/watch: Update URL to the new archive.
+  * The Git repository has been migrated to salsa, update all the references.
+  * Drop extra whitespace in supported file format output.
+* update to new version 94:
+  * Update tests to prevent FTBFS under file 5.33. (Closes: #897099)
+  * Remove all __pycache__ directories to avoid source-contains-empty-directory
+    Lintian warning.
+  * Remove unused test1.txt test data file.
+  * Bump Standards-Version to 4.1.4.
+  * Add gnumeric to the list of ArchLinux tools.
+  * Sort the Debian dependencies.
+* update to new version 93:
+  * Only append the file formats if --help is passed, otherwise we spam
+    #debian-reproducible-changes et al. (re. #893443)
+  * doc/Makefile: Reinstate accidental version parsing change; my sed call
+    was over-eager.
+* update to new version 92:
+  * New features:
+    - Show the list of supported file types in the manual and --help output. We
+      can copy-paste this into the website, etc.. Thanks to Jonathan Dowland
+      for the suggestion. (Closes: #893443)
+    - Add support for comparing Gnumeric spreadsheets. (Closes: #893311)
+  * Bug fixes:
+    - Additionally extract the classes.dex file from .apk files; apktool does
+      not do this by default which was preventing us from recursing into it to
+      find differences. Thanks to Hans-Christoph Steiner for the report.
+      (Closes: #890904)
+    - Recursively reset the permissions of temporary directories prior to
+      deletion to ensure that non-writable permissions such as 0555 are removed
+      and do not cause a traceback. (Closes: #891363)
+    - Support the case where the python3-xattr package is installed but
+      python3-pyxattr is not. Based on an patch by Doug Freed; thanks!
+      (Closes: #892240)
+    - Update Java tests for openjdk-9. (Closes: #893183)
+  * Output:
+    - Print a nicer error message if you only specify one file to compare.
+    - Don't show progress bar if we passed --debug as it just gets in the way.
+  * Code tidying:
+    - Avoid some necessary indentation around unconditional control flow.
+    - Tidy unnecessary assignments.
+    - Move the documentation for maybe_decode into a docstring on the method
+      itself.
+    - Import LooseVersion as LooseVersion.
+    - Use more Pythonic `old_level` variable names (over `oldLabel`) and avoid
+      using ambiguous `l` variable names.
+    - Add whitespace around operators and ensure 4-line indentation throughout.
+  * debian/*:
+    - Move DOS/MBR check into the testsuite.
+    - Add explicit runtime dependency on python3-distutils as it was dropped in
+      src:python3.6 3.6.5~rc1-2.
+  * Misc:
+    - Clarify that the Reproducible Builds project is not just about Debian.
+    - Drop executable bit on doc/Makefile.
+    - Use our bin/diffoscope wrapper in manpage generation to ensure we are
+      using the local version of diffoscope.
+  * Update terminology used in docs about exclusion options. Thanks to Paul
+    Wise for the idea. (Closes: #893324)
+  * Don't try to decode a string in comparators.utils.file. (Closes: #891903)
+  * Save a bunch of system calls by resetting tempfile permissions when
+    we actually need to do it.
+* update to new version 91:
+  * d/clean: Remove .cache/.
+  * diff: Wrap long regular expression for improved readability.
+  * comparators.json: Fix UnicodeDecodeError with a non-UTF8 locale.
+  * d/copyright: Update for the new year.
+  * d/control: Bump Standards-Version to 4.1.3, no changes needed.
+  * tests/android:
+    + Skip tests involving abootimg on BE archs (see #725729).
+  * diffoscope.diff: Document feeders.  Closes: #863880
+  * Optimize the common case of feeders.  Closes: #863879
+  * {tempfiles, utils.archive}: catch possible FileNotFoundError.
+  * comparators.java: add support for procyon-decompiler.  Closes: #849386
+  * {command, feeders, diff}: replaces subprocess.Popen() by .run().
+    This is done in preparation for work on multiprocessing (#842837).
+    + {command, zip, feeders}: replaces .wait by the new .returncode property.
+    + comparators.utils.command: replaces .stderr_content by .stderr.
+  * tests:
+    + test_progress: fix test case for some broken versions of
+      python-progressbar.  Closes: #877726
+    + utils.tools: add support for modules on skip_unless* annotations.
+  * comparators:
+    + utils/compare:
+      - Show extended filesystem metadata even when directly comparing two
+        files, not just when we specify two directories.  Closes: #888402
+    + macho:
+      - If the If the LLVM disassembler does not work, try the
+        internal one.  Closes: #886736
+      - Always strip the filename, not just when by itself.
+    + json:
+      - Do some cheap fuzzy parsing to detect JSON files not named .json.
+      - Also match unicode JSON files.
+      - Optionally compare JSONs with the jsondiff module.  Closes: #888112
+    + directory:
+      - Report differences in extended file attributes when comparing files.
+        Closes: #888401
+    + xsb:
+      - Add support for comparing XMLBeans binary schemas.
+    + barkeley_db:
+      - Add support for comparing Berkeley DB files.  Closes: #890528
+  * Misc code cleaup.
+  * tests:
+    + comparators.test_elf: Return '0' if we can't parse the readelf
+      version number.  Closes: #886963
+  * debian:
+    + Explicitly build-depend and recommend e2fsprogs.  Closes: #887180
+  * Partially revert the changes done for #888402 to maintain the current.
+    behaviour of --exclude-directory-metadata.
+  * Refactor how the configuration is loaded:
+    + Move the defaults into a Config.reset() method.
+    + reset() the configuration at the end of main(), to help the testsuite.
+* update to new version 90:
+  * tests:
+    + comparators/test_rlib: Fix tests for llvm >= 5.0.  Closes: #877727
+    + Skip some tests if 'xz' is not present.
+* update to new version 89:
+  * comparators:
+    + elf:
+      - Add fallbacks to elf code section disassembly.  Closes: #879003
+    + utils/libarchive:
+      - Extract libarchive members with the file extension.
+  * Auto-generate manpage using help2man, so it's no longer out-of-date.
+  * difference:
+    + Add a Difference.from_command_exc() to help distinguish excluded
+      commands from commands returning an empty diff.
+  * comparators:
+    + utils/command:
+      - Replace the feed_stdin() feeder into the simpler stdin() function,
+        which provides (if needed) a simple file opject instead of a feeder.
+    + utils/container:
+      - Add a perform_fuzzy_matching() method (wrapping the already existing
+        method) so that comparators can easily override it.
+    + deb:
+      - Loose matching for .deb archive members, so it's possible to e.g.
+      compare deb with different control.tar.{gz,xz}.  Closes: #881937
+    + elf:
+      - Improve disassembly fallbacks with Difference.from_command_exc().
+    + png:
+      - Cater for the feed_stdin() removal.
+    + zip:
+      - Run zipinfo on /dev/stdin instead of a variable path to avoid including
+       the temporary file name in the output.  Closes: #879011
+      - Cater for the feed_stdin() removal.
+  * presenters/formats:
+    + Allow non-text formats to output an empty diff.
+  * debian/clean:
+    + Remove the egg file when cleaning.
+  * comparators:
+    + utils/file:
+      - Handle case where a file to be "fuzzy" matched does not contain enough
+        entropy despite being over 512 bytes.  Closes: #882981
+    + android:
+      - Add support for Android ROM boot.img introspection.  Closes: #884557
+    + symlink:
+      - Make cleanup of placeholders idempotent.
+  * tests:
+    + utils/tools:
+      - Add a skip_if_tool_version_is() function.
+    + elf:
+      - Skip some tests if readelf is version '2.29', where its behaviour
+        was accidentally changed to exit with code 1 when it previously
+        didn't.  Closes: #877728
+  * debian/control: Bump Standards-Version to 4.1.2.  No changes required.
+  * debian/control: Set Rules-Requires-Root: no.
+  * Bump Debhelper compat version to 11.
+* update to new version 88:
+  * Bump standards version to 4.1.1, no changes needed.
+  * tests/comparators:
+    + dtb: compatibility with version 1.4.5.  Closes: #880279
+  * comparators:
+    + binwalk: improve names in output of "internal" members.  Closes: #877525
+    + Omit misleading "any of" prefix when only complaining about one module
+      in ImportError messages.
+  * Don't crash on malformed md5sums files.  Closes: #877473
+  * tests/comparators:
+    + ps: ps2ascii > 9.21 now varies on timezone, so skip this test for now.
+    + dtby: only parse the version number, not any "-dirty" suffix.
+  * debian/watch: use HTTPS URI.
+  * comparators:
+    + utils/file: diff container metadata centrally.  Closes: #797759
+      This fixes a last remaining bug in fuzzy-matching across containers.
+    + Fix all the affected comparators after the above change.
+* update to new version 87:
+  * comparators:
+    + utils:
+      - compare: fix comparison between container types.
+      - container: add get_path_name() method, aiming at preventing hitting
+        OS' max filename length.
+    + gzip: replace dest_path generation with self.get_path_name().
+    + bzip2: replace dest_path generation with self.get_path_name().
+  * tests:
+    + presenters:
+      - skip html_visuals test if 'sng' binary is not available.
+    + comparators:
+      - test_cointainers: new tests to test cross-container comparisons.
+      - add test_containers.py.
+  * comparators:
+    + utils:
+      - file: correct reference to path_apparent_size.
+    + fonts: loosen matching of file(1)'s output to ensure we correctly also
+      match TTF files under file 5.32.
+    + binwalk:
+      - new comparator to deal with (e.g.) concatenated CPIO archives using
+        the new optional python module 'binwalk'.  Closes: #820631
+  * diffoscope.diff: Correct reference to self.buf.
+  * debian/rules: run flake8 during the tests, and fail the build in case the
+    "underfined name" flake8's check fails.
+  * tests/comparators:
+    + test_cpio: check we identify all CPIO fixtures.
+  * main:
+    + print a debugging message if we are reading diff from stdin.
+  * presenters:
+    + html: use logging.py's lazy argument interpolation.
+  * debian/control: bump Standards-Version to 4.1.0.
+  * Code style improvements across all of the codebase.
+  * debian/changelog: retroactively close a bug in an old changelog entry.
+  * setup.py: add a check to prevent people from installing diffoscope under
+    python < 3.5 (i.e. python2) and give them a usable error message otherwise.
+  * Code style improvements across all of the codebase.
+  * comparators:
+    +  add a fallback_recognizes() method to work around file(1)'s bug #876316.
+       Closes: #875282
+    + add a --force-details flag for debugging.
+    + deb:
+      - if --force-details then don't skip files with identical md5sums either.
+  * presenters:
+    + html:
+      - prune all descendants properly.  Closes: #875281
+      - don't show pointer-cursor when jquery is disabled.
+  * config:
+    + force-set a value if it must be less than another, and it was not set on
+      purpose.  Closes: #875451
+  * readers: convert bytes to str in the right place.
+  * diff: use diff_split_lines everywhere.
+  * difference:
+    + in fmap/map_lines, don't forget about self._visuals.
+    + also copy self._comment properly, compare self._visuals in equals().
+  * tests/comparators:
+    + test_deb: make test_md5sums less brittle.
+* update to new version 86:
+  * tests:
+    + binary: skip a test if the 'distro' module is not available.
+    + iso9660: avoid an overly-catching exception.
+  * debian/copyright: coalesce some file paragraphs and update information.
+  * tests:
+    + iso9660: support both cdrtools' genisoimage's versions of isoinfo.
+  * comparators:
+    + xml: Use ``name`` attribute over ``path`` to avoid leaking comparison
+      full path in output.
+  * Tidy diffoscope.progress a little.
+  * Add a --tool-prefix-binutils CLI flag.  Closes: #869868
+  * On non-GNU systems, prefer some tools that start with "g".  Closes: #871029
+  * presenters:
+    + html:
+      - Don't traverse children whose parents were already limited.
+        Closes: #871413
+  * diffoscope.progress:
+    + Support the new fork of python-progressbar.  Closes: #873157
+
+-------------------------------------------------------------------
+Wed Aug  2 16:05:54 UTC 2017 - sleep_walker@opensuse.org
+
+- Update to 85:
+  see GIT log for full list of changes
+
+-------------------------------------------------------------------
+Tue Mar 14 07:47:24 UTC 2017 - kgronlund@suse.com
+
+- Update to 78:
+  * Catch bad JSON errors on Python pre-3.5.  Closes: #855233
+  * Correct logic of module_exists, ensuring we correctly skip in case of
+    modules containing a dot in their name.  Closes: #854745
+  * No need to track archive directory locations.
+  * Add --exclude option.  Closes: #854783
+  * When extracting archives, try to keep directory sizes small.
+  * Extract archive members using an auto-incrementing integer, avoiding the
+    need to sanitise filenames and avoiding writes to arbitrary locations.
+    (Closes: #854723 * CVE-2017-0359)
+  * Fix autopkgtest failures when Recommends are not installed.
+    (Closes: #854593)
+  * Specify <html lang="en"> in HTML output. (re. #849411)
+  * Add a machine-readable JSON output format. (Closes: #850791)
+  * Show results from debugging packages last. (Closes: #820427)
+  * Add a --max-text-report-size option. (Closes: #851147)
+    Clean all temp files in signal handler thread instead of attempting to
+    bubble exception back to the main thread. (Closes: #852013)
+  * Prevent FTBFS by loading fixtures as UTF-8 in case surrounding terminal
+    is not Unicode-aware. (Closes: #852926)
+  * Fix errors when comparing directories with non-directories.
+    (Closes: #835641)
+  * Fix behaviour of setting report maximums to zero (ie. no limits)
+  * diffoscope.diff: Improve FIFO writing robustness.
+  * haskell: Properly extract version from interface files.
+  * Add markdown output support.  Closes: #848141
+  * Add RestructuredText output format.
+  * Improve --help output.  Closes: #852015
+  * Don't blow up if directory containing ELF debug symbols already exists.
+    (Closes: #850807)
+  * Fix .APK extration when provided with absolute filenames.
+    (Closes: #850485)
+  * Support comparing .ico files using img2txt. (Closes: #850730)
+  * comparators.utils.file: If we don't have an archive-extraction tool (eg.
+    apktool), don't blow up when attempting to unpack it.
+  * Include magic file type when we know the file format but can't find
+    file-specific details. (Closes: #850850)
+  * Ensure fake "APK metadata" file appears first, fixing non-deterministic
+    tests/output.
+  * Correctly escape value of href="" elements (re. #849411)
+  * comparators/device: don't crash when comparing a non-device against a
+    device (Closes: #850055)
+  * Remove archive name from apktool.yml and rename it. (Closes: #850501)
+  * Zipinfo included in APK files comparison. (Closes: #850502)
+  * Add some tests for APK comparator.
+  * Add image metadata comparison. (Closes: #849395)
+  * Ensure imagemagick version is new enough for image metadata tests.
+  * Extend .apk recognition regex to also match zip archives (Closes: #849638)
+  * Update dex_expected_diffs and test requirement to ensure test compatibility
+    with enjarify >= 1.0.3. (Closes: #849142)
+  * Add detection of order-only difference in plain text format.
+    (Closes: #848049)
+  * Fix sqlite3 magic recognition when using file >= 5.27. (Closes: #830434)
+  * Add argument completion feature to diffoscope. (Closes: #826711)
+  * Improve message when data differs. (Closes: #827981)
+  * Clarify the input arguments. (Closes: #826894)
+  * Fix maybe_decode() so that it actually works.
+
+-------------------------------------------------------------------
+Thu Jun 23 12:39:50 UTC 2016 - sleep_walker@opensuse.org
+
+- update to 54:
+  * In the directory comparator, fall back to current directory instead of
+    empty name. (Closes: #820624)
+  * Improve deb(5) support. (Closes: #818414)
+  * debian/control: add myself to Uploaders.
+  * Clean up temporary debuglink files.
+  * Fix FileNotFoundError with broken symlinks. (Closes: #818856)
+  * Decode Md5sumsFile in utf-8. (Closes: #823874)
+  * Always suffix temporary files with '_diffoscope'.
+  * Rewrite sanity check for the version to always run every time debian/rules
+    is invoked, not only during a binary build.
+  * Add FreeBSD packages for required tools.
+  * Add README.rst to MANIFEST.in.
+  * debian/gbp.conf: add a conf to have gbp tag the releases how we like them.
+  * Drop transitional debbindiff package.
+  * debian/control: Drop XS-Prefix from Testsuite: field, thanks lintian.
+  * Mention --max-report-size only once in the manpage. (Closes: #819956)
+  * Fix typo in documentation.
+  * Bump Standards-Version to 3.9.8, no changes required.
+  * Let objdump demangle symbols for better readability.
+  * Install bin/diffoscope instead of auto-generated script. (Closes: #821777)
+  * Team upload.
+  * Re-upload, the last uploaded tarball was broken, missing test files.
+  * Remove myself from uploaders
+  * Show line ordering variation in deb md5sums
+  * Reset mtimes of test directories and ignore ctimes (Closes: #815171)
+  * Add comparator for Postscript files
+
+
+-------------------------------------------------------------------
+Sun May  8 07:16:40 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * updated source url to files.pythonhosted.org
+
+
+-------------------------------------------------------------------
+Sun Apr 10 16:09:58 UTC 2016 - arun@gmx.de
+
+- specfile:
+  * fix update alternative (use %{py3_ver}, touch sysconfig dir)
+
+- update to version 51:
+  * Team upload.
+  * Re-upload, the last uploaded tarball was broken, missing test
+    files.
+
+- changes from version 50:
+  * Remove myself from uploaders (Jérémy Bobbio)
+  * Show line ordering variation in deb md5sums
+  * Reset mtimes of test directories and ignore ctimes (Closes:
+    #815171)
+  * Add comparator for Postscript files
+
+-------------------------------------------------------------------
+Sun Mar 13 08:47:51 UTC 2016 - bwiedemann@suse.com
+
+- We require python3-setuptools at runtime to work
+
+-------------------------------------------------------------------
+Thu Feb 18 04:51:10 UTC 2016 - arun@gmx.de
+
+- update to version 49:
+  * Don't crash when we can't find the debug file in a matching debug
+    package.  This repairs diffoscope for xserver-xorg and other
+    packages.
+  * Use libarchive to read metadata from ar archives. The output is
+    more precise and less dependent on binutils version. The command
+    line `ar` tool is not used any more so remove it from the required
+    tools.
+  * Split readelf --debug-dump output when examining ELF files. Based
+    on a patch by Dhole.
+  * Keep both .debug_str and .zdebug_str as ElfSection. Thanks to
+    Niels Thykier for noticing the problem.
+  * Fix a logic error in _install_debug_symbols. Thanks anthraxx for
+    the report and the fix.
+  * Use recursive containers for directory and only look at files with
+    ending in .deb when looking for Build IDs. Both avoid looking at
+    too many files when searching for matching debug packages. Thanks
+    Helmut Grohne and Steven Chamberlain for the reports and
+    tests. (Closes: #813052)
+  * Add support for ICC profiles. This adds a Recommends on colord in
+    Debian.
+  * Harmonize spaces and commas in package list.
+  * Update PPU files test data for FPC 3.0.0.
+  * Update exepcted javap output for OpenJDK 1.8.
+  * Stop specializing files from directories earlier than necessary.
+  * Adding cd-iccdump package reference for Arch Linux.
+  * Use HTTPS in Vcs-Git.
+  * Bump standards version to 3.9.7, no changes needed.
+  * Use /git/ instead /cgit/ in Vcs-Browser.
+
+-------------------------------------------------------------------
+Tue Feb  2 10:23:46 UTC 2016 - sleep_walker@opensuse.org
+
+- clean with spec-cleaner
+- change Recommends: to Suggests:
+- use update-alternatives mechanism for binary not to conflict with
+  python2 variant of the package when there is one
+
+-------------------------------------------------------------------
+Sun Jan 31 16:15:19 UTC 2016 - sleep_walker@opensuse.org
+
+- add recommendations for tools which allows to interpret content
+
+-------------------------------------------------------------------
+Sun Jan 31 10:22:18 UTC 2016 - sleep_walker@opensuse.org
+
+- let there be diffoscope for openSUSE!
+
