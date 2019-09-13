@@ -1,0 +1,1965 @@
+-------------------------------------------------------------------
+Wed Jul 31 00:00:00 CEST 2019 - dsterba@suse.cz
+
+- update to 5.2.1
+  * scrub status: fix ETA calculation after resume
+  * check: fix crash when using -Q
+  * restore: fix symlink owner restoration
+  * mkfs: fix regression with mixed block groups
+  * core: fix commit to process all delayed refs
+  * other:
+    * minor cleanups
+    * test updates
+- update to 5.2
+  * subvol show: print qgroup information when available
+  * scrub:
+    * status: show ETA, revamp the whole output
+    * fix reading/writing of last position on resume/cancel, potentially
+      skipping part of the filesystem on next resume
+  * dump-tree: add new option --noscan to use only devices given on the
+    commandline
+  * all-in-one binary (busybox style) with mkfs.btrfs, btrfs-image,
+    btrfs-convert, btrfstune
+  * image: fix hang when there are more than 32 cpus online and compression is
+    requested
+  * convert: fix some false ENOSPC errors when --rootdir is used
+  * build: fix gcc9 warnings
+  * core changes
+    * command handling cleanups
+    * dead code removal
+    * cmds-* files moved to cmds/
+    * other shared userspace files moved to common/
+    * utils.c split into more files
+    * preparatory work for more output formats
+    * libbtrfsutil: fix unaligned access
+  * other
+    * new and updated tests
+    * fix tests so CI passes again
+    * sb-mod can modify more superblock items
+
+-------------------------------------------------------------------
+Sun May 19 02:57:41 UTC 2019 - seanlew@opensuse.org
+
+- update to version 5.1
+  * repair: flush/FUA support to avoid breaking metadata COW
+  * file extents repair no longer relies on data in extent tree
+  * lowmem: fix false error reports about gaps between extents
+  * add inode mode check and repair for various objects
+  * add check for invalid combination of nocow/compressed extents
+  * device scan option to forget scanned devices [new]
+  * mkfs: use same chunk size as kernel for initial creation
+  * dev-repace: better report when other exclusive operation runs
+  * help for sntax errors on command lines, print relevant msgs
+  * defrag: able to open files in RO mode 
+  * dump-tree: --block can be specified multiple times
+ 
+-------------------------------------------------------------------
+Sat Apr 06 16:55:00 UTC 2019 - Stefan Seifert <nine@detonation.org>
+
+- update to version 4.20.2
+ * dump-super: minor output fixup
+ * revert fix for prefix detection of receive path, this is temporary and
+   unbreaks existing user setups
+
+-------------------------------------------------------------------
+Thu Mar 28 20:25:48 UTC 2019 - Mark Fasheh <mfasheh@suse.com>
+
+- Use correct path for dracut-fsck-help.txt in module-setup.sh (bsc#1122539)
+ * Remove module-setup.sh
+ * Add module-setup.sh.in
+
+-------------------------------------------------------------------
+Thu Jan 24 04:00:34 UTC 2019 - mfasheh@suse.com
+
+- Advise user of fs recovery options when we fail to mount (fate#320443,
+  bsc#1122539)
+ * Add dracut-fsck-help.txt
+ * Add module-setup.sh
+
+-------------------------------------------------------------------
+Wed Jan 23 00:00:00 CET 2019 - dsterba@suse.cz
+
+- update to version 4.20.1
+  * libbtrfs: fix build of external tools due to missing symbols
+  * ci: enable library test
+
+-------------------------------------------------------------------
+Sat Jan 19 16:44:57 UTC 2019 - Avindra Goolcharan <avindra@opensuse.org>
+
+- update to version 4.20
+  * new feature: metadata uuid
+    * lightweight change of UUID without rewriting all metadata
+      (incompatible change)
+    * done by btrfstune -m/-M, needs kernel support, 5.0+ 
+  * image:
+    * fix block groups when restoring from multi-device image
+    * only enlarge result image if it's a regular file 
+  * check
+    * more device extent checks and fixes 
+  * can repair dir item with mismatched hash
+  * mkfs: uuid tree created with proper contents
+  * fix mount point detection due to partial prefix match
+  * other:
+    * new tests, build fixes, doc updates
+    * libbtrfsutil: fix tests if kernel lacks support for new
+      subvolume ioctls
+- partial cleanup with spec-cleaner
+- drop 0001-btrfs-progs-Add-support-for-metadata_uuid-field.patch
+- drop 0002-btrfs-progs-btrfstune-Add-support-for-changing-the-u.patch
+- drop 0003-btrfs-progs-Remove-fsid-metdata_uuid-fields-from-fs_.patch
+- drop 0004-btrfs-progs-Remove-btrfs_fs_info-new_fsid.patch
+- drop 0005-btrfs-progs-Directly-pass-root-to-change_devices_uui.patch
+
+-------------------------------------------------------------------
+Mon Jan 17 15:45:01 CET 2019 - kukuk@suse.de
+
+- Use %license instead of %doc [bsc#1082318]
+
+-------------------------------------------------------------------
+Thu Jan 17 07:48:54 UTC 2019 - nborisov@suse.com
+
+- Implement fate#325871
+    * Added 0001-btrfs-progs-Add-support-for-metadata_uuid-field.patch
+    * Added 0002-btrfs-progs-btrfstune-Add-support-for-changing-the-u.patch
+    * Added 0003-btrfs-progs-Remove-fsid-metdata_uuid-fields-from-fs_.patch
+    * Added 0004-btrfs-progs-Remove-btrfs_fs_info-new_fsid.patch
+    * Added 0005-btrfs-progs-Directly-pass-root-to-change_devices_uui.patch
+
+-------------------------------------------------------------------
+Thu Dec  6 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to version 4.19.1
+  * check
+    * many lowmem mode improvements
+    * properly report qgroup mismatch errors
+    * check symlinks with append/immutable flags
+  * fi usage
+    * correctly calculate allocated/unallocated for raid10
+    * minor output updates
+  * mkfs
+    * detect ENOSPC on thinly provisioned devices
+    * fix spurious EEXIST during directory traversal
+  * restore: fix relative path for restore target
+  * dump-tree: print symbolic tree names for backrefs
+  * send: fix regression preventing send -p with subvolumes mounted on "/"
+  * corrupt-tree: refactoring and command line updates
+  * build
+    * make it work with e2fsprogs < 1.42 again
+    * restore support for autoconf 2.63
+    * detect if -std=gnu90 is supported
+  * other
+    * new tests
+    * cleanups
+
+-------------------------------------------------------------------
+Mon Nov 12 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to version 4.19
+  * check: support repair of fs with free-space-tree feature
+  * core:
+    * port delayed ref infrastructure from kernel
+    * support write to free space tree
+  * dump-tree: new options for BFS and DFS enumeration of b-trees
+  * quota: rescan is now done automatically after 'assign'
+  * btrfstune: incomplete fix to uuid change
+  * subvol: fix 255 char limit checks
+  * completion: complete block devices and now regular files too
+  * docs:
+    * ship uncompressed manual pages
+    * btrfsck uses a manual page link instead of symlink
+  * other
+    * improved error handling
+    * docs
+    * new tests
+
+-------------------------------------------------------------------
+Mon Aug  6 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- update to version 4.17.1
+  * check:
+    * add ability to fix wrong ram_bytes for compressed inline files
+    * beautify progress output
+  * btrfstune: allow to continue uuid change after unclean interruption
+  * several fuzz fixes:
+    * detect overalpping chunks
+    * chunk loading error handling
+    * don't crash with unexpected root refs to extents
+  * relax option parsing again to allow mixing options and non-options
+    arguments
+  * fix qgroup rescan status reporting
+  * build:
+    * drop obsolete dir-test
+    * new configure option to disable building of tools
+    * add compatibility options --disable-static and --disable-shared
+  * other:
+    * cleanups and preparatory work
+    * new test images
+- spec cleanup
+
+-------------------------------------------------------------------
+Fri Jun 22 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- update to version 4.17
+  * check
+    * many lowmem mode improvements
+    * properly report qgroup mismatch errors
+    * check symlinks with append/immutable flags
+  * fi usage
+    * correctly calculate allocated/unallocated for raid10
+    * minor output updates
+  * mkfs
+    * detect ENOSPC on thinly provisioned devices
+    * fix spurious EEXIST during directory traversal
+  * restore: fix relative path for restore target
+  * dump-tree: print symbolic tree names for backrefs
+  * send: fix regression preventing send -p with subvolumes mounted on "/"
+  * corrupt-tree: refactoring and command line updates
+  * build
+    * make it work with e2fsprogs < 1.42 again
+    * restore support for autoconf 2.63
+    * detect if -std=gnu90 is supported
+- Removed patches (upstreamed):
+  * 0001-btrfs-progs-convert-fix-support-for-e2fsprogs-1.42.patch
+  * 0002-btrfs-progs-build-autoconf-2.63-compatibility.patch
+  * 0003-btrfs-progs-build-detect-whether-std-gnu90-is-suppor.patch
+
+-------------------------------------------------------------------
+Mon Jun 11 02:01:58 UTC 2018 - jeffm@suse.com
+
+- Don't require libzstd-devel-static on builds that don't use it.
+
+-------------------------------------------------------------------
+Fri May  4 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- fix installation of btrfs.5.gz
+
+-------------------------------------------------------------------
+Mon Apr 30 14:39:07 UTC 2018 - jeffm@suse.com
+
+- Fix building on SLE11:
+  * btrfs-progs: convert: fix support for e2fsprogs < 1.42
+  * btrfs-progs: build: detect whether -std=gnu90 is supported
+  * btrfs-progs: build: autoconf 2.63 compatibility
+  * Fixed mismerged addition of libbtrfsutil1 package description
+- Added patches:
+  * 0001-btrfs-progs-convert-fix-support-for-e2fsprogs-1.42.patch
+  * 0002-btrfs-progs-build-autoconf-2.63-compatibility.patch
+  * 0003-btrfs-progs-build-detect-whether-std-gnu90-is-suppor.patch
+
+-------------------------------------------------------------------
+Tue Apr 24 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- update to version 4.16.1
+  * remove obsolete tools: btrfs-debug-tree, btrfs-zero-log, btrfs-show-super,
+    btrfs-calc-size
+  * sb-mod: new debugging tool to edit superblock items
+  * mkfs: detect if thin-provisioned device does not have enough space
+  * check: don't try to verify checksums on metadata dump images
+  * build: fail documentation build if xmlto is not found
+  * build: fix build of btrfs.static
+- Remove patch: 0001-btrfs-progs-build-fix-static-build.patch (upstream)
+- Update initrd script
+
+-------------------------------------------------------------------
+Fri Apr  6 00:00:00 CEST 2018 - dsterba@suse.cz
+
+- update to version 4.16
+  * libbtrfsutil - new LGPL library to wrap userspace functionality
+    * several 'btrfs' commands converted to use it:
+      * properties
+      * filesystem sync
+      * subvolume set-default/get-default/delete/show/sync
+    * python bindings, tests
+  * build
+    * use configured pkg-config path
+    * CI: add python, musl/clang, built dependencies caching
+    * convert: build fix for e2fsprogs 1.44+
+    * don't install library links with wrong permissions
+  * fixes
+    * prevent incorrect use of subvol_strip_mountpoint
+    * dump-super: don't verify csum for unknown type
+    * convert: fix inline extent creation condition
+  * check:
+    * lowmem: fix false alert for 'data extent backref lost for snapshot'
+    * lowmem: fix false alert for orphan inode
+    * lowmem: fix false alert for shared prealloc extents
+  * mkfs:
+    * add UUID and otime to root of FS_TREE - with the uuid, snapshots will
+      be now linked to the toplevel subvol by the parent UUID
+    * don't follow symlinks when calculating size
+    * pre-create the UUID tree
+    * fix --rootdir with selinux enabled
+  * dump-tree: add option to print only children nodes of a given block
+  * image: handle missing device for RAID1
+  * other
+    * new tests
+    * test script cleanups (quoting, helpers)
+    * tool to edit superblocks
+    * updated docs
+- Add patch: 0001-btrfs-progs-build-fix-static-build.patch
+- Add new library packages: libbtrfsutil
+
+-------------------------------------------------------------------
+Sat Feb 17 00:00:00 CET 2018 - dsterba@suse.cz
+
+- use documentation shipped by upstream tar, reduce dependencies
+
+-------------------------------------------------------------------
+Wed Feb 14 00:00:00 CET 2018 - dsterba@suse.cz
+
+- enable static build again, zstd now has static version
+
+-------------------------------------------------------------------
+Fri Feb  2 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to version 4.15
+  * mkfs --rootdir reworked, does not minimize the final image but can be still
+    done using a new option --shrink
+  * fix allocation of system chunk, don't allocate from the reserved area
+  * other
+    * new and updated tests
+    * cleanups, refactoring
+    * doc updates
+
+-------------------------------------------------------------------
+Mon Jan  8 00:00:01 CET 2018 - dsterba@suse.cz
+
+- spec: fix distro version condition
+
+-------------------------------------------------------------------
+Mon Jan  8 00:00:00 CET 2018 - dsterba@suse.cz
+
+- update to version 4.14.1
+  * dump-tree: print times of root items
+  * check: fix several lowmem mode bugs
+  * convert: fix rollback after balance
+  * other
+    * new and updated tests, enabled lowmem mode in CI
+    * docs updates
+    * fix travis CI build
+    * build fixes
+    * cleanups
+- update to version 4.14
+  * build: libzstd now required by default
+  * check: more lowmem mode repair enhancements
+  * subvol set-default: also accept path
+  * prop set: compression accepts no/none, same as ""
+  * filesystem usage: enable for filesystem on top of a seed device
+  * rescue: new command fix-device-size
+  * other
+    * new tests
+    * cleanups and refactoring
+    * doc updates
+- Removed patches:
+  - rollback-regression-fix.patch - upstreamed
+- spec: disable static build, missing libzstd-devel-static
+- spec: disable zstd support for non-Tumbleweed distros
+
+-------------------------------------------------------------------
+Tue Dec 19 11:31:07 UTC 2017 - wqu@suse.de
+
+- Fix rollback regression which can lead to data corruption
+  Added patches: rollback-regression-fix.patch (bsc#1069478)
+
+-------------------------------------------------------------------
+Thu Dec  7 11:03:37 UTC 2017 - dimstar@opensuse.org
+
+- Escape the usage of %{VERSION} when calling out to rpm.
+  RPM 4.14 has %{VERSION} defined as 'the main packages version'.
+
+-------------------------------------------------------------------
+Wed Nov 22 14:41:57 UTC 2017 - jeffm@suse.com
+
+- Add dependencies for libreiserfscore0 3.6.27 or newer (bsc#1071085).
+
+-------------------------------------------------------------------
+Wed Nov  1 00:00:00 CET 2017 - dsterba@suse.cz
+
+- update to version 4.13.3:
+  * check: fix --force, wrong check for a mounted block device
+  * build: fix --with-convert parsing
+  * subvol list: don't list TOPLEVEL
+  * other: update tests
+
+-------------------------------------------------------------------
+Fri Oct  6 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- update to version 4.13.2:
+  * subvol list:
+    * don't list toplevel subvolume among deleted (broken since 4.8.3)
+    * minor adjustments of uuid print format
+  * subvol delete:
+    * fix swapped behaviour of --commit-each and --commit-after
+    * fix potentially lost sync if subvolumes are from different filesystems
+  * check: add cache for metadata blocks, should improve performance
+  * other:
+    * new tests, testsuite updates
+    * doc updates
+    * cleanups
+
+-------------------------------------------------------------------
+Thu Sep 28 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- update to version 4.13.1:
+  * image: speed up generating the sanitized names, do not generate unprintable chars
+  * completion: add missing commands, better mount point detection
+  * restore: add zstd support; libzstd detected automatically, will be
+    requested by default in the future, or can be configured out
+  * other:
+    * misc fixes found by sparse
+    * doc enhancements, ioctl manual page started
+    * updated and new tests
+    * build fixes
+
+-------------------------------------------------------------------
+Thu Sep 14 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- update to version 4.13:
+  * convert: reiserfs support
+  * check: new option --force to allow check of a mounted filesystem (no repair)
+  * mkfs: --rootdir will now copy special files
+  * dump-tree: minor output changes
+  * inspect rootid: accept file as arugment
+  * dev usage: don't calculate slack space for missing devices
+  * fi du: don't print error on EMPTY_SUBVOL (inode number 2)
+  * build:
+    * fixed support for sanitization features on gcc (tsan, asan, ubsan)
+    * fix PIE build
+  * other:
+    * misc cleanups and stability fixes
+    * travis CI enhancements
+    * new tests, fuzzed images
+    * testsuite cleanups
+- Removed patches:
+  - 0163-btrfs-progs-fsck-fix-segfault.patch - will be upstreamed
+  - local-version-override.patch - not needed anymore
+  - btrfs-support-pie.patch - upstremed
+
+-------------------------------------------------------------------
+Tue Aug 29 00:00:01 CEST 2017 - dsterba@suse.cz
+
+- Removed patches:
+  - 0167-Btrfs-progs-make-find_and_setup_root-return-an-error.patch
+  - 0168-Btrfs-progs-don-t-bug-out-if-we-can-t-find-the-last-.patch
+
+-------------------------------------------------------------------
+Tue Aug 29 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- update to 4.12.1
+  * build:
+    * fix cross-compilation
+    * use gnu90 explicitly
+  * dump-tree: more relaxed checks so -b can print block on a damaged fs
+  * convert: fix the 1MB range exclusion
+  * check: more dir_item hash checks
+  * other
+    * added missing getopt spec for some options
+    * doc fixes
+    * cleanups
+    * test updates
+- update to 4.12
+  * subvol show: new options --rootid, --uuid to show subvol by the given spec
+  * convert: progress report fixes, found by tsan
+  * image: progress report fixes, found by tsan
+  * fix infinite looping in find-root, or when looking for free extents
+  * other:
+    * code refactoring
+    * docs updates
+    * build: ThreadSanitizer support
+    * tests: stricter checks for mounted filesystem
+- update to -4.11.1
+  * image: restoring from multiple devices
+  * dev stats: make --check option work
+  * check: fix false alert with extent hole on a NO_HOLE filesystem
+  * check: lowmem mode, fix false alert in case of mixed inline and compressed
+    extent
+  * convert: work with large filesystems (many TB)
+  * convert: fix overwriting of eb header flags
+  * convert: do not clear NODATASUM flag in inodes when run with --no-datasum
+  * docs updates
+  * build: sync Android.mk with Makefile
+  * tests:
+    * new tests
+    * fix 008 and 009, shell quotation mistake
+- update to 4.11
+  * receive: fix handling empty stream with -e (multi-stream)
+  * send dump: fix printing long file names
+  * stability fixes for: dump-super, print-tree, check
+  * option parser updates: global options are parsed before the subcommand name
+    (old xfstests will fail)
+  * new and updated tests
+  * documentation updates
+
+-------------------------------------------------------------------
+Sat Jun 10 15:00:59 UTC 2017 - meissner@suse.com
+
+- btrfs-support-pie.patch: remove CFLAGS usage from linker lines,
+  this will allow the default PIE support to work.
+
+-------------------------------------------------------------------
+Thu Apr  6 00:00:00 CEST 2017 - dsterba@suse.cz
+
+- update to 4.10.2
+  * check: lowmem mode fix for false alert about lost backrefs
+  * convert: minor bugfix
+  * library: fix build, misisng symbols, added tests
+- update to 4.10.1
+  * receive: handle subvolume in path clone
+  * convert: rollback fixed (rewrite was needed to address previous design issues)
+  * build: fix build of 3rd party tools, missing <linux/sizes.h>
+  * dump-tree: print log trees
+  * other: new and updated tests
+- update to 4.10
+  * send: dump output fixes: missing newlies
+  * check: several fixes for the lowmem mode, improved error reporting
+  * build
+    * removed some library deps for binaries that not use them
+    * ctags, cscope
+    * split Makefile to the autotool generated part and the rest, not needed
+      to autogen.sh after adding a file
+  * shared code: sync easy parts with kernel sources
+  * other
+    * lots of cleanups
+    * source file reorganization: convert, mkfs, utils
+    * lots of spelling fixes in docs, other updates
+    * more tests
+- update to 4.9.1
+  * check:
+    * use correct inode number for lost+found files
+    * lowmem mode: fix false alert on dropped leaf
+  * size reports: negative numbers might appear in size reports during device
+    deletes (previously in EiB units)
+  * mkfs: print device being trimmed
+  * defrag: v1 ioctl support dropped
+  * quota: print message before starting to wait for rescan
+  * qgroup show: new option to sync before printing the stats
+  * other:
+    * corrupt-block enhancements
+    * backtrace and co. cleanups
+    * doc fixes
+
+-------------------------------------------------------------------
+Wed Jan  4 00:00:00 CET 2017 - dsterba@suse.cz
+
+- update to 4.9
+  * check: many lowmem mode updates
+  * send: use splice syscall to copy buffer from kernel
+  * receive: new option to dump the stream in textual form
+  * convert:
+    * move sources to own directory
+    * prevent accounting of blocks beyond end of the device
+    * make it work with 64k sectorsize
+  * mkfs: move sources to own directory
+  * defrag: warns if directory used without -r
+  * dev stats:
+    * new option to check stats for non-zero values
+    * add long option for -z
+  * library: version bump to 0.1.2, added subvol_uuid_search2
+  * other:
+    * cleanups
+    * docs updates
+- update to 4.8.5
+  * receive: fix detection of end of stream (error reported even for valid
+    streams)
+  * other:
+    * added test for the receive bug
+    * fix linking of library-test
+- update to 4.8.4
+  * check: support for clearing space cache v2 (free-space-tree)
+  * send:
+    * more sanity checks (with tests), cleanups
+    * fix for fstests/btrfs/038 and btrfs/117 failures
+  * build:
+    * fix compilation of standalone ioctl.h, pull NULL definition
+    * fix library link errors introduced in 4.8.3
+  * tests:
+    * add more fuzzed images from bugzilla
+    * add bogus send stream checks
+    * fixups and enhancements for CI environment builds
+    * misc refinements and updates of testing framework
+  * other:
+    * move sources for btrfs-image to own directory
+    * deprecated and not build by default: btrfs-calc-size, btrfs-show-super
+    * docs updates
+- update to 4.8.3
+  * check:
+    * support for clearing space cache (v1)
+    * size reduction of inode backref structure
+  * send:
+    * fix handling of multiple snapshots (-p and -c options)
+    * transfer buffer increased (should reduce number of context switches)
+    * reuse existing file for output (-f), eg. when root cannot create files (NFS)
+  * dump-tree:
+    * print missing items for various structures
+    * new: dev stats, balance status item
+    * sync key names with kernel (the persistent items)
+  * subvol show: now able to print the toplevel subvolume -- the creation time
+    might be wrong though
+  * mkfs:
+    * store the creation time of toplevel root inode
+    * print UUID in the summary
+  * build: travis CI for devel
+  * other:
+    * lots of cleanups and refactoring
+    * switched to on-stack path structure
+    * fixes from coverity, asan, ubsan
+    * new tests
+    * updates in testing infrastructure
+    * fixed convert test 005
+
+-------------------------------------------------------------------
+Mon Oct 31 00:00:00 CET 2016 - dsterba@suse.cz
+
+- update to 4.8.2
+  * convert: also convert file attributes
+  * convert: fix wrong tree block alignment for unalianged block group
+  * check: quota verify fixes, handle reloc tree
+  * build: add stub for FIEMAP_EXTENT_SHARED, compiles on ancient kernels
+  * build: add stub for BUILD_ASSERT when ioctl.h is included
+  * dump-tree: don't crash on unrecognized tree id for -t
+  * tests:
+    * add more ioctl tests
+    * convert: more symlink tests, attribute tests
+    * quota verify for reloc tree
+  * other cleanups
+
+-------------------------------------------------------------------
+Tue Oct 25 15:58:46 UTC 2016 - jeffm@suse.com
+
+- Add ability to provide site specific defaults for mkfs (FATE#320615).
+  * Only used for SLES11 defaults.
+- Added patch mkfs-default-features.patch
+
+-------------------------------------------------------------------
+Tue Oct 18 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.8.1
+  * 32bit builds fixed
+  * build without backtrace support fixed
+- update to 4.8
+  * error handling improvements all over the place
+  * new fuzzed images, test updates
+  * doc fixups
+  * minor cleanups and improvements
+  * kernel library helpers moved to own directory
+  * qgroup: fix regression leading to incorrect status after check,
+    introduced in 4.7
+
+-------------------------------------------------------------------
+Wed Sep 28 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.7.3
+  * fixed free space tree compat status
+  * check: low-mem mode: handle partially dropped snapshots
+  * dump-super: consolidate options for superblock copy
+  * tree-stats: check mount status
+  * subvol delete: handle verbosity option
+  * defrag: print correct error string
+  * mkfs: fix reading rotational status
+  * other:
+    * UBSAN build option
+    * documentation updates
+    * enhanced tests: convert, fuzzed images, more tools to run on fuzzed
+      images
+
+-------------------------------------------------------------------
+Thu Sep  8 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- removed btrfsprogs-only-install-udev-rules-for-udev-190.patch: fix build
+
+-------------------------------------------------------------------
+Tue Sep  6 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.7.2
+  * check:
+    * urgent fix: false report of backref mismatches; do not --repair
+      last unaffected version 4.6.1 (code reverted to that state)
+  * fuzzing and fixes
+    * added more sanity checks for various structures
+    * testing images added
+  * build: udev compatibility: do not install .rules on version < 190
+  * other:
+    * dump-super: do not crash on garbage value in csum_type
+    * minor improvements in messages and help strings
+  * documentation:
+    * filesystem features
+
+-------------------------------------------------------------------
+Tue Aug 30 20:11:10 UTC 2016 - jeffm@suse.com
+
+- Add new btrfsprogs-udev-rules package to contain the udev rules.
+- Fix packaging for udev rules:
+  - btrfs builtin didn't exist prior to udev v190, so the rules must
+    depend on that version.
+- Added patch:
+  * btrfsprogs-only-install-udev-rules-for-udev-190.patch
+
+-------------------------------------------------------------------
+Mon Aug 29 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.7.1
+  * check:
+    * new optional mode: optimized for low memory usage (memory/io tradeoff)
+    * --mode=lowmem, not default, still considered experimental
+    * does not work with --repair yet
+  * convert: regression fix, ext2_subvol/image rw permissions
+  * mkfs/convert:
+    * two-staged creation, partially created filesystem will not be recognized
+    * improved error handling (fewer BUG_ONs)
+  * convert: preparation for more filesystems to convert from
+  * documentation updates: quota, qgroup
+  * other
+    * message updates
+    * more tests
+    * more build options, enhanced debugging
+
+-------------------------------------------------------------------
+Fri Jul 29 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.7
+  * convert: fix creating discontig extents
+  * check: speed up traversing heavily reflinked extents within a file
+  * check: verify qgroups of higher levels
+  * check: repair can now fix wrong qgroup numbers
+  * balance: new option to run in the background
+  * defrag: default extent target size changed to 32MiB
+  * du: silently skip non-btrfs dirs/files
+  * documentation updates: btrfs(5), btrfs(8), balance, subvolume, scrub,
+    filesystem, convert
+  * bugfixes:
+    * unaligned access (reported for sparc64) in raid56 parity calculations
+    * use /bin/bash
+    * other stability fixes and cleanups
+  * more tests
+- Removed patches:
+  * 0002-btrfs-progs-btrfsck-verify-qgroups-above-level-0.patch
+  * 0003-btrfs-progs-btrfsck-write-corrected-qgroup-info-to-d.patch
+
+-------------------------------------------------------------------
+Thu Jul 14 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.6.1
+  * fi resize: negative resize argument accepted again
+  * qgroup rescan: fix skipping when rescan is in progress
+  * mkfs: initialize stripesize to correct value
+  * testsuite updates, mostly convert tests
+  * documentation updates
+    * btrfs-device, btrfs-restore manual pages enhanced
+    * misc fixups
+- update to 4.6
+  * convert - major rewrite:
+    * fix a long-standing bug that led to mixing data blocks into metadata block
+      groups
+    * the workaround was to do full balance after conversion, which was
+      recommended practice anyway
+    * explicitly set the lowest supported version of e2fstools to 1.41
+  * provide and install udev rules file that addresses problems with device
+    mapper devices, renames after removal
+  * send: new option: quiet
+  * dev usage: report slack space (device size minus filesystem area on the dev)
+  * image: support DUP
+  * build: short options to enable debugging builds
+  * other:
+    * code cleanups
+    * build fixes
+    * more tests and other enhancements
+* Removed patches:
+  * 0001-btrfs-progs-free-qgroup-counts-in-btrfsck.patch
+  * 0169-btrfs-progs-udev-add-rules-for-dm-devices.patch
+  * btrfs-progs-no-PKG_CHECK_VAR
+
+-------------------------------------------------------------------
+Fri Jun 17 21:16:12 UTC 2016 - mfasheh@suse.com
+
+- btrfsck updates for qgroup verification and repair (fate#318144)
+  * We can now check all qgroup levels
+  * btrfsck will write out corrected qgroups when run with --repair
+  - Added patch: 0001-btrfs-progs-free-qgroup-counts-in-btrfsck.patch
+  - Added patch: 0002-btrfs-progs-btrfsck-verify-qgroups-above-level-0.patch
+  - Added patch: 0003-btrfs-progs-btrfsck-write-corrected-qgroup-info-to-d.patch
+
+-------------------------------------------------------------------
+Mon May 16 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.5.3
+  * ioctl: fix unaligned access in buffer from TREE_SEARCH; might cause SIGBUS
+    on architectures that do not support unaligned access and do not performa
+    any fixups
+  * improved validation checks of superblock and chunk-related structures
+  * subvolume sync: fix handling of -s option
+  * balance: adjust timing of safety delay countdown with --full-balance
+  * rescue super-recover: fix reversed condition check
+  * check: fix bytes_used accounting
+  * documentation updates: mount options, scrub, send, receive, select-super,
+    check, mkfs
+  * testing: new fuzzed images, for superblock and chunks
+- fix build failure on 13.1: conditional default for udevdir
+- fix build failure on SLE11SP4: wrong check in makefile
+
+-------------------------------------------------------------------
+Mon May  9 15:47:01 UTC 2016 - jeffm@suse.com
+
+- Add udev rules for dm devices (bsc#912170 bsc#888215)
+  - Added patch: 0169-btrfs-progs-udev-add-rules-for-dm-devices.patch
+  - Added patch: btrfs-progs-no-PKG_CHECK_VAR
+
+-------------------------------------------------------------------
+Tue May  3 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.5.2
+  * new/moved command: btrfs-calc-stats -> btrfs inspect tree-stats
+  * check: fix false alert for metadata blocks crossing stripe boundary
+  * check: catch when qgroup numbers mismatch
+  * check: detect running quota rescan and report mismatches
+  * balance start: add safety delay before doing a full balance
+  * fi sync: is now silent
+  * fi show: don't miss filesystems with partially matching uuids
+  * dev ready: accept only one argument for device
+  * dev stats: print "devid:N" for a missing device instead of "(null)"
+  * other:
+    * lowest supported version of e2fsprogs is 1.41
+    * minor cleanups, test updates
+- Removed patch: 2000-btrfs-full-balance-warning.diff
+
+-------------------------------------------------------------------
+Thu Mar 31 00:00:00 CEST 2016 - dsterba@suse.cz
+
+- update to 4.5.1
+  * mkfs: allow DUP on multidev fs
+  * fix static build
+- update to 4.5
+  * new/moved commands
+    * btrfs-show-super -> btrfs inspect-internal dump-super
+    * btrfs-debug-tree -> btrfs inspect-internal dump-tree
+  * new commands
+    * btrfs fi du - calculate disk usage, including shared extents
+  * enhancements
+    *  device delete - delete by id (needs kernel support, not merged to 4.6)
+    *  check - new option to specify chunk root
+    *  debug-tree/dump-tree - option -t understands human readable name of the
+       tree (along numerical ids)
+    *  btrfs-debugfs - can dump block group information
+  * bugfixes
+    * all commands should accept the option separator "--"
+    * several fixes in device scan
+    * restore works on filesystems with sectorsize > 4k
+    * debug-tree/dump-tree - print compression type as string
+    * subvol sync: fix crash, memory corruption
+    * argument parsing fixes: subvol get-default, qgroup create/destroy/assign,
+      inspect subvolid-resolve
+    * check for block device or regular file in several commands
+  * other
+    * documentation updates
+    * manual pages for the moved tools now point to btrfs-filesystem
+    * testsuite updates
+- Removed patch (upstream):
+  0001-btrfs-progs-libbtrfs-remove-max-min-macros-from-API.patch
+
+-------------------------------------------------------------------
+Fri Mar 18 20:29:22 UTC 2016 - mgorse@suse.com
+
+- Recommend btrfsmaintenance 
+
+-------------------------------------------------------------------
+Mon Mar  7 00:00:00 CET 2016 - dsterba@suse.cz
+
+- hide min/max macros clashing with gcc 6 (bnc#966257)
+  (0001-btrfs-progs-libbtrfs-remove-max-min-macros-from-API.patch)
+
+-------------------------------------------------------------------
+Mon Feb 29 00:00:00 CET 2016 - dsterba@suse.cz
+
+- update to 4.4.1
+  * find-root: don't skip the first chunk
+  * free-space-tree compat bits fix
+  * build: target symlinks
+  * documentation updates
+  * test updates
+
+-------------------------------------------------------------------
+Fri Jan 22 00:00:00 CET 2016 - dsterba@suse.cz
+
+- update to 4.4
+  * mkfs.btrfs --data dup
+  * support balance filters added/enhanced in linux 4.4
+  * manual pages enhanced (btrfs, mkfs, mount, filesystem, balance)
+  * 'btrfs filesystem usage' works with mixed blockgroups
+  * build: installation to /usr/local
+  * build: the 'ar' tool is properly deteced during cross-compilation
+  * improved stability on fuzzed/crafted images when reading sys array in
+    superblock
+  * debug-tree: option -t understands ids for tree root and chnuk tree
+  * check: properly reset nlink of multi-linked file
+  * chunk recovery: fix floating point exception
+  * chunk recovery: endianity bugfix during rebuild
+  * mkfs with 64K pages and nodesize reported superblock checksum mismatch
+- Removed patches:
+  * 0001-btrfs-progs-mkfs-use-correct-size-for-superblock-csu.patch
+  * fix-doc-build-on-SLE11SP3.diff
+
+-------------------------------------------------------------------
+Thu Dec 10 16:04:16 CET 2015 - tiwai@suse.de
+
+- Fix missing dependency on coreutils for initrd macros (boo#958562)
+- Call missing initrd macro at post / postun (boo#958562)
+
+-------------------------------------------------------------------
+Tue Nov 24 00:00:00 CET 2015 - dsterba@suse.cz
+
+- fix mkfs failure on ppc64 (or with sectorsize > 4k) (bsc#956819)
+- Added patch: 0001-btrfs-progs-mkfs-use-correct-size-for-superblock-csu.patch
+
+-------------------------------------------------------------------
+Mon Nov 16 00:00:00 CET 2015 - dsterba@suse.cz
+
+- update to 4.3.1
+  * fixes
+    * device delete: recognize 'missing' again
+    * mkfs: long names are not trimmed when doing ssd check
+    * support partitioned loop devices
+
+  * other
+    * replace several mallocs with on-stack variables
+    * more memory allocation failure handling
+    * add tests for bugs fixed
+    * cmd-device: switch to new message printing helpers
+    * minor code cleanups
+
+-------------------------------------------------------------------
+Fri Nov 13 00:00:00 CET 2015 - dsterba@suse.cz
+
+- update to 4.3
+  * mkfs
+    * mixed mode is not forced for filesystems smaller than 1GiB
+    * mixed mode broken with mismatching sectorsize and nodesize, fixed
+    * print version info earlier
+    * print devices sorted by id
+    * do not truncate target image with --rootsize
+  * fi usage:
+    * don't print global block reserve
+    * print device id
+    * minor output tuning
+    * other cleanups
+  * calc-size:
+    * div-by-zero fix on an empty filesystem
+    * fix crash
+  * bugfixes:
+    * more superblock sanity checks
+    * consistently round size of all devices down to sectorsize
+    * misc leak fixes
+    * convert: don't try to rollback with a half-deleted ext2_saved subvolume
+  * other:
+    * check: add progress indicator
+    * scrub: enahced error message
+    * show-super: read superblock from a given offset
+    * add README
+    * docs: update manual page for mkfs.btrfs, btrfstune, balance, convert and inspect-internal
+    * build: optional build with more warnings (W=...)
+    * build: better support for static checkers
+    * build: html output of documentation
+    * pretty-print: last_snapshot for root_item
+    * pretty-print: stripe dev uuid
+    * error reporting wrappers, introduced and example use
+    * refactor open_file_or_dir
+    * other docs and help updates
+  * testing:
+    * test for nodes crossing stripes
+    * test for broken 'subvolume sync'
+    * basic tests for mkfs, raid option combinations
+    * basic tests for fuzzed images (check)
+    * command intrumentation (eg valgrind)
+    * print commands if requested
+    * add README for tests
+
+-------------------------------------------------------------------
+Mon Nov  2 00:00:00 CET 2015 - dsterba@suse.cz
+
+- build btrfsprogs-static package for 13.2 and Factory, package
+  with static versions of the utilities, aimed for rescue environments
+
+-------------------------------------------------------------------
+Mon Oct 19 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- update to 4.2.3
+  - subvol sync: make it actually work again
+  - scanning: do not scan already discovered filesystems (minor optimization)
+  - convert: better error message in case the filesystem is not finalized
+  - restore: off-by-one symlink path check fix
+
+-------------------------------------------------------------------
+Mon Oct  5 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- update to 4.2.2
+  - fi label: use fallback if the label ioctl is not available
+  - convert: check nodesize constraints against commandline features (-O)
+  - scrub: report status 'running' until all devices are finished
+  - device scanning might crash in some scenarios
+  - fi usage: print summary for non-root users
+
+-------------------------------------------------------------------
+Tue Sep 22 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- update to 4.2.1
+  - fix an off-by-one error in cross-stripe boundary check
+  - convert: don't write uninitialized data to image
+  - image:  don't loop with option -t0
+  - image: don't create threads if compression is not requested
+- Removed patches:
+  * 0001-btrfs-progs-fix-cross-stripe-boundary-check.patch
+
+-------------------------------------------------------------------
+Thu Sep 17 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- make mkfs work with 64k nodesize again, notably fixes mkfs on ppc64
+  (bsc#945229)
+- Added patch:
+  * 0001-btrfs-progs-fix-cross-stripe-boundary-check.patch
+
+-------------------------------------------------------------------
+Thu Sep  3 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- version 4.2
+  * enhancements:
+    * mkfs: do not create extra single chunks on multiple devices
+    * resize: try to guess the minimal size, 'inspect min-dev-size'
+    * qgroup assign: add option to schedule rescan
+    * chunk-recover: be more verbose about the scanning process
+  * fixes:
+    * check:
+      * find stripes crossing stripe boundary -- created by convert
+      * print correct range for file hole when there are no extents
+	and learn how to fix it
+    * replace: more sanity checks
+    * convert: concurrency fixes related to reporting progress
+    * find-root: option -a will not skip the current root anymore
+    * subvol list: fix occasional crash
+    * do not create stripes crossing stripe boundary
+  * build:
+    * fixes for musl libc
+    * preliminary support for android (not working yet, more code changes needed)
+    * new EXTRA_CFLAGS and EXTRA_LDFLAGS
+  * other:
+    * lots of cleanups
+    * tests: lots of updates, new tests, framework improvements
+    * documentation updates
+    * debugging: print-tree shows stripe length
+- Removed patches (upstreamed):
+  * 2104-get-min-size-for-resize.patch
+  * 2105-move-min-resize-implementation-to-inspec.patch
+  * 2106-inspect-add-command-min-dev-size.patch
+
+-------------------------------------------------------------------
+Tue Sep  1 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- add warning before full balance starts (bsc#940467, fate#319317)
+- Added patches:
+  2000-btrfs-full-balance-warning.diff
+
+-------------------------------------------------------------------
+Fri Jul 24 10:53:54 UTC 2015 - fdmanana@suse.com
+
+- Add feature to get minimum size a filesystem can be resized to
+  (FATE#317897).
+- Added patches:
+  * 2104-get-min-size-for-resize.patch
+  * 2105-move-min-resize-implementation-to-inspec.patch
+  * 2106-inspect-add-command-min-dev-size.patch
+
+-------------------------------------------------------------------
+Tue Jul 14 00:00:00 CEST 2015 - dsterba@suse.com
+
+- version 4.1.2
+  - mkfs: bugfix, previous version does not create entierly correct
+    filesystem (has to be recreated)
+
+-------------------------------------------------------------------
+Fri Jul 10 00:00:00 CEST 2015 - dsterba@suse.com
+
+- version 4.1.1
+  * bugfixes
+    - defrag: threshold overflow fix
+    - fsck:
+      - check if items fit into the leaf space
+      - fix wrong nbytes
+    - mkfs:
+      - create only desired block groups for single device
+      - preparatory work for fix on multiple devices
+  * enhancements
+    - new alias for 'device delete': 'device remove'
+  * other
+    - fix compilation on old gcc (4.3)
+    - documentation updates
+    - debug-tree: print nbytes
+    - test: image for corrupted nbytes
+    - corupt-block: let it kill nbytes
+
+-------------------------------------------------------------------
+Wed Jun 24 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- spec: drop libacl dependency
+
+-------------------------------------------------------------------
+Mon Jun 22 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- version 4.1
+  * bugfixes
+    - fsck.btrfs: no bash-isms
+    - bugzilla 97171: invalid memory access (with tests)
+    - receive:
+      - cloning works with --chroot
+      - capabilities not lost
+    - mkfs: do not try to register bare file images
+    - option --help accepted by the standalone utilities
+  * enhancements
+    - corrupt block: ability to remove csums
+    - mkfs:
+      - warn if metadata redundancy is lower than for data
+      - options to make the output quiet (only errors)
+      - mixed case names of raid profiles accepted
+      - rework the output:
+	- more comprehensive, 'key: value' format
+    - subvol:
+      - show:
+	- print received uuid
+	- update the output
+	- new options to specify size units
+      - sync:
+	- grab all deleted ids and print them as they're removed,
+	  previous implementation only checked if there are any
+	  to be deleted - change in command semantics
+    - scrub: print timestamps in days HMS format
+    - receive:
+      - can specify mount point, do not rely on /proc
+      - can work inside subvolumes
+    - send:
+      - new option to send stream without data (NO_FILE_DATA)
+    - convert:
+      - specify incompat features on the new fs
+    - qgroup:
+      - show: distinguish no limits and 0 limit value
+      - limit: ability to clear the limit
+    - help for 'btrfs' is shorter, 1st level command overview
+    - debug tree: print key names according to their C name
+  * new
+    - rescure zero-log
+    - btrfsune:
+      - rewrite uuid on a filesystem image
+      - new option to turn on NO_HOLES incompat feature
+  * deprecated
+    - standalone btrfs-zero-log
+  * other
+    - testing framework updates
+      - uuid rewrite test
+      - btrfstune feature setting test
+      - zero-log tests
+      - more testing image formats
+    - manual page updates
+    - ioctl.h synced with current kernel uapi version
+    - convert: preparatory works for more filesystems (reiserfs pending)
+    - use static buffers for path handling where possible
+    - add new helpers for send uilts that check memory allocations,
+      switch all users, deprecate old helpers
+    - Makefile: fix build dependency generation
+    - map-logical: make it work again
+
+-------------------------------------------------------------------
+Tue Jun  2 07:57:43 UTC 2015 - antoine.belvire@laposte.net
+
+- Install bash completion for btrfs.
+
+-------------------------------------------------------------------
+Wed Apr 29 00:00:00 CEST 2015 - dsterba@suse.cz
+
+- version 4.0
+  * resize:
+    * don't accept file as an argument (it's confusing)
+    * print better error message in case of an error
+  * restore: optionally restore metadata (time, mode, uid/gid)
+  * receive: optionally enforce chroot
+  * new rescue subcommand 'zero-log', same as btrfs-zero-log, but
+    now also part of the main utility
+  * check:
+    * free space checks match kernel, fixes incorrect reports
+  * convert: fix setting of checksum bit if --no-datasum is used
+  * fsck.btrfs: don't print messages
+  * fix quota rescan on PPC64 (mangled ioctl number)
+  * test updates
+  * documentation: files renamed to .asciidoc, misc fixups
+
+-------------------------------------------------------------------
+Wed Mar 25 00:00:00 CET 2015 - dsterba@suse.cz
+
+- version 3.19.1
+  - convert:
+    - new option to specify metadata block size
+    - --no-progress actually works
+  - restore: properly handle the page boundary corner case
+  - build fixes:
+    - missing macro from public header, BTRFS_BUILD_VERSION
+    - wrong handling of --enable-convert
+  - fi usage: reports correct space for degraded mounts
+  - other:
+    - mkfs: help string updates
+    - completion: added 'usage' subcommands
+    - cleanups in qgroup code, preparatory work
+
+-------------------------------------------------------------------
+Wed Mar 11 00:00:00 CET 2015 - dsterba@suse.cz
+
+- version 3.19
+  - btrfs-image
+    - restore can now run in parallel threads
+    - fixed restore of multiple image from multiple devices onto a single dev
+    - introduced metadump v2
+  - check
+    - make --init-csum-tree and --init-extent-tree work together
+  - find-new
+    - option to search through all metadata even if a root was already found
+  - convert
+    - show progress by default, can be turned off
+  - corrupt-block
+    - option to work on a specific root
+  - bash completion script for all subcommands
+- spec: convert to autotools
+  Removed patch 0169-btrfs-progs-Check-metadata-mirrors-in-find-root.patch
+
+-------------------------------------------------------------------
+Mon Mar  2 00:00:00 CET 2015 - dsterba@suse.cz
+
+- add COPYING
+
+-------------------------------------------------------------------
+Thu Jan 29 00:00:00 CET 2015 - dsterba@suse.cz
+
+- version 3.18.2
+  * qgroup show: print human readable sizes, options to say otherwise
+  * check: new option to explicitly say no to writes
+  * mkfs: message about trimming is not printed to stderr
+  * fi show: fixed return value
+  * tests: new infrastructure
+  * btrfstune: force flag can be used together with seeding option
+  * backtrace support is back
+  * getopt cleanups
+  * doc and help updates
+
+-------------------------------------------------------------------
+Wed Jan 14 00:00:00 CET 2015 - dsterba@suse.cz
+
+- version 3.18.1
+  - minor fixes
+  - documentation updates
+
+-------------------------------------------------------------------
+Tue Dec 30 00:00:00 CET 2014 - dsterba@suse.cz
+
+- version 3.18
+  - mkfs - skinny-metadata feature is now on by default, first introduced in
+    kernel 3.10
+  - filesystem usage - give an overview of fs usage in a way that's more
+    comprehensible than existing 'fi df'
+  - device usage - more detailed information about per-device allocations
+  - check:
+    - option to set a different tree root byte number
+    - ability to link lost files to lost+found, caused by a recent kernel bug
+    - repair of severely corrupted fs (use with care)
+  - convert - option to show progress
+  - subvol create - print the commit mode inline, print the global mode only if --verbose
+  - other updates: musl-libc support, coverity bugfixes, new test images,
+    documentation
+- Removed patches (upstreamed):
+  * 0010-btrfs-progs-move-group-type-and-profile-pretty-print.patch
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0013-btrfs-progs-Add-command-btrfs-filesystem-disk-usage.patch
+  * 0014-btrfs-progs-Add-btrfs-device-disk-usage-command.patch
+  * 0015-btrfs-progs-cleanup-dead-return-after-usage-for-fi-d.patch
+  * 0016-btrfs-progs-Fix-memleak-in-get_raid56_used.patch
+  * 0017-Btrfs-progs-fi-usage-free-memory-if-realloc-fails.patch
+  * 0019-btrfs-progs-add-original-df-and-rename-disk_usage-to.patch
+  * 0020-btrfs-progs-move-device-usage-to-cmds-device-more-cl.patch
+  * 0021-btrfs-progs-check-if-we-can-t-get-info-from-ioctls-d.patch
+  * 0022-btrfs-progs-zero-out-structures-before-calling-ioctl.patch
+  * 0024-btrfs-progs-Print-more-info-about-device-sizes.patch
+  * 0025-btrfs-progs-compare-unallocated-space-against-the-co.patch
+  * 0026-btrfs-progs-add-section-of-overall-filesystem-usage.patch
+  * 0027-btrfs-progs-cleanup-filesystem-device-usage-code.patch
+  * 0028-btrfs-progs-rework-calculations-of-fi-usage.patch
+  * 0029-btrfs-progs-replace-df_pretty_sizes-with-pretty_size.patch
+  * 0030-btrfs-progs-clean-up-return-codes-and-paths.patch
+  * 0031-btrfs-progs-move-global-reserve-to-overall-summary.patch
+
+-------------------------------------------------------------------
+Thu Dec  4 00:00:00 CET 2014 - dsterba@suse.cz
+
+- version 3.17.3
+  - convert: fix conversion of sparse ext* filesystems
+  - show: resolve to the correct path
+  - fsck: more verbose error for root dir problems
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:01 CET 2014 - dsterba@suse.cz
+
+- version 3.17.2
+  - check improvements
+    - add ability to replace missing dir item/dir indexes
+    - fix missing inode items
+    - create missing root dirid
+  - corrupt block: enhancements for testing fsck
+  - zero-log: able to reset a fs with bogus log tree pointer (bko#72151)
+
+-------------------------------------------------------------------
+Wed Nov 19 00:00:00 CET 2014 - dsterba@suse.cz
+
+- package mkinitrd scripts conditionally (bsc#893577)
+- spec: minor updates
+
+-------------------------------------------------------------------
+Fri Nov  7 00:00:00 CET 2014 - dsterba@suse.cz
+
+- version 3.17.1
+  - fi df: argument handling
+  - fix linking with libbtrfs
+  - replace: better error reporting
+  - fi show: fixed stall if run concurrently with balance
+  - check: fixed argument parsing for --subvol-extents
+  - fi df: SI prefixes corrected
+- Added patches:
+  * fix-doc-build-on-SLE11SP3.diff
+- Removed patches:
+  * 0042-btrfs-progs-fix-linking-with-libbtrfs.patch
+  * 0043-btrfs-progs-libbtrfs-make-exported-headers-compatibl.patch
+- Modified patches:
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0019-btrfs-progs-add-original-df-and-rename-disk_usage-to.patch
+
+-------------------------------------------------------------------
+Mon Nov  3 00:00:00 CET 2014 - dsterba@suse.cz
+
+- version 3.17
+  - check: --init-csum-tree acutally does something useful, rebuilds the whole
+    csum tree
+  - /dev scanning for btrfs devices is gone
+  - /proc/partitions scanning is gone, blkid is used exclusively
+  - new subcommand subvolume sync
+  - filesystem df: new options to set unit format
+  - convert: allow to copy label from the origin, or specify a new one
+- Modified patches:
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0013-btrfs-progs-Add-command-btrfs-filesystem-disk-usage.patch
+  * 0014-btrfs-progs-Add-btrfs-device-disk-usage-command.patch
+  * 0015-btrfs-progs-cleanup-dead-return-after-usage-for-fi-d.patch
+  * 0016-btrfs-progs-Fix-memleak-in-get_raid56_used.patch
+  * 0017-Btrfs-progs-fi-usage-free-memory-if-realloc-fails.patch
+  * 0019-btrfs-progs-add-original-df-and-rename-disk_usage-to.patch
+  * 0020-btrfs-progs-move-device-usage-to-cmds-device-more-cl.patch
+  * 0021-btrfs-progs-check-if-we-can-t-get-info-from-ioctls-d.patch
+  * 0022-btrfs-progs-zero-out-structures-before-calling-ioctl.patch
+  * 0024-btrfs-progs-Print-more-info-about-device-sizes.patch
+  * 0025-btrfs-progs-compare-unallocated-space-against-the-co.patch
+  * 0026-btrfs-progs-add-section-of-overall-filesystem-usage.patch
+  * 0027-btrfs-progs-cleanup-filesystem-device-usage-code.patch
+  * 0029-btrfs-progs-replace-df_pretty_sizes-with-pretty_size.patch
+  * 0030-btrfs-progs-clean-up-return-codes-and-paths.patch
+  * 0031-btrfs-progs-move-global-reserve-to-overall-summary.patch
+- Added patches:
+  * 0010-btrfs-progs-move-group-type-and-profile-pretty-print.patch
+  * 0028-btrfs-progs-rework-calculations-of-fi-usage.patch
+  * 0042-btrfs-progs-fix-linking-with-libbtrfs.patch
+  * 0043-btrfs-progs-libbtrfs-make-exported-headers-compatibl.patch
+- Removed patches:
+  * 0006-Btrfs-progs-fsck-clear-out-log-tree-in-repair-mode.patch
+  * 0007-Btrfs-progs-fsck-avoid-pinning-same-block-several-ti.patch
+  * 0008-Btrfs-progs-fsck-add-ability-to-check-reloc-roots.patch
+  * 0018-btrfs-progs-read-global-reserve-size-from-space-info.patch
+  * 0023-btrfs-progs-print-B-for-bytes.patch
+  * 0028-btrfs-progs-extend-pretty-printers-with-unit-mode.patch
+  * 0164-btrfs-progs-convert-set-label-or-copy-from-origin.patch
+  * 0171-btrfs-progs-make-free-space-checker-work-on-non-4k-s.patch
+
+-------------------------------------------------------------------
+Sat Oct  4 00:00:03 CEST 2014 - dsterba@suse.cz
+
+- version 3.16.2
+  - fsck: handle bad extent mapping
+  - image: make it work on a balanced fs
+  - btrfs-show-super: print flags in human readable way
+  - documentation updates
+
+-------------------------------------------------------------------
+Mon Sep 22 23:01:01 CEST 2014 - dsterba@suse.cz
+
+- version 3.16.1
+  - library version defines
+  - subvol list: -R to print received UUID
+  - fixed detection of multiple mounts on the same directory
+  - restore: misc fixes
+  - other fixes
+- Modified patches (sync with pending upstream versions):
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0013-btrfs-progs-Add-command-btrfs-filesystem-disk-usage.patch
+  * 0018-btrfs-progs-read-global-reserve-size-from-space-info.patch
+  * 0020-btrfs-progs-move-device-usage-to-cmds-device-more-cl.patch
+  * 0024-btrfs-progs-Print-more-info-about-device-sizes.patch
+  * 0025-btrfs-progs-compare-unallocated-space-against-the-co.patch
+  * 0028-btrfs-progs-extend-pretty-printers-with-unit-mode.patch
+  * 0029-btrfs-progs-replace-df_pretty_sizes-with-pretty_size.patch
+- Removed patch: library-version-defines.patch (upstream)
+
+-------------------------------------------------------------------
+Fri Sep  5 15:02:39 CEST 2014 - dsterba@suse.cz
+
+- send-stream API users updatd, drop the workaround
+- Removed patch: send-stream-api-wokaround.patch
+
+-------------------------------------------------------------------
+Mon Sep  1 14:07:53 CEST 2014 - dsterba@suse.cz
+
+- workaround for send api breakage
+- Added patch: send-stream-api-wokaround.patch
+
+-------------------------------------------------------------------
+Wed Aug 27 17:23:48 CEST 2014 - dsterba@suse.cz
+
+- add api versioning and package version.h (now 0.1.1)
+- Added patches:
+  * library-version-defines.patch
+
+-------------------------------------------------------------------
+Tue Aug 26 20:13:21 CEST 2014 - dsterba@suse.cz
+
+- version 3.16
+  - show-super: skip unrecognized sb, add option to force
+  - debug-tree: print tree by id
+  - mkfs: new option to specify UUID
+  - receive: new option to limit number of errors
+  - check: new option to verify quotas
+  - check: reduced memory requirements
+  - check: new option to print extent sharing
+  - restore: check length before decompression
+  - restore: more error handling
+  - balance: new filter 'limit'
+  - recover: allow to read all sb copies
+  - restore: option to loop during restoring
+  - mkfs: drop experimental notice
+  - btrfstune: new option to force dangerous changes
+  - documentation updates
+
+- Deleted patches (upstream):
+  * 0001-btrfs-progs-doc-fix-symlink-target-for-btrfsck.8.patch
+  * 0200-btrfs-progs-print-qgroup-excl-as-unsigned.patch
+  * 0201-btrfs-progs-import-ulist.patch
+  * 0202-btrfs-progs-add-quota-group-verify-code.patch
+  * 0203-btrfs-progs-show-extent-state-for-a-subvolume.patch
+  * 0204-btrfs-progs-ignore-orphaned-qgroups-by-default.patch
+  * btrfs-progs-canonicalize-pathnames-for-device-commands
+- Refreshed patches:
+  * 0006-Btrfs-progs-fsck-clear-out-log-tree-in-repair-mode.patch
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0013-btrfs-progs-Add-command-btrfs-filesystem-disk-usage.patch
+  * 0028-btrfs-progs-extend-pretty-printers-with-unit-mode.patch
+  * 0164-btrfs-progs-convert-set-label-or-copy-from-origin.patch
+
+-------------------------------------------------------------------
+Wed Jul  9 18:08:37 UTC 2014 - mfasheh@suse.com
+
+- refresh references on the following patches:
+  * 0200-btrfs-progs-print-qgroup-excl-as-unsigned.patch
+  * 0201-btrfs-progs-import-ulist.patch
+  * 0202-btrfs-progs-add-quota-group-verify-code.patch
+  * 0203-btrfs-progs-show-extent-state-for-a-subvolume.patch
+- btrfs-progs: ignore orphaned qgroups by default
+- Added patch:
+  * 0204-btrfs-progs-ignore-orphaned-qgroups-by-default.patch
+
+-------------------------------------------------------------------
+Mon Jul  7 23:04:51 UTC 2014 - mfasheh@suse.com
+
+- btrfs-progs: show extent state for a subvolume (bnc#865621)
+- Added patch:
+  * 0203-btrfs-progs-show-extent-state-for-a-subvolume.patch
+
+-------------------------------------------------------------------
+Fri Jun  6 13:20:54 UTC 2014 - jeffm@suse.com
+
+- btrfs-progs: canonicalize pathnames for device commands (bnc#880486).
+- Added patch:
+  * btrfs-progs-canonicalize-pathnames-for-device-commands
+
+-------------------------------------------------------------------
+Fri Jun  6 13:20:10 UTC 2014 - jeffm@suse.com
+
+- fsck: fix checking on filesystems with large sectorsize (bnc#872286)
+- Added patches:
+  * 0171-btrfs-progs-make-free-space-checker-work-on-non-4k-s.patch
+
+-------------------------------------------------------------------
+Fri Jun  6 13:15:01 UTC 2014 - jeffm@suse.com
+
+- Do not package btrfs-find-root and btrfs-select-super by default.
+- Removed printing byte number for every slot (bnc#872364).
+- Removed patch:
+  * 0170-btrfs-progs-In-find-root-dump-bytenr-for-every-slot.patch
+
+-------------------------------------------------------------------
+Mon Jun  2 14:47:05 UTC 2014 - dsterba@suse.cz
+
+- update to upstream 3.14.2
+  - man: separate pages for all subcommands
+  - minor bugfixes
+  - spec: removed upstreamed patches, update build dependencies
+- Added patches:
+  * 0001-btrfs-progs-doc-fix-symlink-target-for-btrfsck.8.patch
+- Removed patches:
+  * 0001-Btrfs-progs-fix-check-to-test-trim-support.patch
+  * 0002-Btrfs-progs-fsck-fix-double-free-memory-crash.patch
+  * 0003-Btrfs-progs-mkfs-Remove-zero_end-1-since-it-has-been.patch
+  * 0004-btrfs-progs-fix-wrong-max-system-array-size-check-in.patch
+  * 0005-btrfs-progs-move-arg_strtou64-to-a-separate-file-for.patch
+  * 0009-btrfs-progs-prevent-close_root-if-the-root-to-close-.patch
+  * 0010-btrfs-progs-fix-mkfs.btrfs-segfault-with-features-op.patch
+
+-------------------------------------------------------------------
+Wed May 21 19:32:13 UTC 2014 - mfasheh@suse.com
+
+- add quota group verify patches, sent to list near end of the week starting
+  5/4/2014
+  - updates btrfsck with the ability to verify quota groups
+- Update the changelog with some sad version of diffstat output to meet
+  requirements.
+- Added patches:
+ * 0200-btrfs-progs-print-qgroup-excl-as-unsigned.patch
+ * 0201-btrfs-progs-import-ulist.patch
+ * 0202-btrfs-progs-add-quota-group-verify-code.patch
+
+-------------------------------------------------------------------
+Tue May 13 20:28:23 UTC 2014 - mfasheh@suse.com
+
+- add quota group verify patches, sent to list near end of the week starting
+  5/4/2014
+  - updates btrfsck with the ability to verify quota groups
+
+-------------------------------------------------------------------
+Fri May  2 13:37:04 UTC 2014 - dsterba@suse.cz
+
+- update to upstream 3.14.1
+- mkfs:
+  - fix TRIM detection
+  - do not zero-out end of device unconditionally
+  - no crash with --features option
+- fsck:
+  - clear log tree in repair mode
+  - check reloc roots
+- btrfs - reworked space reporting (bnc#873106)
+  - btrfs fi usage - new command
+  - btrfs dev usage - new command
+  - btrfs fi df - enhanced output with GlobalReserve
+- Removed patches:
+  * 0001-btrfs-progs-move-arg_strtou64-to-a-separate-file-for.patch
+- Added patches:
+  * 0001-Btrfs-progs-fix-check-to-test-trim-support.patch
+  * 0002-Btrfs-progs-fsck-fix-double-free-memory-crash.patch
+  * 0003-Btrfs-progs-mkfs-Remove-zero_end-1-since-it-has-been.patch
+  * 0004-btrfs-progs-fix-wrong-max-system-array-size-check-in.patch
+  * 0005-btrfs-progs-move-arg_strtou64-to-a-separate-file-for.patch
+  * 0006-Btrfs-progs-fsck-clear-out-log-tree-in-repair-mode.patch
+  * 0007-Btrfs-progs-fsck-avoid-pinning-same-block-several-ti.patch
+  * 0008-Btrfs-progs-fsck-add-ability-to-check-reloc-roots.patch
+  * 0009-btrfs-progs-prevent-close_root-if-the-root-to-close-.patch
+  * 0010-btrfs-progs-fix-mkfs.btrfs-segfault-with-features-op.patch
+  * 0011-btrfs-progs-Enhance-the-command-btrfs-filesystem-df.patch
+  * 0012-btrfs-progs-Add-helpers-functions-to-handle-the-prin.patch
+  * 0013-btrfs-progs-Add-command-btrfs-filesystem-disk-usage.patch
+  * 0014-btrfs-progs-Add-btrfs-device-disk-usage-command.patch
+  * 0015-btrfs-progs-cleanup-dead-return-after-usage-for-fi-d.patch
+  * 0016-btrfs-progs-Fix-memleak-in-get_raid56_used.patch
+  * 0017-Btrfs-progs-fi-usage-free-memory-if-realloc-fails.patch
+  * 0018-btrfs-progs-read-global-reserve-size-from-space-info.patch
+  * 0019-btrfs-progs-add-original-df-and-rename-disk_usage-to.patch
+  * 0020-btrfs-progs-move-device-usage-to-cmds-device-more-cl.patch
+  * 0021-btrfs-progs-check-if-we-can-t-get-info-from-ioctls-d.patch
+  * 0022-btrfs-progs-zero-out-structures-before-calling-ioctl.patch
+  * 0023-btrfs-progs-print-B-for-bytes.patch
+  * 0024-btrfs-progs-Print-more-info-about-device-sizes.patch
+  * 0025-btrfs-progs-compare-unallocated-space-against-the-co.patch
+  * 0026-btrfs-progs-add-section-of-overall-filesystem-usage.patch
+  * 0027-btrfs-progs-cleanup-filesystem-device-usage-code.patch
+  * 0028-btrfs-progs-extend-pretty-printers-with-unit-mode.patch
+  * 0029-btrfs-progs-replace-df_pretty_sizes-with-pretty_size.patch
+  * 0030-btrfs-progs-clean-up-return-codes-and-paths.patch
+  * 0031-btrfs-progs-move-global-reserve-to-overall-summary.patch
+
+-------------------------------------------------------------------
+Sat Apr 26 09:45:23 UTC 2014 - coolo@suse.com
+
+- own mkinitrd directories
+
+-------------------------------------------------------------------
+Fri Apr 11 11:30:32 UTC 2014 - dsterba@suse.cz
+
+- add missing symbol to library (bnc#873164)
+- add version dependency for devel package
+- Added patches:
+  * 0001-btrfs-progs-move-arg_strtou64-to-a-separate-file-for.patch
+
+-------------------------------------------------------------------
+Tue Apr  8 11:42:43 UTC 2014 - dsterba@suse.cz
+
+- fsck: fixes and enahancements to --init-extent-tree mode
+- fsck: chunk-recover updates
+- scrub: add force option -f
+- send: check if subvolumes are read-only
+- subvol snapshot: add options to affect commit behaviour
+- btrfs: add properties command group
+- restore: add dry-run option
+- restore: fix restoring of compressed files
+- mkfs: support for no-holes feature
+- mkfs: option -r deals with hardlinks and relative paths
+- mkfs: discard phase is interruptible
+- documentation updates
+
+- cleaned spec file
+- Removed patches:
+  * 0162-btrfs-progs-fix-loop-device-mount-checks.patch
+  * 0165-Revert-btrfs-progs-update-options-in-find-root.c.patch
+  * 0166-Btrfs-progs-add-some-verbose-output-to-find-root.patch
+
+-------------------------------------------------------------------
+Mon Nov 25 14:10:55 CET 2013 - dsterba@suse.cz
+
+- bump version to 3.12
+- update tarball and remove upstreamed patches
+- fsck, image, restore: various improvements and fixes
+- btrfs: quota rescan (fate#312751)
+
+-------------------------------------------------------------------
+Thu Oct 31 01:05:56 CET 2013 - dsterba@suse.cz
+
+- fsck updates
+- more mkfs sanity checks
+- qgroup rescan wait
+- Added patches:
+  * 0050-Btrfs-progs-commit-the-csum_root-if-we-do-init-csum-.patch
+  * 0051-btrfs-progs-Fix-getopt-on-arm-ppc-platforms.patch
+  * 0052-btrfs-progs-fix-duplicate-__-su-typedefs-on-ppc64.patch
+  * 0053-btrfs-progs-use-reentrant-localtime.patch
+  * 0054-btrfs-progs-don-t-have-to-report-ENOMEDIUM-error-dur.patch
+  * 0055-Btrfs-progs-added-btrfs-quota-rescan-w-switch-wait.patch
+  * 0056-btrfs-progs-fix-qgroup-realloc-inheritance.patch
+  * 0057-Btrfs-progs-fix-restore-command-leaving-corrupted-fi.patch
+  * 0058-btrfs-progs-avoid-write-to-the-disk-before-sure-to-c.patch
+  * 0059-btrfs-progs-error-if-device-for-mkfs-is-too-small.patch
+  * 0060-btrfs-progs-error-if-device-have-no-space-to-make-pr.patch
+  * 0061-btrfs-progs-calculate-available-blocks-on-device-pro.patch
+  * 0062-Btrfs-progs-keep-track-of-transid-failures-and-fix-t.patch
+
+-------------------------------------------------------------------
+Fri Oct  4 20:16:02 UTC 2013 - rgoldwyn@suse.com
+
+- Change udev rule filename in setup-btrfs.sh to 
+  /usr/lib/udev/rules.d/64-btrfs.rules from
+  from /usr/lib/udev/rules.d/80-btrfs.rules (bnc#839960 comment#7)
+
+-------------------------------------------------------------------
+Thu Sep 26 21:21:15 UTC 2013 - jeffm@suse.com
+
+- Remove udev rules file - udev packages one itself (bnc#839960).
+
+-------------------------------------------------------------------
+Mon Sep 16 15:49:00 UTC 2013 - jeffm@suse.com
+
+- update to upstream master (194aa4a1)
+  - btrfs-restore: deal with NULL returns from read_node_slot
+  - btrfs-restore: use the correct leafsize when reading the FS location
+  - btrfs-find-root: Add options to control generation and level
+  - btrfsck: fix incorrect casting on items in the corrupt_blocks tree
+  - Btrfs-progs: fix closing of devices
+  - Btrfs-progs: enhance btrfs-image to restore image onto multiple disks
+  - Btrfs-progs: cleanup btrfs-image usage
+  - Btrfs-progs: delete fs_devices itself from fs_uuid list before freeing
+  - Btrfs-progs: skip open devices which is missing
+  - Btrfs-progs: fix misuse of skinny metadata in btrfs-image
+  - Btrfs-progs: recover raid0/raid10/raid5/raid6 metadata chunk
+  - Btrfs-progs: Add chunk rebuild function for RAID1/SINGLE/DUP
+  - Btrfs-progs: introduce list_{first, next}_entry/list_splice_tail{_init}
+  - Btrfs-progs: Add chunk recover function - using old chunk items
+  - Btrfs-progs: Add block group check funtion
+  - Btrfs-progs: extend the extent cache for the device extent
+  - Btrfs-progs: use rb-tree instead of extent cache tree for fs/file roots
+  - Btrfs-progs: introduce common insert/search/delete functions for rb-tree
+  - Btrfs-progs: cleanup similar code in open_ctree_* and close_ctree
+  - Btrfs-progs: Don't free the devices when close the ctree
+  - Btrfs-progs: don't close the file descriptor 0 when closing a device
+  - Btrfs-progs: fix missing recow roots when making btrfs filesystem
+
+- Add fix for passing super_nr while opening ctree
+
+-------------------------------------------------------------------
+Thu Sep  5 16:33:50 CEST 2013 - dsterba@suse.cz
+
+- btrfs-progs-mkfs-default-extref.diff: turn on extended refs by
+  default, (aka hardlink count limtitation) (bnc#835695)
+
+-------------------------------------------------------------------
+Fri Aug  9 14:03:04 CEST 2013 - dsterba@suse.cz
+
+- added 0040-btrfs-progs-fix-loop-device-mount-checks.patch: fix
+  loop mount detection again (bnc#834173)
+
+-------------------------------------------------------------------
+Mon Jul 22 17:50:52 CEST 2013 - ohering@suse.de
+
+- Simplify checks in mkinitrd scripts.
+  They are always true because they come from the same package
+  Use relative paths to binaries
+- Move udev rules to /usr.
+- Adjust rules to call binary from /usr
+- Simplify fsck.btrfs, its just a dummy until fixed
+
+-------------------------------------------------------------------
+Thu Jul  4 12:30:41 CEST 2013 - dsterba@suse.cz
+
+- update to upstream master (f00dd8386a57d241d0f7c)
+
+-------------------------------------------------------------------
+Sun Jun 16 23:39:42 UTC 2013 - jengelh@inai.de
+
+- Make requirement on libattr-devel explicit
+
+-------------------------------------------------------------------
+Fri Apr 13 16:06:50 CEST 2012 - dsterba@suse.cz
+
+- initrd support: add module (bnc#750185, bnc#727383)
+
+-------------------------------------------------------------------
+Tue Apr 10 21:50:00 UTC 2012 - frank.lichtenheld@sophos.com
+
+- set correct file mode if writing replacement fsck
+
+-------------------------------------------------------------------
+Fri Apr  6 13:57:43 CEST 2012 - dsterba@suse.cz
+
+- fix build failure
+
+-------------------------------------------------------------------
+Fri Apr  6 13:27:48 CEST 2012 - dsterba@suse.cz
+
+- add btrfs-debug-tree to initrd
+- adjust fs size to correct size (bnc#744593)
+- man page documentation updates
+- do not package obsolete utilities
+- mkfs: store correct size of device in superblock (bnc#730103)
+- updated restriper/balance commands to match kernel version
+
+-------------------------------------------------------------------
+Fri Mar  9 16:26:20 UTC 2012 - rschweikert@suse.com
+
+- place binaries in /usr tree (UsrMerge project)
+- adjust mkinitrd scrippt accordingly
+
+-------------------------------------------------------------------
+Mon Mar  5 13:06:43 CET 2012 - dsterba@suse.cz
+
+- add btrfsck repair options for:
+  - rebuild extent records
+  - fix block group accounting
+  - reset csums for rescue nodatasum mount
+  - prune corrupt extent allocation tree blocks
+- device scanning fixes for dm and multipath (bnc#749540)
+- initrd support: move btrfs device scan after block device setup
+- documentation updates
+- add csize for file commpressed size
+- updated restore utility
+
+-------------------------------------------------------------------
+Mon Feb 13 10:44:43 UTC 2012 - coolo@suse.com
+
+- patch license to follow spdx.org standard
+
+-------------------------------------------------------------------
+Mon Dec 12 15:44:48 CET 2011 - dkukawka@suse.de
+
+- btrfs-progs-fix-open_ctree_usage_segfaults.patch: fix
+  segfaults from bnc#710486 due to unchecked usage of return
+  value of open_ctree()
+  [fixed compilation warnings]
+
+-------------------------------------------------------------------
+Mon Dec 12 14:50:07 CET 2011 - dsterba@suse.cz
+
+- pull upstream, replace existing patches, spec update
+- update 'restore' utility
+  - lzo support
+  - tools may now take earlies superblock when opening the fs
+  - other fixes
+- pull integration-20111030 branch
+  - mkfs: force mkfs if desired
+  - other fixes
+- add btrfs-dump-super to mkinitrd
+- other fixes
+  - skip non-existent devices or without media
+  - documentation updates
+  - scrubbing single device
+  - graceful error handling when opening fs fails
+
+-------------------------------------------------------------------
+Fri Dec  9 00:43:08 CET 2011 - dsterba@suse.cz
+
+- updated mkinitrd script to scan devices before mount (bnc#727383)
+
+-------------------------------------------------------------------
+
+Wed Nov  9 14:34:56 CET 2011 - dsterba@suse.cz
+
+- add several tools to mkinitrd if root fs is btrfs
+- pull upstream branch and delete local patches
+
+-------------------------------------------------------------------
+Tue Oct  4 02:08:54 CEST 2011 - dsterba@suse.cz
+
+- btrfsck: ignore -a (bnc#655906)
+- btrfsck: fix strerror value
+
+-------------------------------------------------------------------
+Sat Sep 17 20:58:20 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant tags/sections from specfile
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Thu Aug  4 21:52:12 CEST 2011 - dsterba@suse.cz
+
+- add patch for local version override as we do not build from
+  git, and avoid doubled "Btrfs" in output of 'btrfs'
+
+-------------------------------------------------------------------
+Thu Aug  4 21:20:11 CEST 2011 - dsterba@suse.cz
+
+- reorder help for 'get-default' right after 'set-default'
+
+-------------------------------------------------------------------
+Thu Jul 28 19:10:08 CEST 2011 - dsterba@suse.cz
+
+- add option -p to print parent subvolume
+- add subvolume 'get-default' subsubcommand
+
+-------------------------------------------------------------------
+Wed Jul 20 19:12:46 CEST 2011 - dsterba@suse.cz
+
+- remove debugging printf from
+  0001-Btrfs-progs-add-a-btrfs-select-super-command-to-over.patch
+
+-------------------------------------------------------------------
+Fri Jul  1 16:59:41 CEST 2011 - dsterba@suse.cz
+
+- add support for currently available kernel features:
+  - add scrub subcommand
+  - scan /proc/partitions by default (or use --all-devices for all)
+  - mkfs fixes and improvements
+  - documentation fixes
+
+-------------------------------------------------------------------
+Fri Jul  1 16:31:44 CEST 2011 - dmueller@suse.de
+
+- fix failing on deleted loop mounts (bnc#697671)
+
+-------------------------------------------------------------------
+Fri Jul  1 15:54:23 CEST 2011 - dsterba@suse.cz
+
+- update from git:
+  - add btrfs-select-super utility
+  - add btrfs-label utility
+  - allow mixed data+metadata (option --mixed)
+  - allow populating new filesystem with files (option --rootdir)
+  - allow discard support in mkfs
+  - lzo support
+  - deprecate 'btrfsctl' 'btrfs-vol' 'btrfs-show'
+  - other bugfixes and documentation improvements
+
+-------------------------------------------------------------------
+Mon Mar 21 13:01:23 CET 2011 - dmueller@suse.de
+
+- change to a hardlink
+
+-------------------------------------------------------------------
+Mon Mar 14 19:19:34 CET 2011 - dmueller@suse.de
+
+- add link for fsck.btrfs (bnc#665899)
+
+-------------------------------------------------------------------
+Thu Dec 16 20:53:19 CET 2010 - dmueller@suse.de
+
+- update to v0.19-35-g1b444cd:
+  * used space accounting fix for the converter
+  * Add btrfs-list for listing subvolumes
+  * Add new util: 'btrfs' 
+  * multidevice support for check_mounted
+  * check slash in deleting subvolumes
+  * Add btrfsck option to select the super block copy
+  * btrfs-debug-tree: add -d option to print only the device mapping
+
+-------------------------------------------------------------------
+Wed May 26 17:00:46 CEST 2010 - dmueller@suse.de
+
+- fix crash on creating filesystems (bnc#603620)
+
+-------------------------------------------------------------------
+Fri May  7 15:05:11 CEST 2010 - dmueller@suse.de
+
+- revert last change (bnc#599224#c3)
+
+-------------------------------------------------------------------
+Thu Apr 29 11:11:13 CEST 2010 - dmueller@suse.de
+
+- add hardlink from fsck.btrfs (bnc#599224)
+
+-------------------------------------------------------------------
+Fri Mar 26 13:24:15 CET 2010 - dmueller@suse.de
+
+- fix memory leak (bnc#537633)
+
+-------------------------------------------------------------------
+Thu Mar  4 22:48:17 CET 2010 - jeffm@suse.de
+
+- Updated to latest repo version.
+  - used space accounting fix for the converter
+  - btrfsctl: add snapshot/subvolume destroy ioctl
+  - btrfsck: check root back/forward references
+  - Add btrfs-map-logical program to map and read logical block numbers
+
+-------------------------------------------------------------------
+Fri Jan 22 22:28:46 CET 2010 - dmueller@suse.de
+
+- build btfs-convert (bnc#572912)
+
+-------------------------------------------------------------------
+Sun Dec 20 14:12:35 CET 2009 - jengelh@medozas.de
+
+- enable parallel build
+
+-------------------------------------------------------------------
+Mon Aug 03 14:00:55 CEST 2009 - aschnell@suse.de
+
+- added Supplements
+
+-------------------------------------------------------------------
+Mon Jul 27 13:12:39 CEST 2009 - dmueller@suse.de
+
+- move apps to /sbin
+
+-------------------------------------------------------------------
+Mon Jul 20 23:18:25 CEST 2009 - dmueller@suse.de
+
+- update to 0.19:
+  - build with rpm optflags
+  - install man pages 
+  - fix leak in extends checking (bnc#523447)
+
+-------------------------------------------------------------------
+Wed Feb 25 18:11:55 CET 2009 - dmueller@suse.de
+
+- Initial package (0.18)
+
