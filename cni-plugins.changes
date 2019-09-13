@@ -1,0 +1,137 @@
+-------------------------------------------------------------------
+Fri Aug 16 12:18:36 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Update plugins to v0.8.2
+  + New features:
+    * Support "args" in static and tuning
+    * Add Loopback DSR support, allow l2tunnel networks
+      to be used with the l2bridge plugin
+    * host-local: return error if same ADD request is seen twice
+    * bandwidth: fix collisions
+    * Support ips capability in static and mac capability in tuning
+    * pkg/veth: Make host-side veth name configurable
+  + Bug fixes:
+    * Fix: failed to set bridge addr: could not add IP address to "cni0": file exists
+    * host-device: revert name setting to make retries idempotent (#357).
+    * Vendor update go-iptables. Vendor update go-iptables to
+      obtain commit f1d0510cabcb710d5c5dd284096f81444b9d8d10
+    * Update go.mod & go.sub
+    * Remove link Down/Up in MAC address change to prevent route flush (#364).
+    * pkg/ip unit test: be agnostic of Linux version, on Linux 4.4 the syscall
+      error message is "invalid argument" not "file exists"
+    * bump containernetworking/cni to v0.7.1
+
+-------------------------------------------------------------------
+Thu Jun  6 12:36:17 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Updated plugins to v0.8.1:
+  + Bugs:
+    * bridge: fix ipMasq setup to use correct source address
+    * fix compilation error on 386
+    * bandwidth: get bandwidth interface in host ns through
+      container interface
+  + Improvements:
+    * Release: bump go to v1.12
+    * host-device: add pciBusID property
+- Drop patches merged upstream:
+  + 0001_use_Go_facilities_to_get_a_socket.patch
+
+-------------------------------------------------------------------
+Mon May 20 09:41:05 UTC 2019 - John Paul Adrian Glaubitz <adrian.glaubitz@suse.com>
+
+- Updated plugins to v0.8.0:
+  + New plugins:
+    * bandwidth - limit incoming and outgoing bandwidth
+    * firewall - add containers to firewall rules
+    * sbr - convert container routes to source-based routes
+    * static - assign a fixed IP address
+    * win-bridge, win-overlay: Windows plugins
+  + Plugin features / changelog:
+    * CHECK Support
+    * macvlan:
+      - Allow to configure empty ipam for macvlan
+      - Make master config optional
+    * bridge:
+      - Add vlan tag to the bridge cni plugin
+      - Allow the user to assign VLAN tag
+      - L2 bridge Implementation.
+    * dhcp:
+      - Include Subnet Mask option parameter in DHCPREQUEST
+      - Add systemd unit file to activate socket with systemd
+      - Add container ifName to the dhcp clientID, making the
+        clientID value
+    * flannel:
+      - Pass through runtimeConfig to delegate
+    * host-local:
+      - host-local: add ifname to file tracking IP address used
+    * host-device:
+      - Support the IPAM in the host-device
+      - Handle empty netns in DEL for loopback and host-device
+    * tuning:
+      - adds 'ip link' command related feature into tuning
+  + Bug fixes & minor changes
+    * Correctly DEL on ipam failure for all plugins
+    * Fix bug on ip revert if cmdAdd fails on macvlan and host-device
+    * host-device: Ensure device is down before rename
+    * Fix -hostprefix option
+    * some DHCP servers expect to request for explicit router options
+    * bridge: release IP in case of error
+    * change source of ipmasq rule from ipn to ip
+  + Build fixes:
+    * test: add coveralls support
+    * plugins: correctly output build version, cosmetic cleanups
+    * Move Windows tests to Travis
+- from version v0.7.5:
+  + This release takes a minor change to the portmap plugin:
+    * Portmap: append, rather than prepend, entry rules
+  + This fixes a potential issue where firewall rules may
+    be bypassed by port mapping
+- Include patch to fix the build on i586:
+  + 0001_use_Go_facilities_to_get_a_socket.patch
+- Use new build_linux.sh script instead of removed build.sh
+
+-------------------------------------------------------------------
+Fri Jan 25 10:44:20 UTC 2019 - Sascha Grunert <sgrunert@suse.com>
+
+- Updated plugins to v0.7.4:
+    - Add host-device plugin, which simply moves a device from the
+      host network namespace
+    - Portmap now uses a more efficient rule structure
+    - host-local can receive ranges as a RuntimeArgument
+    - DHCP daemon can be containerized
+    - DHCP now correctly parses routes
+    - Various Windows build fixes
+    - Waiting for DAD is skipped when possible
+    - Bridge now uses a stable mac
+    - Fix a regression where the interface's MAC address was no
+      longer populated in the return type.
+
+-------------------------------------------------------------------
+Wed Dec 12 15:53:32 UTC 2018 - alvaro.saurin@suse.com
+
+- Updated to a supported version of Go (due to security reasons)
+
+-------------------------------------------------------------------
+Tue Jun  5 08:22:45 UTC 2018 - dcassany@suse.com
+
+- Refactor %license usage to a simpler form
+
+-------------------------------------------------------------------
+Mon Jun  4 13:40:36 UTC 2018 - dcassany@suse.com
+
+- Make use of %license macro
+
+-------------------------------------------------------------------
+Tue Dec 19 13:08:33 UTC 2017 - alvaro.saurin@suse.com
+
+- Require cni
+
+-------------------------------------------------------------------
+Mon Aug 28 18:15:00 UTC 2017 - alvaro.saurin@suse.com
+
+- Install docs in the cni-plugins dir
+
+-------------------------------------------------------------------
+Mon Aug 28 15:13:37 UTC 2017 - alvaro.saurin@suse.com
+
+- Initial version from CNI plugins v0.6.0
