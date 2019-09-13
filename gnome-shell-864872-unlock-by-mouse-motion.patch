@@ -1,0 +1,57 @@
+Index: gnome-shell-3.24.2/js/ui/screenShield.js
+===================================================================
+--- gnome-shell-3.24.2.orig/js/ui/screenShield.js
++++ gnome-shell-3.24.2/js/ui/screenShield.js
+@@ -438,6 +438,8 @@ const ScreenShield = new Lang.Class({
+         this.actor = Main.layoutManager.screenShieldGroup;
+ 
+         this._lockScreenState = MessageTray.State.HIDDEN;
++        this._last_x = -1;
++        this._last_y = -1;
+         this._lockScreenGroup = new St.Widget({ x_expand: true,
+                                                 y_expand: true,
+                                                 reactive: true,
+@@ -447,6 +449,8 @@ const ScreenShield = new Lang.Class({
+                                               });
+         this._lockScreenGroup.connect('key-press-event',
+                                       Lang.bind(this, this._onLockScreenKeyPress));
++        this._lockScreenGroup.connect('motion-event',
++                                      Lang.bind(this, this._onLockScreenMotion));
+         this._lockScreenGroup.connect('scroll-event',
+                                       Lang.bind(this, this._onLockScreenScroll));
+         Main.ctrlAltTabManager.addGroup(this._lockScreenGroup, _("Lock"), 'changes-prevent-symbolic');
+@@ -686,6 +690,25 @@ const ScreenShield = new Lang.Class({
+         return Clutter.EVENT_STOP;
+     },
+ 
++    _onLockScreenMotion: function(actor, event) {
++        if (this._lockScreenState != MessageTray.State.SHOWN)
++            return false;
++        let [X, Y] = event.get_coords();
++
++        if (this._last_x == -1)
++            this._last_x = X;
++        if (this._last_y == -1)
++            this._last_y = Y;
++
++        let min_distance = 10
++        let distance = Math.max(Math.abs(this._last_x - X),
++                                Math.abs(this._last_y - Y));
++
++        if (distance >= min_distance)
++            this._liftShield(true, 0);
++        return true;
++    },
++
+     _onLockScreenScroll: function(actor, event) {
+         if (this._lockScreenState != MessageTray.State.SHOWN)
+             return Clutter.EVENT_PROPAGATE;
+@@ -1005,6 +1028,8 @@ const ScreenShield = new Lang.Class({
+             return;
+ 
+         this._ensureLockScreen();
++        this._last_x = -1;
++        this._last_y = -1;
+         this._lockDialogGroup.scale_x = 1;
+         this._lockDialogGroup.scale_y = 1;
+ 
