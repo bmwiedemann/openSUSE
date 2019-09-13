@@ -1,0 +1,14 @@
+<package name="amavisd-new" project="openSUSE:Factory">
+  <title>High-Performance E-Mail Virus Scanner</title>
+  <description>Amavisd-new is a high-performance interface between mailer (MTA) and
+content checkers: virus scanners or SpamAssassin. It talks to the MTA
+via (E)SMTP, LMTP. It works with the
+following MTAs:
+
+- postfix
+
+- sendmail (sendmail-milter)
+
+- exim</description>
+  <devel project="server:mail" package="amavisd-new"/>
+</package>
