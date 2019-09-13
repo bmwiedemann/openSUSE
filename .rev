@@ -1,0 +1,86 @@
+<revisionlist>
+  <revision rev="1" vrev="1">
+    <srcmd5>8f588f043185975dfea6635dfbd6c71c</srcmd5>
+    <version>1.5.7</version>
+    <time>1407753030</time>
+    <user>lnussel</user>
+    <comment>Remove bogus rpath from ibdmsh</comment>
+    <requestid>241466</requestid>
+  </revision>
+  <revision rev="2" vrev="3">
+    <srcmd5>8f588f043185975dfea6635dfbd6c71c</srcmd5>
+    <version>1.5.7</version>
+    <time>1409301203</time>
+    <user>adrianSuSE</user>
+    <comment>Split 13.2 from Factory</comment>
+  </revision>
+  <revision rev="3" vrev="1">
+    <srcmd5>d05c0e81399bbe7496e9c10595e06c49</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1424117672</time>
+    <user>coolo</user>
+    <comment>1</comment>
+    <requestid>285964</requestid>
+  </revision>
+  <revision rev="4" vrev="2">
+    <srcmd5>3fe9c20c7941a76920e8ef770baf6c53</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1424779380</time>
+    <user>dimstar_suse</user>
+    <comment>1</comment>
+    <requestid>287440</requestid>
+  </revision>
+  <revision rev="5" vrev="3">
+    <srcmd5>480e9ed0c1befbc7a28ffadde52eb371</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1497274234</time>
+    <user>dimstar_suse</user>
+    <comment>- Fix ibutils-diagui.patch to not build ibdiagui
+  with the ibutils package.
+
+- Scriptlets and %packages need not be wrapped in %if.
+
+- Normalize all macros
+- Replace &quot;1 tool&quot; by one tool for better reading
+
+- Add ibutils-diagui.patch to allow UI less compilation
+- Add a separate ibutils-ui package for UI tools. BSC #1030891</comment>
+    <requestid>501507</requestid>
+  </revision>
+  <revision rev="6" vrev="4">
+    <srcmd5>3f260ecf2d0cbaf4b083f65973b7482b</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1527583245</time>
+    <user>dimstar_suse</user>
+    <comment>- Move ibdm and ibis library directories to libibdm1 package (bsc#1092166)</comment>
+    <requestid>611477</requestid>
+  </revision>
+  <revision rev="7" vrev="5">
+    <srcmd5>29202616d7612dfa7320fcdff9337e27</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1534940526</time>
+    <user>dimstar_suse</user>
+    <comment></comment>
+    <requestid>630816</requestid>
+  </revision>
+  <revision rev="8" vrev="6">
+    <srcmd5>20150328ad200933a6adeb795b586623</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1537360249</time>
+    <user>maxlin_factory</user>
+    <comment>- Switch to multibuild system
+- Remove empty lines from ibutils-ui description (bsc#1092319)</comment>
+    <requestid>636393</requestid>
+  </revision>
+  <revision rev="9" vrev="7">
+    <srcmd5>bec0bb3cfdbe0bfcde4fbd9f29e793dd</srcmd5>
+    <version>1.5.7.0.2</version>
+    <time>1559375458</time>
+    <user>dimstar_suse</user>
+    <comment>- Unify changelog with SLE12
+
+- Fix older changelog entry that silently added a patch
+- Use %license for COPYING</comment>
+    <requestid>706088</requestid>
+  </revision>
+</revisionlist>
