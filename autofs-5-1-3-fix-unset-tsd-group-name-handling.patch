@@ -1,0 +1,64 @@
+From: Ian Kent <raven@themaw.net>
+Subject: autofs-5.1.3 - fix unset tsd group name handling
+Patch-mainline: Submitted, http://www.spinics.net/lists/autofs/msg01725.html
+References: bsc#1062482
+
+Commit 1a64a6bbc5 changed set_tsd_user_vars() to set thread specific
+values even if the group name could not be obtained.
+
+But the structure holding the values was not initialized on allocation
+so the group field might not be NULL when no group name is available.
+
+Also the macro addition and removal functions didn't properly handle a
+macro value of NULL.
+
+Signed-off-by: Ian Kent <raven@themaw.net>
+Reported-by: Donald Buczek <buczek@molgen.mpg.de>
+Acked-by: Jeff Mahoney <jeffm@suse.com>
+---
+
+ lib/macros.c |    8 +++++---
+ lib/mounts.c |    1 +
+ 2 files changed, 6 insertions(+), 3 deletions(-)
+
+--- a/lib/macros.c
++++ b/lib/macros.c
+@@ -186,15 +186,17 @@ int macro_global_addvar(const char *str,
+ 	}
+ 
+ 	if (sv && !sv->readonly) {
+-		char *this = malloc(strlen(value) + 1);
++		const char *val = value ? value : "";
++		char *this = malloc(strlen(val) + 1);
+ 		if (!this)
+ 			goto done;
+-		strcpy(this, value);
++		strcpy(this, val);
+ 		free(sv->val);
+ 		sv->val = this;
+ 		ret = 1;
+ 	} else {
+ 		struct substvar *new;
++		const char *this = value ? value : "";
+ 		char *def, *val;
+ 
+ 		def = strdup(str);
+@@ -202,7 +204,7 @@ int macro_global_addvar(const char *str,
+ 			goto done;
+ 		def[len] = '\0';
+ 
+-		val = strdup(value);
++		val = strdup(this);
+ 		if (!val) {
+ 			free(def);
+ 			goto done;
+--- a/lib/mounts.c
++++ b/lib/mounts.c
+@@ -1475,6 +1475,7 @@ void set_tsd_user_vars(unsigned int logo
+ 		error(logopt, "failed to get buffer size for getpwuid_r");
+ 		goto free_tsv;
+ 	}
++	memset(tsv, 0, sizeof(struct thread_stdenv_vars));
+ 
+ 	pw_tmp = malloc(tmplen + 1);
+ 	if (!pw_tmp) {
