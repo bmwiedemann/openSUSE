@@ -1,0 +1,380 @@
+-------------------------------------------------------------------
+Fri Jul 27 09:44:40 UTC 2018 - jengelh@inai.de
+
+- Update RPM groups.
+
+-------------------------------------------------------------------
+Tue Jun 19 10:43:30 UTC 2018 - asn@cryptomilk.org
+
+- Switched to cmake build
+  * Removed patch for autotools: enblend-latex-optional.patch
+- Added enblend-enfuse-4.2-add-missing-cmakelists.patch
+- Enabled support for OpenMP
+- Enabled support for SSE2
+- Turn on optimizations again
+- Info pages are no longer available
+- Added PDF documentation for enblend and enfuse
+
+-------------------------------------------------------------------
+Wed Feb  1 10:34:06 UTC 2017 - adam.majer@suse.de
+
+- use individual libboost-*-devel packages instead of boost-devel
+
+-------------------------------------------------------------------
+Mon May 30 12:10:01 UTC 2016 - astieger@suse.com
+
+- specify boost build dependendy version
+
+-------------------------------------------------------------------
+Thu May 26 10:46:27 UTC 2016 - dimstar@opensuse.org
+
+- Update to version 4.2:
+  + All deprecated options and features of version 4.1 have been
+    removed.
+  + Enblend and Enfuse support layer (aka "page", aka "frame")
+    selection in of multi-layer image-files. This includes
+    processing any layers in user-defined order.
+  + Both Enblend and Enfuse can now perform all their pyramidal
+    blending operations in CIELAB (aka L*a*b*, aka L-star) and
+    CIELUV (aka L*u*v*) color spaces, too.
+  + The new Graph-Cut algorithm is the default primary seam-line
+    generator.
+  + Avoid a division-by-zero in the Annealing Optimizer.
+  + Fix a bug (sf#1356551) in the seam-line vectorization code that
+    was there since 2004. The fix changes the position of almost
+    any coarse-mask seam line vertex by one pixel.
+  + Fix a longstanding quirk, which allowed to load masks into
+    Enblend and Enfuse that were unsuitable for processing.
+  + Fix a bug in the highlight-recovery that caused Enfuse to bail
+    out with the uncaught exception "Minimizer1D::set_bracket:
+    minimum not bracketed".
+  + The OpenMP enabled versions of Enblend and Enfuse benefit from
+    Google's TCMalloc library.
+  + Several exposure weight functions were added to Enfuse. The
+    choice is now up to the user. The default still is the Gauss
+    function as in all Enfuse versions before.
+- Add texlive-latex-bin-bin BuildRequires: new dependency.
+- Drop use-default-gcc-inlining.diff: no longer needed.
+- Add enblend-latex-optional.patch: Allow building without
+  documentation, that is, make latex optional.
+- Toggle _build_doc to 1: building documentation works again.
+
+-------------------------------------------------------------------
+Tue Dec  8 12:18:52 UTC 2015 - p.drouand@gmail.com
+
+- Update to version 4.1.4
+  * The introduction of additional blend color spaces in the Development
+    Branch requires a new option to select them.    Here, in the Stable
+    Branch, the new option `  *  * blend  * colorspace' just duplicates the
+    functionality of `  *  * ciecam' and `  *  * no  * ciecam'.    The Stable Branch
+    does *not* provide the additional blend colorspaces of the
+    Development Branch.    The following equivalences hold
+              *  * ciecam         <=>      *  * blend  * colorspace=ciecam
+              *  * no  * ciecam    <=>      *  * blend  * colorspace=identity
+    Both options `  *  * ciecam' and `  *  * no  * ciecam' are deprecated in 4.2 and
+    will be withdrawn in 4.3.    Thus, users should prefer
+    `  *  * blend  * colorspace'.
+  * [Enblend and Enfuse] Fix the nesting  * depth counter for response
+    files.    This bug prohibited to load more than 20 images in a single
+    response file.
+  * [Enblend and Enfuse] Allow grayscale images to bring their own
+    (grayscale) profiles.    Previously grayscale images with ICC profiles
+    were rejected.
+  * [Enblend] Fix a possible domain error followed by a division  * by  * zero
+    in the seam  * line optimizer.
+  * [Enblend and Enfuse] Avoid an undeserved warning about incompatible
+    colorspaces if they only disagree on their meta  * data (e.g. profile
+    creation date/time).
+  * [Enblend] Fix a bug in the Dijkstra Optimizer which could lead to
+    undefined behavior in the placement of the (optimized) seam line.
+  * [Enblend] Fix a non  * dereferencable vector iterator which led to a
+    segfault.
+  * [Enblend] Avoid a division  * by  * zero in the Annealing Optimizer.
+  * [Enblend] Fix a bug (#1356551) in the seam  * line vectorization code
+    that was there since 2004.    The fix changes the position of almost
+    any coarse  * mask seam line vertex by one pixel.
+- Update use-default-gcc-inlining.diff
+- Add libICE-devel and pkg-config build dependencies
+
+-------------------------------------------------------------------
+Wed Feb 11 16:14:25 UTC 2015 - dimstar@opensuse.org
+
+- Introduce _build_doc defines (currently set to 0): Allow to
+  easily enable/disable the building of the documentation (incl.
+  the reevant BuildRequires and file sections). Currently disabled,
+  as enblend fails with texinfo 5.1; upstream is aware but there
+  are multiple ways the texi files are broken (mainly using invalid
+  characters for defintions).
+
+-------------------------------------------------------------------
+Sun Nov 16 12:02:39 UTC 2014 - meissner@suse.com
+
+- no more upstream tarball signatures, no need for gpg offline
+
+-------------------------------------------------------------------
+Wed Apr 23 17:12:11 UTC 2014 - fcrozat@suse.com
+
+- Update to patchlevel 3 of version 4.1:
+  + Bug Fixes:
+    [Enblend only] Fix problem of multiple, almost-identical 
+    seamlines that produce inexplicable black areas in the output
+    panorama.
+  + LCMS 2.5 is now required to build.
+
+-------------------------------------------------------------------
+Sun Dec 29 11:34:15 UTC 2013 - adrian@suse.de
+
+- update to patchlevel 2 of version 4.1:
+   [Enblend and Enfuse] Fix a bug in the highlight-recovery that caused
+   Enfuse to bail out with the uncaught exception
+     "Minimizer1D::set_bracket: minimum not bracketed".
+   This addresses LaunchPad Bug #1214004.
+  
+   [Enfuse] Clean up seemingly random, bright-colored pixels that
+   sometimes show up when fusing images with high contrast and "large"
+   color profiles.
+  
+   [Enblend only] Fix a race condition in the seam-line optimizer that
+   can cause wrongly placed seams.
+  
+   [Enblend and Enfuse] Use a per-thread storage of all OpenMP
+   Vigra-functors.  This avoids data races.
+  
+   [Enblend and Enfuse] The Boost implementation of the `Mersenne
+   Twister' random number generator caused segmentation faults when
+   used in the OpenMP-enabled versions of Enblend and Enfuse.  The new
+   implementation is based on the GNU Scientific Library (GSL), which
+   plays nicely with concurrent accesses.
+  
+   [Enblend only] Correct a mistake that causes overlapping images with
+   multiple seams to be blended incorrectly.
+  
+   [Enblend only] Require the OpenGL extension
+   `GL_ARB_texture_rectangle' for the `--gpu' option to work.  This
+   does away with a pesky warning of OpenGL drivers that do support
+   this extension and avoids crashes with drivers that don't.
+  
+   The GPU performance improvement of Enblend via `--gpu' now is only
+   available with drivers that feature `GL_ARB_texture_rectangle'
+   (among many other required OpenGL extensions).
+  
+   The OpenGL warning about odd texture sizes is unaffected by this
+   change.
+  
+   [Enblend and Enfuse] Fix a longstanding quirk, which allowed to load
+   masks that were unsuitable for processing.
+
+- no more signed tar balls, droping gpg verification :/
+
+- modified patches:
+  * use-default-gcc-inlining.diff
+
+-------------------------------------------------------------------
+Mon May 27 12:35:09 UTC 2013 - mmeister@suse.com
+
+- Added BuildRequire help2man to fix build with new automake
+
+-------------------------------------------------------------------
+Thu Jan 17 19:18:27 CET 2013 - sbrabec@suse.cz
+
+- Update to version 4.1 (bnc#800803):
+  * All deprecated options since version 4.0 have been removed.
+  * New primary seam-line generator.
+  * Default to perceptual model of the difference image.
+  * Parallelize CIECAM02 color conversion.
+  * Enblend and Enfuse integrate seamlessly in color-managed
+    workflow.
+  * Require LittleCMS Version 2.x Unbounded CMM feature.
+  * Option to assign different profiles to profile-free input images.
+  * New gray-scale projector called "anti-value".
+  * Enblend and Enfuse stop after saving all generated masks to
+    files, if option "--save-masks" is given, but option "--output"
+    is not.
+  * Enblend and Enfuse can write output JPEG files with arithmetic
+    JPEG compression and TIFF files with JPEG compression.
+  * Enblend and Enfuse warn on images that alternate between with
+    color profile and without.
+  * Several new Commandline options: "--primary-seam-generator",
+    "--image-difference", "--ciecam" (for -c) and --no-ciecam",
+    "--fallback-profile=PROFILE", "--exposure-cutoff",
+    "--load-masks", "--layer-selector", "--levels=auto".
+  * Deprecated: "--smooth-difference", user-(re)sizable image-cache.
+  * External Vigra version 1.8 or later is required.
+  * Enblend no longer relies on libXMI.
+- Verify GPG signature.
+
+-------------------------------------------------------------------
+Wed Oct 24 19:46:28 UTC 2012 - gankov@opensuse.org
+
+- workaround vigra bug where arithmetic coded JPEG is always
+  created with libjpeg-turbo #bnc786566 
+
+-------------------------------------------------------------------
+Wed Oct  3 19:49:45 UTC 2012 - pgajdos@suse.com
+
+- really build also with older libpng14
+
+-------------------------------------------------------------------
+Tue Sep  4 14:22:06 UTC 2012 - pgajdos@suse.com
+
+- build also with libpng15
+  * libpng15.patch
+
+-------------------------------------------------------------------
+Tue Jan 10 17:22:34 UTC 2012 - crrodriguez@opensuse.org
+
+- libjpeg-devel was missing in buildrequires. 
+
+-------------------------------------------------------------------
+Tue Dec  6 12:20:45 UTC 2011 - cfarrell@suse.com
+
+- license update: GPL-2.0+
+  No reason to believe the VIGRA license is used in aggregation. Use SPDX
+  syntax
+
+-------------------------------------------------------------------
+Fri Dec  2 12:41:53 UTC 2011 - coolo@suse.com
+
+- add automake as buildrequire to avoid implicit dependency
+
+-------------------------------------------------------------------
+Wed Sep 21 07:59:21 UTC 2011 - adrian@suse.de
+
+- drop %_smp_mflags again, it takes too much resources
+
+-------------------------------------------------------------------
+Sun Sep 18 17:17:12 UTC 2011 - jengelh@medozas.de
+
+- Remove redundant/obsolete tags/sections from specfile
+  (cf. packaging guidelines)
+- Add missing make call
+- Use %_smp_mflags for parallel build
+
+-------------------------------------------------------------------
+Fri Sep 16 12:58:08 UTC 2011 - adrian@suse.com
+
+- use original source
+
+-------------------------------------------------------------------
+Mon Mar 21 16:52:29 UTC 2011 - coolo@novell.com
+
+- licenses package is about to die
+
+-------------------------------------------------------------------
+Wed May 19 08:48:20 UTC 2010 - adrian@suse.de
+
+- compile with -Os on openSUSE 11.3 x86_64, because gcc 4.5
+  is way slower and needs more resources (build time can reach a day)
+
+-------------------------------------------------------------------
+Thu Apr  8 14:46:47 CEST 2010 - pgajdos@suse.cz
+
+- build with libpng14
+
+-------------------------------------------------------------------
+Tue Mar 30 00:15:09 UTC 2010 - adrian@suse.de
+
+- update to version 4.0:
+  * too many changes for this changelog, have a look at the NEWS file
+
+-------------------------------------------------------------------
+Thu Jan 15 13:37:42 CET 2009 - sbrabec@suse.cz
+
+- Changed BuildRequires: plotutils -> plotutils-devel.
+
+-------------------------------------------------------------------
+Wed Sep 10 16:53:49 CEST 2008 - sbrabec@suse.cz
+
+- Updated to version 3.2:
+  * Project renamed to enblend-enfuse.
+  * Fixed a bug in the NotifyingDirectionSelector's assignment
+    operator.
+  * Minor fixes.
+  * Documentation fixes.
+
+-------------------------------------------------------------------
+Tue Jul 15 15:17:26 CEST 2008 - sbrabec@suse.cz
+
+- Updated to the current CVS snapshot:
+  * enfuse code enhancements
+  * vigra code cleanup
+
+-------------------------------------------------------------------
+Wed Apr 23 14:21:09 CEST 2008 - sbrabec@suse.cz
+
+- Enblend identifies itself as 3.1, set version tag to 3.0.99.x.
+
+-------------------------------------------------------------------
+Tue Apr 22 16:32:13 CEST 2008 - sbrabec@suse.cz
+
+- Updated to the current CVS snapshot:
+  * Enfuse program for automatic multi-level exposure blending
+  * Support for PNG and OpenEXR input files.
+  * Correctly interpret alpha channel of float (HDR) images.
+  * Output to jpg possible (8 bit only).
+  * Compression can be specified with the new --compression option
+
+-------------------------------------------------------------------
+Wed Dec 12 13:52:31 CET 2007 - nadvornik@suse.cz
+
+- fixed includes for gcc 4.3
+
+-------------------------------------------------------------------
+Tue Jul 24 16:27:43 CEST 2007 - sbrabec@suse.cz
+
+- Better work-around for internal compiler error (#290663).
+
+-------------------------------------------------------------------
+Tue Jul 10 11:01:29 CEST 2007 - sbrabec@suse.cz
+
+- Updated to version 3.0:
+  * New, faster image processing algorithms for computing Gaussian
+    and Laplacian pyramids.
+  * Optional optimization of seam line placement to try to avoid
+    mismatches and parallax errors in the image overlap region.
+  * Masks can now be saved and loaded from files.
+  * Checkpointing of partial results is now optional.
+  * Optional blending using the CIECAM02 color appearance model.
+  * Optional use of the graphics processor to speed up certain
+    computations.
+
+-------------------------------------------------------------------
+Wed Apr 12 14:21:24 CEST 2006 - sbrabec@suse.cz
+
+- Removed non distributable PhaseCorrelation.h (#74354).
+
+-------------------------------------------------------------------
+Wed Jan 25 21:35:42 CET 2006 - mls@suse.de
+
+- converted neededforbuild to BuildRequires
+
+-------------------------------------------------------------------
+Mon Jan  2 18:32:39 CET 2006 - sbrabec@suse.cz
+
+- Updated to version 2.5.
+
+-------------------------------------------------------------------
+Mon Apr 18 10:46:44 CEST 2005 - mcihar@suse.cz
+
+- update to 2.3
+
+-------------------------------------------------------------------
+Wed Mar 23 18:11:39 CET 2005 - mcihar@suse.cz
+
+- remove non distributable header file (bug #74354)
+
+-------------------------------------------------------------------
+Mon Feb  7 15:40:39 CET 2005 - mcihar@suse.cz
+
+- update to 2.2
+
+-------------------------------------------------------------------
+Tue Dec 21 17:18:48 CET 2004 - mcihar@suse.cz
+
+- update to 2.1
+
+-------------------------------------------------------------------
+Fri Jul 30 16:53:49 CEST 2004 - mcihar@suse.cz
+
+- initial packaging
+
