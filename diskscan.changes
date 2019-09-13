@@ -1,0 +1,53 @@
+-------------------------------------------------------------------
+Wed Mar  7 17:39:47 UTC 2018 - mpluskal@suse.com
+
+- Update dependencies
+- Modernize spec file using spec-cleaner
+
+-------------------------------------------------------------------
+Mon Aug 28 09:48:56 UTC 2017 - mpluskal@suse.com
+
+- Update to version 0.20:
+  * Misc internal changes
+  * Update libscsicmd
+
+-------------------------------------------------------------------
+Sat Oct 15 10:18:54 UTC 2016 - mpluskal@suse.com
+
+- Adjust to latest cmake macros
+
+-------------------------------------------------------------------
+Thu Aug 18 10:41:15 UTC 2016 - mpluskal@suse.com
+
+- Small spec file cleanup
+
+-------------------------------------------------------------------
+Thu Nov 26 13:18:40 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.19
+  * When a partition is write mounted do not attempt to fix it as 
+    it will mess the filesystem.
+  * Also fix building on Debian/kFreeBSD.
+
+-------------------------------------------------------------------
+Fri Nov 13 18:10:15 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.18
+  * Switched to CMake as the build system, it is more common than 
+		ninja-build and so more useful for those who build by hand 
+		(sysadmins).
+	* Fix build issues on FreeBSD.
+	* Fix disk on 4k granularity to avoid overwriting areas that are 
+		usable, this is useful on media errors.
+
+-------------------------------------------------------------------
+Sun May 10 10:38:24 UTC 2015 - mpluskal@suse.com
+
+- Update to 0.15
+  * no upstream changelog provided
+
+-------------------------------------------------------------------
+Sun Dec  8 20:21:53 UTC 2013 - dap.darkness@gmail.com
+
+- Initial build.
+
